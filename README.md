@@ -19,5 +19,5 @@ The input `Hashpic rocks!` should create the following image:
 
 #### Disclaimer
 
-The color palette in `data.py` was copied from the [`string-color`](https://pypi.org/project/string-color/) library. 
+The color palette in `data.py` was copied and influenced from the [`string-color`](https://pypi.org/project/string-color/) library. 
 Thanks for this!
