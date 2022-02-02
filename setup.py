@@ -6,7 +6,7 @@ README = (HERE / "README.md").read_text()
 
 setup(
     name="hashpic",
-    version="0.0.1",
+    version="0.1.0",
     description="Create an image from a md5 hash",
     long_description=README,
     long_description_content_type="text/markdown",
@@ -23,4 +23,9 @@ setup(
     include_package_data=True,
     install_requires=["argparse", "Pillow"],
     tests_require=['pytest'],
+    entry_points={
+        'console_scripts': [
+            'hashpic=hashpic.__main__:main'
+        ]
+    }
 )
