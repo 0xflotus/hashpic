@@ -1,4 +1,4 @@
-import sys, re, hashlib, os
+import sys, re, hashlib, os, math
 from PIL import Image, ImageOps
 from .util import *
 
@@ -56,7 +56,7 @@ def shake_256_mode(input, bypass, debug, console, invert, digest_length):
         )
 
     if console:
-        chunks = chunk_it(chunk_it(hash), 8)
+        chunks = chunk_it(chunk_it(hash), int(math.sqrt(variable_digest_length)))
 
         for i in chunks:
             for j in i:
@@ -76,7 +76,7 @@ def shake_256_mode(input, bypass, debug, console, invert, digest_length):
     im = Image.new(mode="RGB", size=(width, height), color="#ffffff")
     pixels = im.load()
 
-    if variable_digest_length == 64:
+    if variable_digest_length == 0x40:
         _64(pixels, colors, (width, height))
     else:
         _16(pixels, colors, (width, height))
