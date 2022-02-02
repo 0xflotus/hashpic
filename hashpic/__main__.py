@@ -3,6 +3,7 @@ from PIL import Image, ImageOps
 import os
 import hashlib
 import sys
+import re
 from .util import *
 
 
@@ -15,10 +16,20 @@ def main():
     parser.add_argument("-c", action="store_true", help="console mode")
     args = parser.parse_args()
 
-    hash = hashlib.md5(args.input.encode()).hexdigest() if not args.md5 else args.input
+    hash = hashlib.md5(args.input.encode()).hexdigest() if not args.md5 else args.input.lower()
+
+    pattern = re.compile(r'^[a-f0-9]{32}$')
+    match = pattern.match(hash)
+    if not match:
+        sys.stderr.write(f'{hash} is not a valid MD5 hash\n')
+        sys.exit(-1)
 
     if args.d:
-        sys.stdout.write(f'hashpic: "{args.input}" will be following hash: {hash}\n')
+        sys.stdout.write(
+            f'hashpic: "{args.input}" will be following hash: {hash}\n'
+            if not args.md5
+            else f"hashpic: directly given hash: {args.input}\n"
+        )
 
     if args.c:
         chunks = chunk_it(chunk_it(hash), 4)
