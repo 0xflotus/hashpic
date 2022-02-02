@@ -2,14 +2,19 @@ import argparse
 from PIL import Image
 import os
 import hashlib
+import sys
 from .util import *
 
 def main():
     parser = argparse.ArgumentParser(description="Create an image from a md5 hash")
-    parser.add_argument("input", help="Input")
+    parser.add_argument("input", help="Input string to hash")
+    parser.add_argument("-d", action="store_true", help="debug mode")
     args = parser.parse_args()
 
     hash = hashlib.md5(args.input.encode()).hexdigest()
+
+    if args.d:
+        sys.stdout.write(f'hashpic: "{args.input}" will be following hash: {hash}\n')
 
     colors = []
     for i in chunk_it(hash):
@@ -56,7 +61,10 @@ def main():
                 pixels[x, y] = colors[15]
             else:
                 pixels[x, y] = (0xFF, 0xFF, 0xFF)
-    im.show()
+
+    if args.d:
+        im.show()
+
     im.save(os.getcwd() + "/output.png")
 
 
