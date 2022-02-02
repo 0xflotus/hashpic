@@ -16,7 +16,7 @@ def sha_512_mode(input, bypass, debug, console, invert):
             if not bypass
             else input.lower()
         )
-        
+
     pattern = re.compile(r"^[a-f0-9]{128}$")
     match = pattern.match(hash)
     if not match:
@@ -190,5 +190,5 @@ def sha_512_mode(input, bypass, debug, console, invert):
         im.show()
 
     im.save(os.getcwd() + "/output.png")
-    
+
     sys.exit(0)

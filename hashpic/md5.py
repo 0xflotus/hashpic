@@ -5,6 +5,7 @@ import sys
 import re
 from .util import *
 
+
 def md5_mode(input, bypass, debug, console, invert):
     if not input:
         hash = (

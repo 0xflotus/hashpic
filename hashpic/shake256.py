@@ -10,20 +10,26 @@ def shake_256_mode(input, bypass, debug, console, invert, digest_length):
         sys.exit(-1)
 
     if int(digest_length) not in [16, 64]:
-        sys.stderr.write("Sorry, only a length of one of [16, 64] is currently possible\n")
+        sys.stderr.write(
+            "Sorry, only a length of one of [16, 64] is currently possible\n"
+        )
         sys.exit(-1)
 
     variable_digest_length = int(digest_length)
 
     if not input:
         hash = (
-            hashlib.shake_256(sys.stdin.read().encode()).hexdigest(variable_digest_length)
+            hashlib.shake_256(sys.stdin.read().encode()).hexdigest(
+                variable_digest_length
+            )
             if not bypass
             else sys.stdin.read().rstrip("\n").lower()
         )
     else:
         hash = (
-            hashlib.shake_256(" ".join(input).encode()).hexdigest(variable_digest_length)
+            hashlib.shake_256(" ".join(input).encode()).hexdigest(
+                variable_digest_length
+            )
             if not bypass
             else input.lower()
         )
@@ -32,12 +38,14 @@ def shake_256_mode(input, bypass, debug, console, invert, digest_length):
         16: r"^[a-f0-9]{32}$",
         64: r"^[a-f0-9]{128}$",
     }
-    
+
     regex_str = regex_dict[variable_digest_length]
     pattern = re.compile(regex_str)
     match = pattern.match(hash)
     if not match:
-        sys.stderr.write(f"{hash} is not a valid SHAKE256 hash with digest length of {variable_digest_length}\n")
+        sys.stderr.write(
+            f"{hash} is not a valid SHAKE256 hash with digest length of {variable_digest_length}\n"
+        )
         sys.exit(-1)
 
     if debug:
@@ -67,7 +75,7 @@ def shake_256_mode(input, bypass, debug, console, invert, digest_length):
 
     im = Image.new(mode="RGB", size=(width, height), color="#ffffff")
     pixels = im.load()
-    
+
     if variable_digest_length == 64:
         _64(pixels, colors, (width, height))
     else:
@@ -80,8 +88,9 @@ def shake_256_mode(input, bypass, debug, console, invert, digest_length):
         im.show()
 
     im.save(os.getcwd() + "/output.png")
-    
+
     sys.exit(0)
+
 
 def _64(pixels, colors, dimension):
     (width, height) = dimension
@@ -217,6 +226,7 @@ def _64(pixels, colors, dimension):
                 pixels[x, y] = colors[63]
             else:
                 pixels[x, y] = (0xFF, 0xFF, 0xFF)
+
 
 def _16(pixels, colors, dimension):
     (width, height) = dimension
