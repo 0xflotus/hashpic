@@ -17,6 +17,16 @@ The input `Hashpic rocks!` should create the following image:
 
 ![hashpic image](./docs/rocks.png)
 
+#### Piping from another program
+
+All this commands should produce the same image as above.
+
+```bash
+> printf 'Hashpic rocks!' | md5 | python3 -m hashpic --md5
+
+> printf 'Hashpic rocks!' | python3 -m hashpic
+```
+
 #### Console Mode
 
 <img width="1288" alt="Bildschirmfoto 2022-02-02 um 13 15 08" src="https://user-images.githubusercontent.com/26602940/152152075-d76d66d4-0ff0-4a75-a622-3bd6febcc52f.png">
