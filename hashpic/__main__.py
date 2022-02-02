@@ -11,10 +11,11 @@ def main():
     parser.add_argument("input", help="Input string to hash")
     parser.add_argument("-d", action="store_true", help="debug mode")
     parser.add_argument("-i", action="store_true", help="invert the image")
+    parser.add_argument("--md5", action="store_true", help="give an md5 hash directly")
     parser.add_argument("-c", action="store_true", help="console mode")
     args = parser.parse_args()
 
-    hash = hashlib.md5(args.input.encode()).hexdigest()
+    hash = hashlib.md5(args.input.encode()).hexdigest() if not args.md5 else args.input
 
     if args.d:
         sys.stdout.write(f'hashpic: "{args.input}" will be following hash: {hash}\n')
@@ -24,7 +25,9 @@ def main():
 
         for i in chunks:
             for j in i:
-                sys.stdout.write(f"\033[38;5;{0xff - int(j, 16) if args.i else int(j, 16)}m{j}\u001b[0m")
+                sys.stdout.write(
+                    f"\033[38;5;{0xff - int(j, 16) if args.i else int(j, 16)}m{j}\u001b[0m"
+                )
             sys.stdout.write("\n")
         sys.exit(0x00)
 
