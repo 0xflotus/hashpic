@@ -1,6 +1,8 @@
 # Hashpic
 
-Hashpic creates an image from the MD5 hash of your input.
+Hashpic creates an image from the *MD5* hash of your input.
+
+Since _v0.2.0_ it is also possible to create an image from a *SHA-512* hash.
 
 ### Install
 
@@ -29,7 +31,21 @@ All this commands should produce the same image as above.
 
 #### Console Mode
 
-<img width="1288" alt="Bildschirmfoto 2022-02-02 um 13 15 08" src="https://user-images.githubusercontent.com/26602940/152152075-d76d66d4-0ff0-4a75-a622-3bd6febcc52f.png">
+![console](./docs/console.png)
+
+#### SHA-512 Mode
+
+It is also possible to create an image from a *SHA-512* hash. All arguments for *MD5 Mode* are also available for *SHA512 Mode*.
+
+```bash
+> python3 -m hashpic --sha512 'Hashpic rocks!'
+
+> printf 'Hashpic rocks!' | python3 -m hashpic --sha512
+```
+
+This command should create the following image:
+
+![sha512 image](./docs/rocks_on_sha512.png)
 
 ### Disclaimer
 
