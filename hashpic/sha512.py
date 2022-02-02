@@ -1,5 +1,5 @@
 import sys, re, hashlib, os
-from PIL import Image
+from PIL import Image, ImageOps
 from .util import *
 
 

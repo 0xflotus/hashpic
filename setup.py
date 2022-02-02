@@ -6,7 +6,7 @@ README = (HERE / "README.md").read_text()
 
 setup(
     name="hashpic",
-    version="0.2.0",
+    version="0.2.1",
     description="Create an image from a MD5 or SHA512 hash",
     long_description=README,
     long_description_content_type="text/markdown",

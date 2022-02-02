@@ -43,7 +43,7 @@ It is also possible to create an image from a *SHA-512* hash. All arguments for 
 > printf 'Hashpic rocks!' | python3 -m hashpic --sha512
 ```
 
-This command should create the following image:
+This commands should create the following image:
 
 ![sha512 image](./docs/rocks_on_sha512.png)
 
