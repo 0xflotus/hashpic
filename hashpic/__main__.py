@@ -9,19 +9,30 @@ from .util import *
 
 def main():
     parser = argparse.ArgumentParser(description="Create an image from a md5 hash")
-    parser.add_argument("input", help="Input string to hash")
+    parser.add_argument("input", nargs="*", action="store", help="Input string to hash")
     parser.add_argument("-d", action="store_true", help="debug mode")
     parser.add_argument("-i", action="store_true", help="invert the image")
     parser.add_argument("--md5", action="store_true", help="give an md5 hash directly")
     parser.add_argument("-c", action="store_true", help="console mode")
     args = parser.parse_args()
 
-    hash = hashlib.md5(args.input.encode()).hexdigest() if not args.md5 else args.input.lower()
+    if not args.input:
+        hash = (
+            hashlib.md5(sys.stdin.read().encode()).hexdigest()
+            if not args.md5
+            else sys.stdin.read().rstrip("\n").lower()
+        )
+    else:
+        hash = (
+            hashlib.md5(" ".join(args.input).encode()).hexdigest()
+            if not args.md5
+            else args.input.lower()
+        )
 
-    pattern = re.compile(r'^[a-f0-9]{32}$')
+    pattern = re.compile(r"^[a-f0-9]{32}$")
     match = pattern.match(hash)
     if not match:
-        sys.stderr.write(f'{hash} is not a valid MD5 hash\n')
+        sys.stderr.write(f"{hash} is not a valid MD5 hash\n")
         sys.exit(-1)
 
     if args.d:
@@ -40,7 +51,7 @@ def main():
                     f"\033[38;5;{0xff - int(j, 16) if args.i else int(j, 16)}m{j}\u001b[0m"
                 )
             sys.stdout.write("\n")
-        sys.exit(0x00)
+        sys.exit(0)
 
     colors = []
     for i in chunk_it(hash):
@@ -95,6 +106,7 @@ def main():
         im.show()
 
     im.save(os.getcwd() + "/output.png")
+    sys.exit(0)
 
 
 if __name__ == "__main__":
