@@ -5,6 +5,7 @@ import hashlib
 import sys
 from .util import *
 
+
 def main():
     parser = argparse.ArgumentParser(description="Create an image from a md5 hash")
     parser.add_argument("input", help="Input string to hash")

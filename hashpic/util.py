@@ -1,6 +1,7 @@
 import json
 from .data import *
 
+
 def chunk_it(string, n=2):
     return [string[i : i + n] for i in range(0, len(string), n)]
 
