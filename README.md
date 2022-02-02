@@ -49,6 +49,16 @@ This commands should create the following image:
 
 ![sha512 image](./docs/rocks_on_sha512.png)
 
+##### Examples
+
+```bash
+> python3 -m hashpic ff00ff00ff00ff0000ff00ff00ff00ffff00ff00ff00ff0000ff00ff00ff00ffff00ff00ff00ff0000ff00ff00ff00ffff00ff00ff00ff0000ff00ff00ff00ff --bypass --sha512
+```
+
+This command will produce the following image:
+
+![bypassed](./docs/bypassed.png)
+
 ### Disclaimer
 
 The color palette in `data.py` was copied and influenced from the [`string-color`](https://pypi.org/project/string-color/) library. 

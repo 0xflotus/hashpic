@@ -31,7 +31,7 @@ def shake_256_mode(input, bypass, debug, console, invert, digest_length):
                 variable_digest_length
             )
             if not bypass
-            else input.lower()
+            else input[0].lower()
         )
 
     regex_dict = {

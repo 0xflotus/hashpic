@@ -14,7 +14,7 @@ def sha_512_mode(input, bypass, debug, console, invert):
         hash = (
             hashlib.sha512(" ".join(input).encode()).hexdigest()
             if not bypass
-            else input.lower()
+            else input[0].lower()
         )
 
     pattern = re.compile(r"^[a-f0-9]{128}$")

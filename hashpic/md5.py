@@ -17,7 +17,7 @@ def md5_mode(input, bypass, debug, console, invert):
         hash = (
             hashlib.md5(" ".join(input).encode()).hexdigest()
             if not bypass
-            else input.lower()
+            else input[0].lower()
         )
 
     pattern = re.compile(r"^[a-f0-9]{32}$")
