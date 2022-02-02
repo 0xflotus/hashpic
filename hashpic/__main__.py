@@ -1,5 +1,5 @@
 import argparse
-from PIL import Image
+from PIL import Image, ImageOps
 import os
 import hashlib
 import sys
@@ -10,12 +10,23 @@ def main():
     parser = argparse.ArgumentParser(description="Create an image from a md5 hash")
     parser.add_argument("input", help="Input string to hash")
     parser.add_argument("-d", action="store_true", help="debug mode")
+    parser.add_argument("-i", action="store_true", help="invert the image")
+    parser.add_argument("-c", action="store_true", help="console mode")
     args = parser.parse_args()
 
     hash = hashlib.md5(args.input.encode()).hexdigest()
 
     if args.d:
         sys.stdout.write(f'hashpic: "{args.input}" will be following hash: {hash}\n')
+
+    if args.c:
+        chunks = chunk_it(chunk_it(hash), 4)
+
+        for i in chunks:
+            for j in i:
+                sys.stdout.write(f"\033[38;5;{int(j, 16)}m{j}\u001b[0m")
+            print()
+        sys.exit(0x00)
 
     colors = []
     for i in chunk_it(hash):
@@ -62,6 +73,9 @@ def main():
                 pixels[x, y] = colors[15]
             else:
                 pixels[x, y] = (0xFF, 0xFF, 0xFF)
+
+    if args.i:
+        im = ImageOps.invert(im)
 
     if args.d:
         im.show()
