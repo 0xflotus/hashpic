@@ -49,7 +49,9 @@ This commands should create the following image:
 
 ![sha512 image](./docs/rocks_on_sha512.png)
 
-##### Examples
+### Examples
+
+Bypassing a hash directly:
 
 ```bash
 > python3 -m hashpic ff00ff00ff00ff0000ff00ff00ff00ffff00ff00ff00ff0000ff00ff00ff00ffff00ff00ff00ff0000ff00ff00ff00ffff00ff00ff00ff0000ff00ff00ff00ff --bypass --sha512
