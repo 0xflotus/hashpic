@@ -36,7 +36,7 @@ def sha_512_mode(input, bypass, debug, console, invert):
         for i in chunks:
             for j in i:
                 sys.stdout.write(
-                    f"\033[38;5;{int(j, 16)}m{j}\u001b[0m"
+                    f"\033[38;5;{0xff - int(j, 16) if invert else int(j, 16)}m{j}\u001b[0m"
                 )
             sys.stdout.write("\n")
         sys.exit(0)
