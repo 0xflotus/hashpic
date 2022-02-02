@@ -26,7 +26,7 @@ The input `Hashpic rocks!` should create the following image:
 All this commands should produce the same image as above.
 
 ```bash
-> printf 'Hashpic rocks!' | md5 | python3 -m hashpic --md5
+> printf 'Hashpic rocks!' | md5 | python3 -m hashpic --bypass
 
 > printf 'Hashpic rocks!' | python3 -m hashpic
 ```
