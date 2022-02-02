@@ -61,6 +61,8 @@ This command will produce the following image:
 
 ![bypassed](./docs/bypassed.png)
 
+So we can call the hash above the so called `chessboard hash`.
+
 ### Disclaimer
 
 The color palette in `data.py` was copied from and influenced by the [`string-color`](https://pypi.org/project/string-color/) library. 
