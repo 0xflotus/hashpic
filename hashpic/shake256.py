@@ -9,9 +9,9 @@ def shake_256_mode(input, bypass, debug, console, invert, digest_length):
         sys.stderr.write("Please specify a --length\n")
         sys.exit(-1)
 
-    if int(digest_length) not in [16, 25, 64]:
+    if int(digest_length) not in [16, 25, 36, 64]:
         sys.stderr.write(
-            "Sorry, only a length of one of [16, 25, 64] is currently possible\n"
+            "Sorry, only a length of one of [16, 25, 36, 64] is currently possible\n"
         )
         sys.exit(-1)
 
@@ -37,6 +37,7 @@ def shake_256_mode(input, bypass, debug, console, invert, digest_length):
     regex_dict = {
         16: r"^[a-f0-9]{32}$",
         25: r"^[a-f0-9]{50}$",
+        36: r"^[a-f0-9]{72}$",
         64: r"^[a-f0-9]{128}$",
     }
 
@@ -79,6 +80,8 @@ def shake_256_mode(input, bypass, debug, console, invert, digest_length):
 
     if variable_digest_length == 0x40:
         _64(pixels, colors, (width, height))
+    elif variable_digest_length == 0x24:
+        _36(pixels, colors, (width, height))
     elif variable_digest_length == 0x19:
         _25(pixels, colors, (width, height))
     else:
@@ -325,5 +328,84 @@ def _25(pixels, colors, dimension):
                 pixels[x, y] = colors[23]
             elif x < 0x4B0 and y < 0x4B0:
                 pixels[x, y] = colors[24]
+            else:
+                pixels[x, y] = (0xFF, 0xFF, 0xFF)
+
+def _36(pixels, colors, dimension):
+    (width, height) = dimension
+    for x in range(width):
+        for y in range(height):
+            if x < 0xc8 and y < 0xc8:
+                pixels[x, y] = colors[0]
+            elif x < 0x190 and y < 0xc8:
+                pixels[x, y] = colors[1]
+            elif x < 0x258 and y < 0xc8:
+                pixels[x, y] = colors[2]
+            elif x < 0x320 and y < 0xc8:
+                pixels[x, y] = colors[3]
+            elif x < 0x3e8 and y < 0xc8:
+                pixels[x, y] = colors[4]
+            elif x < 0x4b0 and y < 0xc8:
+                pixels[x, y] = colors[5]
+            elif x < 0xc8 and y < 0x190:
+                pixels[x, y] = colors[6]
+            elif x < 0x190 and y < 0x190:
+                pixels[x, y] = colors[7]
+            elif x < 0x258 and y < 0x190:
+                pixels[x, y] = colors[8]
+            elif x < 0x320 and y < 0x190:
+                pixels[x, y] = colors[9]
+            elif x < 0x3e8 and y < 0x190:
+                pixels[x, y] = colors[10]
+            elif x < 0x4b0 and y < 0x190:
+                pixels[x, y] = colors[11]
+            elif x < 0xc8 and y < 0x258:
+                pixels[x, y] = colors[12]
+            elif x < 0x190 and y < 0x258:
+                pixels[x, y] = colors[13]
+            elif x < 0x258 and y < 0x258:
+                pixels[x, y] = colors[14]
+            elif x < 0x320 and y < 0x258:
+                pixels[x, y] = colors[15]
+            elif x < 0x3e8 and y < 0x258:
+                pixels[x, y] = colors[16]
+            elif x < 0x4b0 and y < 0x258:
+                pixels[x, y] = colors[17]
+            elif x < 0xc8 and y < 0x320:
+                pixels[x, y] = colors[18]
+            elif x < 0x190 and y < 0x320:
+                pixels[x, y] = colors[19]
+            elif x < 0x258 and y < 0x320:
+                pixels[x, y] = colors[20]
+            elif x < 0x320 and y < 0x320:
+                pixels[x, y] = colors[21]
+            elif x < 0x3e8 and y < 0x320:
+                pixels[x, y] = colors[22]
+            elif x < 0x4b0 and y < 0x320:
+                pixels[x, y] = colors[23]
+            elif x < 0xc8 and y < 0x3e8:
+                pixels[x, y] = colors[24]
+            elif x < 0x190 and y < 0x3e8:
+                pixels[x, y] = colors[25]
+            elif x < 0x258 and y < 0x3e8:
+                pixels[x, y] = colors[26]
+            elif x < 0x320 and y < 0x3e8:
+                pixels[x, y] = colors[27]
+            elif x < 0x3e8 and y < 0x3e8:
+                pixels[x, y] = colors[28]
+            elif x < 0x4b0 and y < 0x3e8:
+                pixels[x, y] = colors[29]
+            elif x < 0xc8 and y < 0x4b0:
+                pixels[x, y] = colors[30]
+            elif x < 0x190 and y < 0x4b0:
+                pixels[x, y] = colors[31]
+            elif x < 0x258 and y < 0x4b0:
+                pixels[x, y] = colors[32]
+            elif x < 0x320 and y < 0x4b0:
+                pixels[x, y] = colors[33]
+            elif x < 0x3e8 and y < 0x4b0:
+                pixels[x, y] = colors[34]
+            elif x < 0x4b0 and y < 0x4b0:
+                pixels[x, y] = colors[35]
             else:
                 pixels[x, y] = (0xFF, 0xFF, 0xFF)
