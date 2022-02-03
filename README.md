@@ -4,7 +4,7 @@ Hashpic creates an image from the *MD5* hash of your input.
 
 Since _v0.2.0_ it is also possible to create an image from a *SHA-512* hash.
 
-Since _v0.2.3_ it is also possible to create an image from a *SHAKE-256* hash with variable digest length of _16_ or _64_.
+Since _v0.2.8_ it is also possible to create an image from a *SHAKE-256* hash with variable digest length of _16_, _25_, _36_ or _64_.
 
 ### Install
 
