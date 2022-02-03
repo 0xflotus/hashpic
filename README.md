@@ -63,6 +63,20 @@ This command will produce the following image:
 
 So we can call the hash above the so called `chessboard hash`.
 
+You can also bypass a hash from another program:
+
+```bash
+> printf 'Hashpic rocks!' | sha512sum | awk '{print $1}' | python3 -m hashpic -c --sha512 --bypass
+a11a61ccfce80f61
+3aa90205a54afc67
+e3b5fb495a4dfa29
+e1c4171c8bf966a7
+cfa50865bbd1004f
+d2dc02015943010d
+04c5db7df09d91ee
+1a9172c68844b84c
+```
+
 ### Disclaimer
 
 The color palette in `data.py` was copied from and influenced by the [`string-color`](https://pypi.org/project/string-color/) library. 
