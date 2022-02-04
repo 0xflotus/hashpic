@@ -35,6 +35,14 @@ All this commands should produce the same image as above.
 
 ![console](./docs/console.png)
 
+#### Hashing a file
+
+It is also possible to create an image from a hash of a file. Use the `--file` argument for that.
+
+```bash
+> python3 -m hashpic --file README.md
+```
+
 #### SHA-512 Mode
 
 It is also possible to create an image from a *SHA-512* hash. All arguments for *MD5 Mode* are also available for *SHA512 Mode*.
