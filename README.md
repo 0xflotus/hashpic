@@ -4,7 +4,7 @@ Hashpic creates an image from the *MD5* hash of your input.
 
 Since _v0.2.0_ it is also possible to create an image from a *SHA-512* hash.
 
-Since _v0.2.8_ it is also possible to create an image from a *SHAKE-256* hash with variable digest length of _16_, _25_, _36_ or _64_.
+Since _v0.3.0_ it is also possible to create an image from a *SHAKE-256* hash with variable digest length of _4_, _16_, _25_, _36_, _64_, _100_ or _225_.
 
 ### Install
 
@@ -49,7 +49,75 @@ This commands should create the following image:
 
 ![sha512 image](./docs/rocks_on_sha512.png)
 
-### Examples
+#### SHAKE256 Mode
+
+You can create an image from a *SHAKE256* hash with variable digest lengths. Valid lengths are _4_, _16_, _25_, _36_, _64_, _100_ and _225_. You must specify the length of the digest if you want to create an image from a *SHAKE256* hash.
+
+```bash
+> python3 -m hashpic --shake256 --length 100 'Hashpic rocks!'
+```
+
+The command above should produce the following image:
+
+![shake256](./docs/shake256/100.png)
+
+## More SHAKE256 examples
+
+<details>
+  <summary>Click to see more examples.</summary>
+
+  ### Digest Length of 4
+  
+  ```bash
+  > python3 -m hashpic --shake256 --length 4 'Hashpic rocks!'
+  ```
+
+  ![shake256](./docs/shake256/4.png)
+
+  ### Digest Length of 16
+
+  ```bash
+  > python3 -m hashpic --shake256 --length 16 'Hashpic rocks!'
+  ```
+  ![shake256](./docs/shake256/16.png)
+
+  ### Digest Length of 25
+
+  ```bash
+  > python3 -m hashpic --shake256 --length 25 'Hashpic rocks!'
+  ```
+
+  ![shake256](./docs/shake256/25.png)
+
+  ### Digest Length of 36
+
+  ```bash
+  > python3 -m hashpic --shake256 --length 36 'Hashpic rocks!'
+  ```
+
+  ![shake256](./docs/shake256/36.png)
+
+  ### Digest Length of 64
+
+  ```bash
+  > python3 -m hashpic --shake256 --length 64 'Hashpic rocks!'
+  ```
+
+  ![shake256](./docs/shake256/64.png)
+
+  ### Digest Length of 225
+
+  Maybe this command will take a few seconds to complete.
+
+  ```bash
+  > python3 -m hashpic --shake256 --length 225 'Hashpic rocks!'
+  ```
+
+  ![shake256](./docs/shake256/225.png)
+</details>
+<hr/>
+
+## Examples
 
 Bypassing a hash directly:
 
@@ -65,17 +133,7 @@ So we can call the hash above the so called `chessboard hash`.
 
 You can also bypass a hash from another program:
 
-```bash
-> printf 'Hashpic rocks!' | sha512sum | awk '{print $1}' | python3 -m hashpic -c --sha512 --bypass
-a11a61ccfce80f61
-3aa90205a54afc67
-e3b5fb495a4dfa29
-e1c4171c8bf966a7
-cfa50865bbd1004f
-d2dc02015943010d
-04c5db7df09d91ee
-1a9172c68844b84c
-```
+![bypassed from another program](./docs/bypassed_pipe.png)
 
 ### Disclaimer
 
