@@ -22,10 +22,6 @@ setup(
     packages=["hashpic"],
     include_package_data=True,
     install_requires=["argparse", "Pillow"],
-    tests_require=['pytest'],
-    entry_points={
-        'console_scripts': [
-            'hashpic=hashpic.__main__:main'
-        ]
-    }
+    tests_require=["pytest"],
+    entry_points={"console_scripts": ["hashpic=hashpic.__main__:main"]},
 )

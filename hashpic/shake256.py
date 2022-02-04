@@ -334,23 +334,24 @@ def _25(pixels, colors, dimension):
             else:
                 pixels[x, y] = (0xFF, 0xFF, 0xFF)
 
+
 def _36(pixels, colors, dimension):
     (width, height) = dimension
     for x in range(width):
         for y in range(height):
-            if x < 0xc8 and y < 0xc8:
+            if x < 0xC8 and y < 0xC8:
                 pixels[x, y] = colors[0]
-            elif x < 0x190 and y < 0xc8:
+            elif x < 0x190 and y < 0xC8:
                 pixels[x, y] = colors[1]
-            elif x < 0x258 and y < 0xc8:
+            elif x < 0x258 and y < 0xC8:
                 pixels[x, y] = colors[2]
-            elif x < 0x320 and y < 0xc8:
+            elif x < 0x320 and y < 0xC8:
                 pixels[x, y] = colors[3]
-            elif x < 0x3e8 and y < 0xc8:
+            elif x < 0x3E8 and y < 0xC8:
                 pixels[x, y] = colors[4]
-            elif x < 0x4b0 and y < 0xc8:
+            elif x < 0x4B0 and y < 0xC8:
                 pixels[x, y] = colors[5]
-            elif x < 0xc8 and y < 0x190:
+            elif x < 0xC8 and y < 0x190:
                 pixels[x, y] = colors[6]
             elif x < 0x190 and y < 0x190:
                 pixels[x, y] = colors[7]
@@ -358,11 +359,11 @@ def _36(pixels, colors, dimension):
                 pixels[x, y] = colors[8]
             elif x < 0x320 and y < 0x190:
                 pixels[x, y] = colors[9]
-            elif x < 0x3e8 and y < 0x190:
+            elif x < 0x3E8 and y < 0x190:
                 pixels[x, y] = colors[10]
-            elif x < 0x4b0 and y < 0x190:
+            elif x < 0x4B0 and y < 0x190:
                 pixels[x, y] = colors[11]
-            elif x < 0xc8 and y < 0x258:
+            elif x < 0xC8 and y < 0x258:
                 pixels[x, y] = colors[12]
             elif x < 0x190 and y < 0x258:
                 pixels[x, y] = colors[13]
@@ -370,11 +371,11 @@ def _36(pixels, colors, dimension):
                 pixels[x, y] = colors[14]
             elif x < 0x320 and y < 0x258:
                 pixels[x, y] = colors[15]
-            elif x < 0x3e8 and y < 0x258:
+            elif x < 0x3E8 and y < 0x258:
                 pixels[x, y] = colors[16]
-            elif x < 0x4b0 and y < 0x258:
+            elif x < 0x4B0 and y < 0x258:
                 pixels[x, y] = colors[17]
-            elif x < 0xc8 and y < 0x320:
+            elif x < 0xC8 and y < 0x320:
                 pixels[x, y] = colors[18]
             elif x < 0x190 and y < 0x320:
                 pixels[x, y] = colors[19]
@@ -382,36 +383,37 @@ def _36(pixels, colors, dimension):
                 pixels[x, y] = colors[20]
             elif x < 0x320 and y < 0x320:
                 pixels[x, y] = colors[21]
-            elif x < 0x3e8 and y < 0x320:
+            elif x < 0x3E8 and y < 0x320:
                 pixels[x, y] = colors[22]
-            elif x < 0x4b0 and y < 0x320:
+            elif x < 0x4B0 and y < 0x320:
                 pixels[x, y] = colors[23]
-            elif x < 0xc8 and y < 0x3e8:
+            elif x < 0xC8 and y < 0x3E8:
                 pixels[x, y] = colors[24]
-            elif x < 0x190 and y < 0x3e8:
+            elif x < 0x190 and y < 0x3E8:
                 pixels[x, y] = colors[25]
-            elif x < 0x258 and y < 0x3e8:
+            elif x < 0x258 and y < 0x3E8:
                 pixels[x, y] = colors[26]
-            elif x < 0x320 and y < 0x3e8:
+            elif x < 0x320 and y < 0x3E8:
                 pixels[x, y] = colors[27]
-            elif x < 0x3e8 and y < 0x3e8:
+            elif x < 0x3E8 and y < 0x3E8:
                 pixels[x, y] = colors[28]
-            elif x < 0x4b0 and y < 0x3e8:
+            elif x < 0x4B0 and y < 0x3E8:
                 pixels[x, y] = colors[29]
-            elif x < 0xc8 and y < 0x4b0:
+            elif x < 0xC8 and y < 0x4B0:
                 pixels[x, y] = colors[30]
-            elif x < 0x190 and y < 0x4b0:
+            elif x < 0x190 and y < 0x4B0:
                 pixels[x, y] = colors[31]
-            elif x < 0x258 and y < 0x4b0:
+            elif x < 0x258 and y < 0x4B0:
                 pixels[x, y] = colors[32]
-            elif x < 0x320 and y < 0x4b0:
+            elif x < 0x320 and y < 0x4B0:
                 pixels[x, y] = colors[33]
-            elif x < 0x3e8 and y < 0x4b0:
+            elif x < 0x3E8 and y < 0x4B0:
                 pixels[x, y] = colors[34]
-            elif x < 0x4b0 and y < 0x4b0:
+            elif x < 0x4B0 and y < 0x4B0:
                 pixels[x, y] = colors[35]
             else:
                 pixels[x, y] = (0xFF, 0xFF, 0xFF)
+
 
 def _100(pixels, colors, dimension):
     (width, height) = dimension
@@ -419,203 +421,203 @@ def _100(pixels, colors, dimension):
         for y in range(height):
             if x < 0x78 and y < 0x78:
                 pixels[x, y] = colors[0]
-            elif x < 0xf0 and y < 0x78:
+            elif x < 0xF0 and y < 0x78:
                 pixels[x, y] = colors[1]
             elif x < 0x168 and y < 0x78:
                 pixels[x, y] = colors[2]
-            elif x < 0x1e0 and y < 0x78:
+            elif x < 0x1E0 and y < 0x78:
                 pixels[x, y] = colors[3]
             elif x < 0x258 and y < 0x78:
                 pixels[x, y] = colors[4]
-            elif x < 0x2d0 and y < 0x78:
+            elif x < 0x2D0 and y < 0x78:
                 pixels[x, y] = colors[5]
             elif x < 0x348 and y < 0x78:
                 pixels[x, y] = colors[6]
-            elif x < 0x3c0 and y < 0x78:
+            elif x < 0x3C0 and y < 0x78:
                 pixels[x, y] = colors[7]
             elif x < 0x438 and y < 0x78:
                 pixels[x, y] = colors[8]
-            elif x < 0x4b0 and y < 0x78:
+            elif x < 0x4B0 and y < 0x78:
                 pixels[x, y] = colors[9]
-            elif x < 0x78 and y < 0xf0:
+            elif x < 0x78 and y < 0xF0:
                 pixels[x, y] = colors[10]
-            elif x < 0xf0 and y < 0xf0:
+            elif x < 0xF0 and y < 0xF0:
                 pixels[x, y] = colors[11]
-            elif x < 0x168 and y < 0xf0:
+            elif x < 0x168 and y < 0xF0:
                 pixels[x, y] = colors[12]
-            elif x < 0x1e0 and y < 0xf0:
+            elif x < 0x1E0 and y < 0xF0:
                 pixels[x, y] = colors[13]
-            elif x < 0x258 and y < 0xf0:
+            elif x < 0x258 and y < 0xF0:
                 pixels[x, y] = colors[14]
-            elif x < 0x2d0 and y < 0xf0:
+            elif x < 0x2D0 and y < 0xF0:
                 pixels[x, y] = colors[15]
-            elif x < 0x348 and y < 0xf0:
+            elif x < 0x348 and y < 0xF0:
                 pixels[x, y] = colors[16]
-            elif x < 0x3c0 and y < 0xf0:
+            elif x < 0x3C0 and y < 0xF0:
                 pixels[x, y] = colors[17]
-            elif x < 0x438 and y < 0xf0:
+            elif x < 0x438 and y < 0xF0:
                 pixels[x, y] = colors[18]
-            elif x < 0x4b0 and y < 0xf0:
+            elif x < 0x4B0 and y < 0xF0:
                 pixels[x, y] = colors[19]
             elif x < 0x78 and y < 0x168:
                 pixels[x, y] = colors[20]
-            elif x < 0xf0 and y < 0x168:
+            elif x < 0xF0 and y < 0x168:
                 pixels[x, y] = colors[21]
             elif x < 0x168 and y < 0x168:
                 pixels[x, y] = colors[22]
-            elif x < 0x1e0 and y < 0x168:
+            elif x < 0x1E0 and y < 0x168:
                 pixels[x, y] = colors[23]
             elif x < 0x258 and y < 0x168:
                 pixels[x, y] = colors[24]
-            elif x < 0x2d0 and y < 0x168:
+            elif x < 0x2D0 and y < 0x168:
                 pixels[x, y] = colors[25]
             elif x < 0x348 and y < 0x168:
                 pixels[x, y] = colors[26]
-            elif x < 0x3c0 and y < 0x168:
+            elif x < 0x3C0 and y < 0x168:
                 pixels[x, y] = colors[27]
             elif x < 0x438 and y < 0x168:
                 pixels[x, y] = colors[28]
-            elif x < 0x4b0 and y < 0x168:
+            elif x < 0x4B0 and y < 0x168:
                 pixels[x, y] = colors[29]
-            elif x < 0x78 and y < 0x1e0:
+            elif x < 0x78 and y < 0x1E0:
                 pixels[x, y] = colors[30]
-            elif x < 0xf0 and y < 0x1e0:
+            elif x < 0xF0 and y < 0x1E0:
                 pixels[x, y] = colors[31]
-            elif x < 0x168 and y < 0x1e0:
+            elif x < 0x168 and y < 0x1E0:
                 pixels[x, y] = colors[32]
-            elif x < 0x1e0 and y < 0x1e0:
+            elif x < 0x1E0 and y < 0x1E0:
                 pixels[x, y] = colors[33]
-            elif x < 0x258 and y < 0x1e0:
+            elif x < 0x258 and y < 0x1E0:
                 pixels[x, y] = colors[34]
-            elif x < 0x2d0 and y < 0x1e0:
+            elif x < 0x2D0 and y < 0x1E0:
                 pixels[x, y] = colors[35]
-            elif x < 0x348 and y < 0x1e0:
+            elif x < 0x348 and y < 0x1E0:
                 pixels[x, y] = colors[36]
-            elif x < 0x3c0 and y < 0x1e0:
+            elif x < 0x3C0 and y < 0x1E0:
                 pixels[x, y] = colors[37]
-            elif x < 0x438 and y < 0x1e0:
+            elif x < 0x438 and y < 0x1E0:
                 pixels[x, y] = colors[38]
-            elif x < 0x4b0 and y < 0x1e0:
+            elif x < 0x4B0 and y < 0x1E0:
                 pixels[x, y] = colors[39]
             elif x < 0x78 and y < 0x258:
                 pixels[x, y] = colors[40]
-            elif x < 0xf0 and y < 0x258:
+            elif x < 0xF0 and y < 0x258:
                 pixels[x, y] = colors[41]
             elif x < 0x168 and y < 0x258:
                 pixels[x, y] = colors[42]
-            elif x < 0x1e0 and y < 0x258:
+            elif x < 0x1E0 and y < 0x258:
                 pixels[x, y] = colors[43]
             elif x < 0x258 and y < 0x258:
                 pixels[x, y] = colors[44]
-            elif x < 0x2d0 and y < 0x258:
+            elif x < 0x2D0 and y < 0x258:
                 pixels[x, y] = colors[45]
             elif x < 0x348 and y < 0x258:
                 pixels[x, y] = colors[46]
-            elif x < 0x3c0 and y < 0x258:
+            elif x < 0x3C0 and y < 0x258:
                 pixels[x, y] = colors[47]
             elif x < 0x438 and y < 0x258:
                 pixels[x, y] = colors[48]
-            elif x < 0x4b0 and y < 0x258:
+            elif x < 0x4B0 and y < 0x258:
                 pixels[x, y] = colors[49]
-            elif x < 0x78 and y < 0x2d0:
+            elif x < 0x78 and y < 0x2D0:
                 pixels[x, y] = colors[50]
-            elif x < 0xf0 and y < 0x2d0:
+            elif x < 0xF0 and y < 0x2D0:
                 pixels[x, y] = colors[51]
-            elif x < 0x168 and y < 0x2d0:
+            elif x < 0x168 and y < 0x2D0:
                 pixels[x, y] = colors[52]
-            elif x < 0x1e0 and y < 0x2d0:
+            elif x < 0x1E0 and y < 0x2D0:
                 pixels[x, y] = colors[53]
-            elif x < 0x258 and y < 0x2d0:
+            elif x < 0x258 and y < 0x2D0:
                 pixels[x, y] = colors[54]
-            elif x < 0x2d0 and y < 0x2d0:
+            elif x < 0x2D0 and y < 0x2D0:
                 pixels[x, y] = colors[55]
-            elif x < 0x348 and y < 0x2d0:
+            elif x < 0x348 and y < 0x2D0:
                 pixels[x, y] = colors[56]
-            elif x < 0x3c0 and y < 0x2d0:
+            elif x < 0x3C0 and y < 0x2D0:
                 pixels[x, y] = colors[57]
-            elif x < 0x438 and y < 0x2d0:
+            elif x < 0x438 and y < 0x2D0:
                 pixels[x, y] = colors[58]
-            elif x < 0x4b0 and y < 0x2d0:
+            elif x < 0x4B0 and y < 0x2D0:
                 pixels[x, y] = colors[59]
             elif x < 0x78 and y < 0x348:
                 pixels[x, y] = colors[60]
-            elif x < 0xf0 and y < 0x348:
+            elif x < 0xF0 and y < 0x348:
                 pixels[x, y] = colors[61]
             elif x < 0x168 and y < 0x348:
                 pixels[x, y] = colors[62]
-            elif x < 0x1e0 and y < 0x348:
+            elif x < 0x1E0 and y < 0x348:
                 pixels[x, y] = colors[63]
             elif x < 0x258 and y < 0x348:
                 pixels[x, y] = colors[64]
-            elif x < 0x2d0 and y < 0x348:
+            elif x < 0x2D0 and y < 0x348:
                 pixels[x, y] = colors[65]
             elif x < 0x348 and y < 0x348:
                 pixels[x, y] = colors[66]
-            elif x < 0x3c0 and y < 0x348:
+            elif x < 0x3C0 and y < 0x348:
                 pixels[x, y] = colors[67]
             elif x < 0x438 and y < 0x348:
                 pixels[x, y] = colors[68]
-            elif x < 0x4b0 and y < 0x348:
+            elif x < 0x4B0 and y < 0x348:
                 pixels[x, y] = colors[69]
-            elif x < 0x78 and y < 0x3c0:
+            elif x < 0x78 and y < 0x3C0:
                 pixels[x, y] = colors[70]
-            elif x < 0xf0 and y < 0x3c0:
+            elif x < 0xF0 and y < 0x3C0:
                 pixels[x, y] = colors[71]
-            elif x < 0x168 and y < 0x3c0:
+            elif x < 0x168 and y < 0x3C0:
                 pixels[x, y] = colors[72]
-            elif x < 0x1e0 and y < 0x3c0:
+            elif x < 0x1E0 and y < 0x3C0:
                 pixels[x, y] = colors[73]
-            elif x < 0x258 and y < 0x3c0:
+            elif x < 0x258 and y < 0x3C0:
                 pixels[x, y] = colors[74]
-            elif x < 0x2d0 and y < 0x3c0:
+            elif x < 0x2D0 and y < 0x3C0:
                 pixels[x, y] = colors[75]
-            elif x < 0x348 and y < 0x3c0:
+            elif x < 0x348 and y < 0x3C0:
                 pixels[x, y] = colors[76]
-            elif x < 0x3c0 and y < 0x3c0:
+            elif x < 0x3C0 and y < 0x3C0:
                 pixels[x, y] = colors[77]
-            elif x < 0x438 and y < 0x3c0:
+            elif x < 0x438 and y < 0x3C0:
                 pixels[x, y] = colors[78]
-            elif x < 0x4b0 and y < 0x3c0:
+            elif x < 0x4B0 and y < 0x3C0:
                 pixels[x, y] = colors[79]
             elif x < 0x78 and y < 0x438:
                 pixels[x, y] = colors[80]
-            elif x < 0xf0 and y < 0x438:
+            elif x < 0xF0 and y < 0x438:
                 pixels[x, y] = colors[81]
             elif x < 0x168 and y < 0x438:
                 pixels[x, y] = colors[82]
-            elif x < 0x1e0 and y < 0x438:
+            elif x < 0x1E0 and y < 0x438:
                 pixels[x, y] = colors[83]
             elif x < 0x258 and y < 0x438:
                 pixels[x, y] = colors[84]
-            elif x < 0x2d0 and y < 0x438:
+            elif x < 0x2D0 and y < 0x438:
                 pixels[x, y] = colors[85]
             elif x < 0x348 and y < 0x438:
                 pixels[x, y] = colors[86]
-            elif x < 0x3c0 and y < 0x438:
+            elif x < 0x3C0 and y < 0x438:
                 pixels[x, y] = colors[87]
             elif x < 0x438 and y < 0x438:
                 pixels[x, y] = colors[88]
-            elif x < 0x4b0 and y < 0x438:
+            elif x < 0x4B0 and y < 0x438:
                 pixels[x, y] = colors[89]
-            elif x < 0x78 and y < 0x4b0:
+            elif x < 0x78 and y < 0x4B0:
                 pixels[x, y] = colors[90]
-            elif x < 0xf0 and y < 0x4b0:
+            elif x < 0xF0 and y < 0x4B0:
                 pixels[x, y] = colors[91]
-            elif x < 0x168 and y < 0x4b0:
+            elif x < 0x168 and y < 0x4B0:
                 pixels[x, y] = colors[92]
-            elif x < 0x1e0 and y < 0x4b0:
+            elif x < 0x1E0 and y < 0x4B0:
                 pixels[x, y] = colors[93]
-            elif x < 0x258 and y < 0x4b0:
+            elif x < 0x258 and y < 0x4B0:
                 pixels[x, y] = colors[94]
-            elif x < 0x2d0 and y < 0x4b0:
+            elif x < 0x2D0 and y < 0x4B0:
                 pixels[x, y] = colors[95]
-            elif x < 0x348 and y < 0x4b0:
+            elif x < 0x348 and y < 0x4B0:
                 pixels[x, y] = colors[96]
-            elif x < 0x3c0 and y < 0x4b0:
+            elif x < 0x3C0 and y < 0x4B0:
                 pixels[x, y] = colors[97]
-            elif x < 0x438 and y < 0x4b0:
+            elif x < 0x438 and y < 0x4B0:
                 pixels[x, y] = colors[98]
-            elif x < 0x4b0 and y < 0x4b0:
+            elif x < 0x4B0 and y < 0x4B0:
                 pixels[x, y] = colors[99]
             else:
                 pixels[x, y] = (0xFF, 0xFF, 0xFF)
