@@ -9,7 +9,7 @@ def shake_256_mode(input, bypass, debug, console, invert, digest_length, file):
         sys.stderr.write("Please specify a --length\n")
         sys.exit(-1)
 
-    if int(digest_length) not in [4, 16, 25, 36, 64, 100, 144, 225]:
+    if int(digest_length) not in [1, 4, 16, 25, 36, 64, 100, 144, 225]:
         sys.stderr.write(
             "Sorry, only a length of one of [4, 16, 25, 36, 64, 100, 144, 225] is currently possible\n"
         )
@@ -44,6 +44,7 @@ def shake_256_mode(input, bypass, debug, console, invert, digest_length, file):
         )
 
     regex_dict = {
+        1: r"^[a-f0-9]{2}$",
         4: r"^[a-f0-9]{8}$",
         16: r"^[a-f0-9]{32}$",
         25: r"^[a-f0-9]{50}$",
@@ -105,6 +106,8 @@ def shake_256_mode(input, bypass, debug, console, invert, digest_length, file):
         _25(pixels, colors, (width, height))
     elif variable_digest_length == 0x4:
         _4(pixels, colors, (width, height))
+    elif variable_digest_length == 0x1:
+        _1(pixels, colors, (width, height))
     else:
         _16(pixels, colors, (width, height))
 
@@ -253,6 +256,13 @@ def _64(pixels, colors, dimension):
                 pixels[x, y] = colors[63]
             else:
                 pixels[x, y] = (0xFF, 0xFF, 0xFF)
+
+
+def _1(pixels, colors, dimension):
+    (width, height) = dimension
+    for x in range(width):
+        for y in range(height):
+            pixels[x, y] = colors[0]
 
 
 def _4(pixels, colors, dimension):
