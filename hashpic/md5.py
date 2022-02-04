@@ -6,8 +6,18 @@ import re
 from .util import *
 
 
-def md5_mode(input, bypass, debug, console, invert):
-    if not input:
+def md5_mode(input, bypass, debug, console, invert, file):
+
+    if file:
+        BLOCKSIZE = 0x1000
+        hasher = hashlib.md5()
+        with open(file, "rb") as tfile:
+            buffer = tfile.read(BLOCKSIZE)
+            while len(buffer) > 0:
+                hasher.update(buffer)
+                buffer = tfile.read(BLOCKSIZE)
+        hash = hasher.hexdigest().lower()
+    elif not input:
         hash = (
             hashlib.md5(sys.stdin.read().encode()).hexdigest()
             if not bypass

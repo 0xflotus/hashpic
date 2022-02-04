@@ -3,8 +3,18 @@ from PIL import Image, ImageOps
 from .util import *
 
 
-def sha_512_mode(input, bypass, debug, console, invert):
-    if not input:
+def sha_512_mode(input, bypass, debug, console, invert, file):
+
+    if file:
+        BLOCKSIZE = 0x1000
+        hasher = hashlib.sha512()
+        with open(file, "rb") as tfile:
+            buffer = tfile.read(BLOCKSIZE)
+            while len(buffer) > 0:
+                hasher.update(buffer)
+                buffer = tfile.read(BLOCKSIZE)
+        hash = hasher.hexdigest().lower()
+    elif not input:
         hash = (
             hashlib.sha512(sys.stdin.read().encode()).hexdigest()
             if not bypass

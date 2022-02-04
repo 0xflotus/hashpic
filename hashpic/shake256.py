@@ -3,7 +3,7 @@ from PIL import Image, ImageOps
 from .util import *
 
 
-def shake_256_mode(input, bypass, debug, console, invert, digest_length):
+def shake_256_mode(input, bypass, debug, console, invert, digest_length, file):
 
     if not digest_length:
         sys.stderr.write("Please specify a --length\n")
@@ -17,7 +17,16 @@ def shake_256_mode(input, bypass, debug, console, invert, digest_length):
 
     variable_digest_length = int(digest_length)
 
-    if not input:
+    if file:
+        BLOCKSIZE = 0x1000
+        hasher = hashlib.shake_256()
+        with open(file, "rb") as tfile:
+            buffer = tfile.read(BLOCKSIZE)
+            while len(buffer) > 0:
+                hasher.update(buffer)
+                buffer = tfile.read(BLOCKSIZE)
+        hash = hasher.hexdigest(variable_digest_length).lower()
+    elif not input:
         hash = (
             hashlib.shake_256(sys.stdin.read().encode()).hexdigest(
                 variable_digest_length

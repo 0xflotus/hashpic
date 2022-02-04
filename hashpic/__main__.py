@@ -16,6 +16,7 @@ def main():
     parser.add_argument("--sha512", action="store_true")
     parser.add_argument("--shake256", action="store_true")
     parser.add_argument("--length", action="store")
+    parser.add_argument("--file", action="store")
     args = parser.parse_args()
 
     if args.sha512:
@@ -25,6 +26,7 @@ def main():
             debug=args.d,
             console=args.c,
             invert=args.i,
+            file=args.file,
         )
     elif args.shake256:
         shake_256_mode(
@@ -34,6 +36,7 @@ def main():
             console=args.c,
             invert=args.i,
             digest_length=args.length,
+            file=args.file,
         )
     else:
         md5_mode(
@@ -42,6 +45,7 @@ def main():
             debug=args.d,
             console=args.c,
             invert=args.i,
+            file=args.file,
         )
 
 
