@@ -242,6 +242,7 @@ def _64(pixels, colors, dimension):
             else:
                 pixels[x, y] = (0xFF, 0xFF, 0xFF)
 
+
 def _4(pixels, colors, dimension):
     (width, height) = dimension
     for x in range(width):
