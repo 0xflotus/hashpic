@@ -28,7 +28,7 @@ def main():
             console=args.c,
             invert=args.i,
             file=args.file,
-            outputfile=args.o
+            outputfile=args.o,
         )
     elif args.shake256:
         shake_256_mode(
@@ -39,7 +39,7 @@ def main():
             invert=args.i,
             digest_length=args.length,
             file=args.file,
-            outputfile=args.o
+            outputfile=args.o,
         )
     else:
         md5_mode(
@@ -49,7 +49,7 @@ def main():
             console=args.c,
             invert=args.i,
             file=args.file,
-            outputfile=args.o
+            outputfile=args.o,
         )
 
 

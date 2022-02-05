@@ -3,7 +3,9 @@ from PIL import Image, ImageOps
 from .util import *
 
 
-def shake_256_mode(input, bypass, debug, console, invert, digest_length, file, outputfile):
+def shake_256_mode(
+    input, bypass, debug, console, invert, digest_length, file, outputfile
+):
 
     if not digest_length:
         sys.stderr.write("Please specify a --length\n")
