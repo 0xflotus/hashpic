@@ -6,6 +6,8 @@ Since _v0.2.0_ it is also possible to create an image from a *SHA-512* hash.
 
 Since _v0.3.0_ it is also possible to create an image from a *SHAKE-256* hash with variable digest length of _4_, _16_, _25_, _36_, _64_, _100_ or _225_.
 
+Since _v0.3.5_ it is also possible to create an image from a *SHA3-512* and a *BLAKE2b* hash.
+
 ### Install
 
 `pip3 install hashpic`
@@ -69,7 +71,7 @@ The command above should produce the following image:
 
 ![shake256](./docs/shake256/100.png)
 
-## More SHAKE256 examples
+### More SHAKE256 examples
 
 <details>
   <summary>Click to see more examples.</summary>
@@ -124,6 +126,26 @@ The command above should produce the following image:
   ![shake256](./docs/shake256/225.png)
 </details>
 <hr/>
+
+#### SHA3 Mode
+
+It is possible to create an image from a *SHA3* hash. 
+
+```bash
+> python3 -m hashpic 'Hashpic rocks!' --sha3
+```
+
+![sha3](./docs/rocks_on_sha3.png)
+
+#### BLAKE2b Mode
+
+It is possible to create an image from a *BLAKE2b* hash. 
+
+```bash
+> python3 -m hashpic 'Hashpic rocks!' --blake2b
+```
+
+![sha3](./docs/rocks_on_blake2b.png)
 
 ## Examples
 
