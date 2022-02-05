@@ -3,7 +3,7 @@ from PIL import Image, ImageOps
 from .util import *
 
 
-def sha_512_mode(input, bypass, debug, console, invert, file):
+def sha_512_mode(input, bypass, debug, console, invert, file, outputfile):
 
     if file:
         BLOCKSIZE = 0x1000
@@ -199,6 +199,6 @@ def sha_512_mode(input, bypass, debug, console, invert, file):
     if debug:
         im.show()
 
-    im.save(os.getcwd() + "/output.png")
+    im.save(os.getcwd() + "/" + outputfile)
 
     sys.exit(0)

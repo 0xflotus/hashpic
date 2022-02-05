@@ -6,7 +6,7 @@ import re
 from .util import *
 
 
-def md5_mode(input, bypass, debug, console, invert, file):
+def md5_mode(input, bypass, debug, console, invert, file, outputfile):
 
     if file:
         BLOCKSIZE = 0x1000
@@ -106,5 +106,5 @@ def md5_mode(input, bypass, debug, console, invert, file):
     if debug:
         im.show()
 
-    im.save(os.getcwd() + "/output.png")
+    im.save(os.getcwd() + "/" + outputfile)
     sys.exit(0)
