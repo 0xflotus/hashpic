@@ -65,7 +65,7 @@ def main():
             digest_length=args.length,
             file=args.file,
             outputfile=args.o,
-            slow_mode=args.slow
+            slow_mode=args.slow,
         )
     else:
         md5_mode(
