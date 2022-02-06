@@ -4,7 +4,15 @@ from .util import *
 
 
 def shake_256_mode(
-    input, bypass, debug, console, invert, digest_length, file, outputfile
+    input,
+    bypass,
+    debug,
+    console,
+    invert,
+    digest_length,
+    file,
+    outputfile,
+    slow_mode=False,
 ):
 
     if not digest_length:
@@ -75,7 +83,6 @@ def shake_256_mode(
 
     if console:
         chunks = chunk_it(chunk_it(hash), int(math.sqrt(variable_digest_length)))
-
         for i in chunks:
             for j in i:
                 sys.stdout.write(
@@ -94,24 +101,28 @@ def shake_256_mode(
     im = Image.new(mode="RGB", size=(width, height), color="#ffffff")
     pixels = im.load()
 
-    if variable_digest_length == 0xE1:
-        _225(pixels, colors, (width, height))
-    elif variable_digest_length == 0x90:
-        _144(pixels, colors, (width, height))
-    elif variable_digest_length == 0x64:
-        _100(pixels, colors, (width, height))
-    elif variable_digest_length == 0x40:
-        _64(pixels, colors, (width, height))
-    elif variable_digest_length == 0x24:
-        _36(pixels, colors, (width, height))
-    elif variable_digest_length == 0x19:
-        _25(pixels, colors, (width, height))
-    elif variable_digest_length == 0x4:
-        _4(pixels, colors, (width, height))
-    elif variable_digest_length == 0x1:
-        _1(pixels, colors, (width, height))
+    if slow_mode:
+        assert width == height, "width and height must be the same."
+        __paint(pixels, colors, size=width, digest_length=variable_digest_length)
     else:
-        _16(pixels, colors, (width, height))
+        if variable_digest_length == 0xE1:
+            _225(pixels, colors, (width, height))
+        elif variable_digest_length == 0x90:
+            _144(pixels, colors, (width, height))
+        elif variable_digest_length == 0x64:
+            _100(pixels, colors, (width, height))
+        elif variable_digest_length == 0x40:
+            _64(pixels, colors, (width, height))
+        elif variable_digest_length == 0x24:
+            _36(pixels, colors, (width, height))
+        elif variable_digest_length == 0x19:
+            _25(pixels, colors, (width, height))
+        elif variable_digest_length == 0x4:
+            _4(pixels, colors, (width, height))
+        elif variable_digest_length == 0x1:
+            _1(pixels, colors, (width, height))
+        else:
+            _16(pixels, colors, (width, height))
 
     if invert:
         im = ImageOps.invert(im)
@@ -122,6 +133,25 @@ def shake_256_mode(
     im.save(os.getcwd() + "/" + outputfile)
 
     sys.exit(0)
+
+
+def __paint(pixels, colors, size, digest_length):
+    steps = size // (digest_length ** 0.5)
+    store = []
+    for x in range(size):
+        if x % steps == 0:
+            for y in range(size):
+                if y % steps == 0:
+                    store.append([[y, y + steps], [x, x + steps]])
+
+    for x in range(size):
+        for y in range(size):
+            for i in range(len(store)):
+                if (
+                    store[i][0][0] <= x < store[i][0][1]
+                    and store[i][1][0] <= y < store[i][1][1]
+                ):
+                    pixels[x, y] = colors[i]
 
 
 def _64(pixels, colors, dimension):

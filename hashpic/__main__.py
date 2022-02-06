@@ -21,6 +21,7 @@ def main():
     parser.add_argument("--blake2b", action="store_true")
     parser.add_argument("--length", action="store")
     parser.add_argument("--file", action="store")
+    parser.add_argument("--slow", action="store_true")
     parser.add_argument("-o", action="store", default="output.png")
     args = parser.parse_args()
 
@@ -64,6 +65,7 @@ def main():
             digest_length=args.length,
             file=args.file,
             outputfile=args.o,
+            slow_mode=args.slow
         )
     else:
         md5_mode(
