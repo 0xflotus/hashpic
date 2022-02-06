@@ -91,15 +91,13 @@ def shake_256_mode(
             sys.stdout.write("\n")
         sys.exit(0)
 
-    colors = []
-    for i in chunk_it(hash):
-        colors.append(convert_term_to_rgb(int(i, 16)))
-
     width = 1200
     height = 1200
 
     im = Image.new(mode="RGB", size=(width, height), color="#ffffff")
     pixels = im.load()
+
+    colors = [convert_term_to_rgb(int(chunk, 16)) for chunk in chunk_it(hash)]
 
     if slow_mode:
         assert width == height, "width and height must be the same."

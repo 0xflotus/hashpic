@@ -71,6 +71,23 @@ The command above should produce the following image:
 
 ![shake256](./docs/shake256/100.png)
 
+<details>
+  <summary>The `--slow` flag</summary>
+
+#### `--slow` flag
+
+You can use the `--slow` flag to run a generalized method instead of a hardcoded one. But this have some performance issues.
+
+Hardcoded:
+
+![hardcoded](./docs/shake256/perf/hardcoded.png)
+
+Generalized:
+
+![hardcoded](./docs/shake256/perf/generalized.png)
+
+</details>
+
 ### More SHAKE256 examples
 
 <details>
