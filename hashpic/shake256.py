@@ -138,14 +138,14 @@ def __paint(pixels, colors, size, digest_length):
     store = []
     for x in range(0, size, steps):
         for y in range(0, size, steps):
-            store.append([[y, y + steps], [x, x + steps]])
+            store.append([y, y + steps, x, x + steps])
 
     for x in range(size):
         for y in range(size):
             for i in range(len(store)):
                 if (
-                    store[i][0][0] <= x < store[i][0][1]
-                    and store[i][1][0] <= y < store[i][1][1]
+                    store[i][0] <= x < store[i][1]
+                    and store[i][2] <= y < store[i][3]
                 ):
                     pixels[x, y] = colors[i]
 
