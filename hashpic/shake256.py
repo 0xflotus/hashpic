@@ -1,7 +1,6 @@
 import sys, re, hashlib, os, math
 from PIL import Image, ImageOps
 from .util import *
-import numpy as np
 
 
 def shake_256_mode(
