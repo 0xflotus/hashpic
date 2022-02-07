@@ -14,6 +14,7 @@ def shake_256_mode(
     file,
     outputfile,
     slow_mode=False,
+    size=1200,
 ):
 
     if not digest_length:
@@ -92,8 +93,8 @@ def shake_256_mode(
             sys.stdout.write("\n")
         sys.exit(0)
 
-    width = 1200
-    height = 1200
+    width = int(size or 1200)
+    height = int(size or 1200)
 
     im = Image.new(mode="RGB", size=(width, height), color="#ffffff")
     pixels = im.load()
@@ -102,6 +103,7 @@ def shake_256_mode(
 
     if slow_mode:
         assert width == height, "width and height must be the same."
+        assert width % 120 == 0, "size must be a multiple of 120"
         __paint(pixels, colors, size=width, digest_length=variable_digest_length)
     else:
         if variable_digest_length == 0xE1:
