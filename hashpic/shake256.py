@@ -1,6 +1,7 @@
 import sys, re, hashlib, os, math
 from PIL import Image, ImageOps
 from .util import *
+import numpy as np
 
 
 def shake_256_mode(
@@ -142,12 +143,9 @@ def __paint(pixels, colors, size, digest_length):
 
     for x in range(size):
         for y in range(size):
-            for i in range(len(store)):
-                if (
-                    store[i][0] <= x < store[i][1]
-                    and store[i][2] <= y < store[i][3]
-                ):
-                    pixels[x, y] = colors[i]
+            for line, idx in zip(store, range(len(store))):
+                if line[0] <= x < line[1] and line[-2] <= y < line[-1]:
+                    pixels[x, y] = colors[idx]
 
 
 def _64(pixels, colors, dimension):
