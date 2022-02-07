@@ -15,6 +15,7 @@ def main():
     parser.add_argument("-i", action="store_true", help="invert the image")
     parser.add_argument("--bypass", action="store_true", help="give a hash directly")
     parser.add_argument("-c", action="store_true", help="console mode")
+    parser.add_argument("--tile", action="store_true")
     parser.add_argument("--sha512", action="store_true")
     parser.add_argument("--shake256", action="store_true")
     parser.add_argument("--sha3", action="store_true")
@@ -32,6 +33,7 @@ def main():
             bypass=args.bypass,
             debug=args.d,
             console=args.c,
+            tile=args.tile,
             invert=args.i,
             file=args.file,
             outputfile=args.o,
@@ -42,6 +44,7 @@ def main():
             bypass=args.bypass,
             debug=args.d,
             console=args.c,
+            tile=args.tile,
             invert=args.i,
             file=args.file,
             outputfile=args.o,
@@ -52,6 +55,7 @@ def main():
             bypass=args.bypass,
             debug=args.d,
             console=args.c,
+            tile=args.tile,
             invert=args.i,
             file=args.file,
             outputfile=args.o,
@@ -62,6 +66,7 @@ def main():
             bypass=args.bypass,
             debug=args.d,
             console=args.c,
+            tile=args.tile,
             invert=args.i,
             digest_length=args.length,
             file=args.file,
@@ -75,6 +80,7 @@ def main():
             bypass=args.bypass,
             debug=args.d,
             console=args.c,
+            tile=args.tile,
             invert=args.i,
             file=args.file,
             outputfile=args.o,

@@ -6,7 +6,7 @@ import re
 from .util import *
 
 
-def md5_mode(input, bypass, debug, console, invert, file, outputfile):
+def md5_mode(input, bypass, debug, console, tile, invert, file, outputfile):
 
     if file:
         BLOCKSIZE = 0x1000
@@ -49,7 +49,7 @@ def md5_mode(input, bypass, debug, console, invert, file, outputfile):
         for i in chunks:
             for j in i:
                 sys.stdout.write(
-                    f"\033[38;5;{0xff - int(j, 16) if invert else int(j, 16)}m{j}\u001b[0m"
+                    f"\033[38;5;{0xff - int(j, 16) if invert else int(j, 16)}m{j if not tile else '▮'}\u001b[0m"
                 )
             sys.stdout.write("\n")
         sys.exit(0)
