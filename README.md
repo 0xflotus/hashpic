@@ -194,9 +194,20 @@ This command will produce the following image:
 
 So we can call the hash above the so called `chessboard hash`.
 
+<hr>
+
 You can also bypass a hash from another program:
 
 ![bypassed from another program](./docs/bypassed_pipe.png)
+
+<hr>
+
+With all this in mind you can also use hashpic to create an image not only from a hash but e.g. from the current time in hex:
+
+```bash
+> python3 -c "import time; print(hex(int(time.time()))[2:])" | python3 -m hashpic --shake256 --length 4 --bypass
+```
+
 
 ## Disclaimer
 
