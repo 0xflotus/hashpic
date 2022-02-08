@@ -215,7 +215,7 @@ Or e.g. an IP address in hexadecimal form:
 > python3 -m hashpic 7f000001 --shake256 --length 4 --bypass
 
 # e.g. an IPv6 address of Googles DNS server
-> printf 2001:4860:4860:0000:0000:0000:0000:8844 | tr -d ':' | python3 -m hashpic --bypass --shake256 --length 16
+> printf 2001:4860:4860:0000:0000:0000:0000:8844 | tr -d ':' | python3 -m hashpic --bypass 
 ```
 
 ## Disclaimer
