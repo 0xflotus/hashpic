@@ -3,7 +3,7 @@ from PIL import Image, ImageOps
 from .util import *
 
 
-def blake2b_mode(input, bypass, debug, console, tile, invert, file, outputfile):
+def blake2b_mode(input, bypass, debug, console, tile, invert, file, outputfile, svg):
 
     if file:
         BLOCKSIZE = 0x1000
@@ -39,6 +39,17 @@ def blake2b_mode(input, bypass, debug, console, tile, invert, file, outputfile):
             if not bypass
             else f"hashpic: directly given hash: {input}\n"
         )
+
+    if svg:
+        SVG = paint_svg(0x400, 0x40, hash_to_color_codes(hash))
+        if debug:
+            sys.stdout.write(SVG)
+            sys.exit(0)
+        filename = os.getcwd() + "/" + "./output.svg"
+        f = open(filename, "w")
+        f.write(SVG)
+        f.close()
+        sys.exit(0)
 
     if console:
         chunks = chunk_it(chunk_it(hash), 8)
