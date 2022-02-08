@@ -30,8 +30,6 @@ def main():
     outputfile = args.o or "output"
     outputfile += ".svg" if args.svg else ".png"
 
-    print(outputfile)
-
     if args.sha512:
         sha_512_mode(
             input=args.input,
