@@ -23,9 +23,9 @@ def paint_svg(size, digest_length, colors):
     def colorcode_to_hex(color_code):
         return hex(color_code)[2:].zfill(2)
 
-    SVG_DATA = """<?xml version="1.0" encoding="UTF-8"?>
+    SVG_DATA = f"""<?xml version="1.0" encoding="UTF-8"?>
     <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="1200" height="1200">
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="{size}" height="{size}">
     """
     steps = int(size // (int(digest_length) ** 0.5))
     store = []
