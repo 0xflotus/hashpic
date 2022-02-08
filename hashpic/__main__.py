@@ -8,7 +8,7 @@ from .sha3 import *
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Create an image from a MD5 or SHA512 hash"
+        description="Create an image from a MD5, SHA512, SHA3-512, Blake2b or Shake256 hash"
     )
     parser.add_argument("input", nargs="*", action="store", help="Input string to hash")
     parser.add_argument("-d", action="store_true", help="debug mode")
@@ -23,7 +23,7 @@ def main():
     parser.add_argument("--length", action="store")
     parser.add_argument("--file", action="store")
     parser.add_argument("--slow", action="store_true")
-    parser.add_argument("--size", action="store")
+    parser.add_argument("--svg", action="store_true")
     parser.add_argument("-o", action="store", default="output.png")
     args = parser.parse_args()
 
@@ -37,6 +37,7 @@ def main():
             invert=args.i,
             file=args.file,
             outputfile=args.o,
+            svg=args.svg,
         )
     elif args.sha3:
         sha3_512_mode(
@@ -48,6 +49,7 @@ def main():
             invert=args.i,
             file=args.file,
             outputfile=args.o,
+            svg=args.svg,
         )
     elif args.blake2b:
         blake2b_mode(
@@ -59,6 +61,7 @@ def main():
             invert=args.i,
             file=args.file,
             outputfile=args.o,
+            svg=args.svg,
         )
     elif args.shake256:
         shake_256_mode(
@@ -71,8 +74,8 @@ def main():
             digest_length=args.length,
             file=args.file,
             outputfile=args.o,
+            svg=args.svg,
             slow_mode=args.slow,
-            size=args.size,
         )
     else:
         md5_mode(
@@ -84,6 +87,7 @@ def main():
             invert=args.i,
             file=args.file,
             outputfile=args.o,
+            svg=args.svg,
         )
 
 
