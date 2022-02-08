@@ -24,8 +24,13 @@ def main():
     parser.add_argument("--file", action="store")
     parser.add_argument("--slow", action="store_true")
     parser.add_argument("--svg", action="store_true")
-    parser.add_argument("-o", action="store", default="output.png")
+    parser.add_argument("-o", action="store")
     args = parser.parse_args()
+
+    outputfile = args.o or "output"
+    outputfile += ".svg" if args.svg else ".png"
+
+    print(outputfile)
 
     if args.sha512:
         sha_512_mode(
@@ -36,7 +41,7 @@ def main():
             tile=args.tile,
             invert=args.i,
             file=args.file,
-            outputfile=args.o,
+            outputfile=outputfile,
             svg=args.svg,
         )
     elif args.sha3:
@@ -48,7 +53,7 @@ def main():
             tile=args.tile,
             invert=args.i,
             file=args.file,
-            outputfile=args.o,
+            outputfile=outputfile,
             svg=args.svg,
         )
     elif args.blake2b:
@@ -60,7 +65,7 @@ def main():
             tile=args.tile,
             invert=args.i,
             file=args.file,
-            outputfile=args.o,
+            outputfile=outputfile,
             svg=args.svg,
         )
     elif args.shake256:
@@ -73,7 +78,7 @@ def main():
             invert=args.i,
             digest_length=args.length,
             file=args.file,
-            outputfile=args.o,
+            outputfile=outputfile,
             svg=args.svg,
             slow_mode=args.slow,
         )
@@ -86,7 +91,7 @@ def main():
             tile=args.tile,
             invert=args.i,
             file=args.file,
-            outputfile=args.o,
+            outputfile=outputfile,
             svg=args.svg,
         )
 

@@ -45,7 +45,7 @@ def sha_512_mode(input, bypass, debug, console, tile, invert, file, outputfile, 
         if debug:
             sys.stdout.write(SVG)
             sys.exit(0)
-        filename = os.getcwd() + "/" + "./output.svg"
+        filename = os.getcwd() + "/" + outputfile
         f = open(filename, "w")
         f.write(SVG)
         f.close()

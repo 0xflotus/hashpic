@@ -88,7 +88,7 @@ def shake_256_mode(
         if debug:
             sys.stdout.write(SVG)
             sys.exit(0)
-        filename = os.getcwd() + "/" + "./output.svg"
+        filename = os.getcwd() + "/" + outputfile
         f = open(filename, "w")
         f.write(SVG)
         f.close()
@@ -104,8 +104,8 @@ def shake_256_mode(
             sys.stdout.write("\n")
         sys.exit(0)
 
-    width = int(size or 1200)
-    height = int(size or 1200)
+    width = 1200
+    height = 1200
 
     im = Image.new(mode="RGB", size=(width, height), color="#ffffff")
     pixels = im.load()

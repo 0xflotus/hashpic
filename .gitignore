@@ -2,5 +2,8 @@ dist/
 build/
 *.egg-info*
 *.pyc
-output*.png
-output*.svg
+*.png
+*.svg
+
+!docs/**/*.svg
+!docs/**/*.png

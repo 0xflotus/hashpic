@@ -73,7 +73,7 @@ This commands should create the following image:
 
 ## SHAKE256 Mode
 
-You can create an image from a *SHAKE256* hash with variable digest lengths. Valid lengths are _4_, _16_, _25_, _36_, _64_, _100_ and _225_. You must specify the length of the digest if you want to create an image from a *SHAKE256* hash.
+You can create an image from a *SHAKE256* hash with variable digest lengths. Valid lengths are _4_, _16_, _25_, _36_, _64_, _100_, _144_ and _225_. You must specify the length of the digest if you want to create an image from a *SHAKE256* hash.
 
 ```bash
 > python3 -m hashpic --shake256 --length 100 'Hashpic rocks!'
@@ -97,6 +97,10 @@ Hardcoded:
 Generalized:
 
 ![hardcoded](./docs/shake256/perf/generalized.png)
+
+Since _v0.4.0_ it is possible to create an image as *SVG*. Creating SVG files is blazingly fast:
+
+![svg](./docs/shake256/perf/svg.png)
 
 </details>
 
