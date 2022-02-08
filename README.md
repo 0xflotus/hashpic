@@ -8,11 +8,13 @@ Since _v0.3.0_ it is also possible to create an image from a *SHAKE-256* hash wi
 
 Since _v0.3.5_ it is also possible to create an image from a *SHA3-512* and a *BLAKE2b* hash.
 
-### Install
+Since _v0.4.0_ it is possible to create an image as *SVG*, which is much faster.
+
+## Install
 
 `pip3 install hashpic`
 
-### Usage
+## Usage
 
 ```bash
 > python3 -m hashpic 'Hashpic rocks!'
@@ -23,7 +25,7 @@ The input `Hashpic rocks!` should create the following image:
 
 ![hashpic image](./docs/rocks.png)
 
-#### Piping from another program
+## Piping from another program
 
 All this commands should produce the same image as above.
 
@@ -33,11 +35,21 @@ All this commands should produce the same image as above.
 > printf 'Hashpic rocks!' | python3 -m hashpic
 ```
 
-#### Console Mode
+## SVG Mode 🎉🎉🎉
+
+Since _v0.4.0_ it is possible to create an image as *SVG*. The following command will create a file `output.svg` in your current directory. 
+
+```bash
+> python3 -m hashpic 'Hashpic rocks!' --svg
+```
+
+![svg](./docs/rocks_on_svg.svg)
+
+## Console Mode
 
 ![console](./docs/console.png)
 
-#### Hashing a file
+## Hashing a file
 
 It is also possible to create an image from a hash of a file. Use the `--file` argument for that.
 
@@ -45,7 +57,7 @@ It is also possible to create an image from a hash of a file. Use the `--file` a
 > python3 -m hashpic --file README.md
 ```
 
-#### SHA-512 Mode
+## SHA-512 Mode
 
 It is also possible to create an image from a *SHA-512* hash. All arguments for *MD5 Mode* are also available for *SHA512 Mode*.
 
@@ -59,7 +71,7 @@ This commands should create the following image:
 
 ![sha512 image](./docs/rocks_on_sha512.png)
 
-#### SHAKE256 Mode
+## SHAKE256 Mode
 
 You can create an image from a *SHAKE256* hash with variable digest lengths. Valid lengths are _4_, _16_, _25_, _36_, _64_, _100_ and _225_. You must specify the length of the digest if you want to create an image from a *SHAKE256* hash.
 
@@ -144,7 +156,7 @@ Generalized:
 </details>
 <hr/>
 
-#### SHA3 Mode
+## SHA3 Mode
 
 It is possible to create an image from a *SHA3* hash. 
 
@@ -154,7 +166,7 @@ It is possible to create an image from a *SHA3* hash.
 
 ![sha3](./docs/rocks_on_sha3.png)
 
-#### BLAKE2b Mode
+## BLAKE2b Mode
 
 It is possible to create an image from a *BLAKE2b* hash. 
 
@@ -182,7 +194,7 @@ You can also bypass a hash from another program:
 
 ![bypassed from another program](./docs/bypassed_pipe.png)
 
-### Disclaimer
+## Disclaimer
 
 The color palette in `data.py` was copied from and influenced by the [`string-color`](https://pypi.org/project/string-color/) library. 
 Thanks for this!
