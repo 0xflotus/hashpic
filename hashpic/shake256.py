@@ -13,8 +13,8 @@ def shake_256_mode(
     digest_length,
     file,
     outputfile,
+    svg,
     slow_mode=False,
-    size=1200,
 ):
 
     if not digest_length:
@@ -82,6 +82,17 @@ def shake_256_mode(
             if not bypass
             else f"hashpic: directly given hash: {input}\n"
         )
+
+    if svg:
+        SVG = paint_svg(0x4B0, variable_digest_length, hash_to_color_codes(hash))
+        if debug:
+            sys.stdout.write(SVG)
+            sys.exit(0)
+        filename = os.getcwd() + "/" + "./output.svg"
+        f = open(filename, "w")
+        f.write(SVG)
+        f.close()
+        sys.exit(0)
 
     if console:
         chunks = chunk_it(chunk_it(hash), int(math.sqrt(variable_digest_length)))
