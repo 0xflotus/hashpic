@@ -3,3 +3,4 @@ build/
 *.egg-info*
 *.pyc
 output*.png
+output*.svg
