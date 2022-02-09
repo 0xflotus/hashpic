@@ -182,7 +182,7 @@ It is possible to create an image from a *BLAKE2b* hash.
 
 ## Using with Docker
 
-Since _v0.4.4_ there is a dockerized version available on [`ghcr.io`](https://github.com/0xflotus/hashpic/pkgs/container/hashpic). You can pull the image rom there and use it e.g.:
+Since _v0.4.4_ there is a dockerized version available on [`ghcr.io`](https://github.com/0xflotus/hashpic/pkgs/container/hashpic). You can pull the image from there and use it e.g.:
 
 ```bash
 > docker run -it -v "$(pwd)":/app --rm ghcr.io/0xflotus/hashpic:0.4.4 deadbeef --bypass --shake256 --length 4
