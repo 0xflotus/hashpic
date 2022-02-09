@@ -86,7 +86,9 @@ def shake_256_mode(
     if svg:
         color_codes = hash_to_color_codes(hash)
         if invert:
-           color_codes = list(map(lambda cc: (0xff-cc[0],0xff-cc[1],0xff-cc[2]), color_codes))
+            color_codes = list(
+                map(lambda cc: (0xFF - cc[0], 0xFF - cc[1], 0xFF - cc[2]), color_codes)
+            )
         SVG = paint_svg(0x4B0, variable_digest_length, color_codes)
 
         if debug:

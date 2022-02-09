@@ -43,13 +43,15 @@ def blake2b_mode(input, bypass, debug, console, tile, invert, file, outputfile, 
     if svg:
         color_codes = hash_to_color_codes(hash)
         if invert:
-           color_codes = list(map(lambda cc: (0xff-cc[0],0xff-cc[1],0xff-cc[2]), color_codes))
+            color_codes = list(
+                map(lambda cc: (0xFF - cc[0], 0xFF - cc[1], 0xFF - cc[2]), color_codes)
+            )
         SVG = paint_svg(0x400, 0x40, color_codes)
 
         if debug:
             sys.stdout.write(SVG)
             sys.exit(0)
-            
+
         filename = os.getcwd() + "/" + outputfile
         f = open(filename, "w")
         f.write(SVG)
