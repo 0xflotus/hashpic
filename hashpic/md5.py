@@ -47,7 +47,7 @@ def md5_mode(input, bypass, debug, console, tile, invert, file, outputfile, svg)
         color_codes = hash_to_color_codes(hash)
         if invert:
             color_codes = list(
-                map(lambda cc: (0xFF - cc[0], 0xFF - cc[1], 0xFF - cc[2]), color_codes)
+                map(lambda cc: (cc[0]^0xff, cc[1]^0xff, cc[2]^0xff), color_codes)
             )
         SVG = paint_svg(0x400, 0x10, color_codes)
 
