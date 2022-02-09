@@ -84,10 +84,15 @@ def shake_256_mode(
         )
 
     if svg:
-        SVG = paint_svg(0x4B0, variable_digest_length, hash_to_color_codes(hash))
+        color_codes = hash_to_color_codes(hash)
+        if invert:
+           color_codes = list(map(lambda cc: (0xff-cc[0],0xff-cc[1],0xff-cc[2]), color_codes))
+        SVG = paint_svg(0x4B0, variable_digest_length, color_codes)
+
         if debug:
             sys.stdout.write(SVG)
             sys.exit(0)
+
         filename = os.getcwd() + "/" + outputfile
         f = open(filename, "w")
         f.write(SVG)
