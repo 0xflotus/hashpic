@@ -21,13 +21,12 @@ def shake_256_mode(
         sys.stderr.write("Please specify a --length\n")
         sys.exit(-1)
 
-    if int(digest_length) not in [1, 4, 16, 25, 36, 64, 100, 144, 225]:
+    variable_digest_length = int(digest_length)
+    if variable_digest_length not in [1, 4, 16, 25, 36, 64, 100, 144, 225]:
         sys.stderr.write(
             "Sorry, only a length of one of [4, 16, 25, 36, 64, 100, 144, 225] is currently possible\n"
         )
         sys.exit(-1)
-
-    variable_digest_length = int(digest_length)
 
     if file:
         BLOCKSIZE = 0x1000
@@ -84,22 +83,7 @@ def shake_256_mode(
         )
 
     if svg:
-        color_codes = hash_to_color_codes(hash)
-        if invert:
-            color_codes = list(
-                map(lambda cc: (cc[0] ^ 0xFF, cc[1] ^ 0xFF, cc[2] ^ 0xFF), color_codes)
-            )
-        SVG = paint_svg(size=0x4B0, digest_length=variable_digest_length, colors=color_codes)
-
-        if debug:
-            sys.stdout.write(SVG)
-            sys.exit(0)
-
-        filename = os.getcwd() + "/" + outputfile
-        f = open(filename, "w")
-        f.write(SVG)
-        f.close()
-        sys.exit(0)
+        svg_mode(hash=hash, size=1200, digest_length=variable_digest_length, invert=invert, debug=debug, outputfile=outputfile)
 
     if console:
         print_to_console(hash, invert, tile)

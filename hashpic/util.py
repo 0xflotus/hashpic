@@ -1,4 +1,4 @@
-import json, sys
+import json, sys, os
 from math import sqrt
 from .data import *
 
@@ -52,3 +52,21 @@ def paint_svg(size, digest_length, colors):
                     SVG_DATA += f"""<rect width="{steps}" height="{steps}" fill="#{colorcode_to_hex(colors[idx][0])}{colorcode_to_hex(colors[idx][1])}{colorcode_to_hex(colors[idx][2])}" x="{x}" y="{y}"/>\n"""
     SVG_DATA += """</svg>\n"""
     return SVG_DATA
+
+def svg_mode(hash, size, digest_length, invert, debug, outputfile):
+    color_codes = hash_to_color_codes(hash)
+    if invert:
+        color_codes = list(
+            map(lambda cc: (cc[0] ^ 0xFF, cc[1] ^ 0xFF, cc[2] ^ 0xFF), color_codes)
+        )
+    SVG = paint_svg(size=size, digest_length=digest_length, colors=color_codes)
+
+    if debug:
+        sys.stdout.write(SVG)
+        sys.exit(0)
+
+    filename = os.getcwd() + "/" + outputfile
+    f = open(filename, "w")
+    f.write(SVG)
+    f.close()
+    sys.exit(0)

@@ -41,22 +41,7 @@ def sha3_512_mode(input, bypass, debug, console, tile, invert, file, outputfile,
         )
 
     if svg:
-        color_codes = hash_to_color_codes(hash)
-        if invert:
-            color_codes = list(
-                map(lambda cc: (cc[0] ^ 0xFF, cc[1] ^ 0xFF, cc[2] ^ 0xFF), color_codes)
-            )
-        SVG = paint_svg(size=0x400, digest_length=0x40, colors=color_codes)
-
-        if debug:
-            sys.stdout.write(SVG)
-            sys.exit(0)
-
-        filename = os.getcwd() + "/" + outputfile
-        f = open(filename, "w")
-        f.write(SVG)
-        f.close()
-        sys.exit(0)
+        svg_mode(hash=hash, size=0x400, digest_length=0x40, invert=invert, debug=debug, outputfile=outputfile)
 
     if console:
         print_to_console(hash, invert, tile)
