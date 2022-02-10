@@ -53,6 +53,7 @@ def paint_svg(size, digest_length, colors):
     SVG_DATA += """</svg>\n"""
     return SVG_DATA
 
+
 def svg_mode(hash, size, digest_length, invert, debug, outputfile):
     color_codes = hash_to_color_codes(hash)
     if invert:
@@ -71,9 +72,10 @@ def svg_mode(hash, size, digest_length, invert, debug, outputfile):
     f.close()
     sys.exit(0)
 
+
 def debug_log(input, hash, bypass):
     sys.stdout.write(
-            f'hashpic: "{input}" will be following hash: {hash}\n'
-            if not bypass
-            else f"hashpic: directly given hash: {input}\n"
-        )
+        f'hashpic: "{input}" will be following hash: {hash}\n'
+        if not bypass
+        else f"hashpic: directly given hash: {input}\n"
+    )

@@ -79,7 +79,14 @@ def shake_256_mode(
         debug_log(input=input, hash=hash, bypass=bypass)
 
     if svg:
-        svg_mode(hash=hash, size=1200, digest_length=variable_digest_length, invert=invert, debug=debug, outputfile=outputfile)
+        svg_mode(
+            hash=hash,
+            size=1200,
+            digest_length=variable_digest_length,
+            invert=invert,
+            debug=debug,
+            outputfile=outputfile,
+        )
 
     if console:
         print_to_console(hash, invert, tile)

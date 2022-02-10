@@ -40,7 +40,14 @@ def md5_mode(input, bypass, debug, console, tile, invert, file, outputfile, svg)
         debug_log(input=input, hash=hash, bypass=bypass)
 
     if svg:
-        svg_mode(hash=hash, size=0x400, digest_length=0x10, invert=invert, debug=debug, outputfile=outputfile)
+        svg_mode(
+            hash=hash,
+            size=0x400,
+            digest_length=0x10,
+            invert=invert,
+            debug=debug,
+            outputfile=outputfile,
+        )
 
     if console:
         print_to_console(hash, invert, tile)
