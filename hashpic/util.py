@@ -15,8 +15,9 @@ def convert_term_to_rgb(color_code=0):
             s_cc = tuple([int(i) for i in data[i]["rgb"][4:-1].split(",")])
     return s_cc
 
+
 def print_to_console(hash, invert, tile):
-    chunks = chunk_it(chunk_it(hash), int(sqrt(len(hash)/2)))
+    chunks = chunk_it(chunk_it(hash), int(sqrt(len(hash) / 2)))
     for i in chunks:
         for j in i:
             sys.stdout.write(
