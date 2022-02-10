@@ -70,3 +70,10 @@ def svg_mode(hash, size, digest_length, invert, debug, outputfile):
     f.write(SVG)
     f.close()
     sys.exit(0)
+
+def debug_log(input, hash, bypass):
+    sys.stdout.write(
+            f'hashpic: "{input}" will be following hash: {hash}\n'
+            if not bypass
+            else f"hashpic: directly given hash: {input}\n"
+        )

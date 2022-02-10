@@ -34,11 +34,7 @@ def sha_512_mode(input, bypass, debug, console, tile, invert, file, outputfile, 
         sys.exit(-1)
 
     if debug:
-        sys.stdout.write(
-            f'hashpic: "{input}" will be following hash: {hash}\n'
-            if not bypass
-            else f"hashpic: directly given hash: {input}\n"
-        )
+        debug_log(input=input, hash=hash, bypass=bypass)
 
     if svg:
         svg_mode(hash=hash, size=0x400, digest_length=0x40, invert=invert, debug=debug, outputfile=outputfile)
