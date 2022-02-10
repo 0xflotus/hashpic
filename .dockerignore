@@ -1,0 +1,9 @@
+dist/
+build/
+*.egg-info*
+*.pyc
+*.png
+*.svg
+
+!docs/**/*.svg
+!docs/**/*.png

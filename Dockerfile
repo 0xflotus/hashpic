@@ -1,10 +1,15 @@
 FROM python:3.9-alpine
-RUN mkdir /app
-ADD . /app
-WORKDIR /app
+LABEL maintainer "0xflotus"
+
 RUN apk add --virtual build-deps --no-cache gcc musl-dev zlib-dev jpeg-dev
 RUN apk add zlib jpeg
+
+RUN mkdir /app
+COPY . /app
+WORKDIR /app
+
 RUN python3 -m pip install --upgrade pip
 RUN python3 -m pip install --upgrade argparse
 RUN python3 -m pip install --upgrade Pillow 
+
 ENTRYPOINT ["python", "-m", "hashpic"]
