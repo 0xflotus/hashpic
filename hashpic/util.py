@@ -1,4 +1,4 @@
-import json, sys, os
+import json, sys, os, re
 from math import sqrt
 from .data import *
 
@@ -79,3 +79,10 @@ def debug_log(input, hash, bypass):
         if not bypass
         else f"hashpic: directly given hash: {input}\n"
     )
+
+def validity_check(hash, regex_str, name):
+    pattern = re.compile(regex_str)
+    match = pattern.match(hash)
+    if not match:
+        sys.stderr.write(f"{hash} is not a valid {name} hash\n")
+        sys.exit(-1)

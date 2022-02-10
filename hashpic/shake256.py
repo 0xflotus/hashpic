@@ -1,4 +1,4 @@
-import sys, re, hashlib, os, math
+import sys, hashlib, os
 from PIL import Image, ImageOps
 from .util import *
 
@@ -66,14 +66,7 @@ def shake_256_mode(
         225: r"^[a-f0-9]{450}$",
     }
 
-    regex_str = regex_dict[variable_digest_length]
-    pattern = re.compile(regex_str)
-    match = pattern.match(hash)
-    if not match:
-        sys.stderr.write(
-            f"{hash} is not a valid SHAKE256 hash with digest length of {variable_digest_length}\n"
-        )
-        sys.exit(-1)
+    validity_check(hash=hash, regex_str=regex_dict[variable_digest_length], name=f"SHAKE256-{variable_digest_length}")
 
     if debug:
         debug_log(input=input, hash=hash, bypass=bypass)

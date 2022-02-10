@@ -1,4 +1,4 @@
-import sys, re, hashlib, os
+import sys, hashlib, os
 from PIL import Image, ImageOps
 from .util import *
 
@@ -27,11 +27,7 @@ def blake2b_mode(input, bypass, debug, console, tile, invert, file, outputfile, 
             else input[0].lower()
         )
 
-    pattern = re.compile(r"^[a-f0-9]{128}$")
-    match = pattern.match(hash)
-    if not match:
-        sys.stderr.write(f"{hash} is not a valid BLAKE2b hash\n")
-        sys.exit(-1)
+    validity_check(hash=hash, regex_str=r"^[a-f0-9]{128}$", name="BLAKE2b")
 
     if debug:
         debug_log(input=input, hash=hash, bypass=bypass)

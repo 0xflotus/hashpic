@@ -1,8 +1,5 @@
 from PIL import Image, ImageOps
-import os
-import hashlib
-import sys
-import re
+import os, hashlib, sys
 from .util import *
 
 
@@ -30,11 +27,7 @@ def md5_mode(input, bypass, debug, console, tile, invert, file, outputfile, svg)
             else input[0].lower()
         )
 
-    pattern = re.compile(r"^[a-f0-9]{32}$")
-    match = pattern.match(hash)
-    if not match:
-        sys.stderr.write(f"{hash} is not a valid MD5 hash\n")
-        sys.exit(-1)
+    validity_check(hash=hash, regex_str=r"^[a-f0-9]{32}$", name="MD5")
 
     if debug:
         debug_log(input=input, hash=hash, bypass=bypass)
