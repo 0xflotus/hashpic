@@ -89,7 +89,7 @@ def shake_256_mode(
             color_codes = list(
                 map(lambda cc: (cc[0] ^ 0xFF, cc[1] ^ 0xFF, cc[2] ^ 0xFF), color_codes)
             )
-        SVG = paint_svg(0x4B0, variable_digest_length, color_codes)
+        SVG = paint_svg(size=0x4B0, digest_length=variable_digest_length, colors=color_codes)
 
         if debug:
             sys.stdout.write(SVG)

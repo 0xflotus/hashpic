@@ -49,7 +49,7 @@ def md5_mode(input, bypass, debug, console, tile, invert, file, outputfile, svg)
             color_codes = list(
                 map(lambda cc: (cc[0] ^ 0xFF, cc[1] ^ 0xFF, cc[2] ^ 0xFF), color_codes)
             )
-        SVG = paint_svg(0x400, 0x10, color_codes)
+        SVG = paint_svg(size=0x400, digest_length=0x10, colors=color_codes)
 
         if debug:
             sys.stdout.write(SVG)
