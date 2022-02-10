@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="1024" height="128">
+    <g>
+        <text x="0" y="0" font-size="1em">
+            <tspan x="0" dy="1em" fill="#ff5f5f">cb</tspan>
+            <tspan x="0" dx="1em" fill="#00d7af">2b</tspan>
+            <tspan x="0" dx="2em" fill="#5fd75f">4d</tspan>
+            <tspan x="0" dx="3em" fill="#d75f00">a6</tspan>
+            <tspan x="0" dx="4em" fill="#eeeeee">ff</tspan>
+            <tspan x="0" dx="5em" fill="#d7afff">b7</tspan>
+            <tspan x="0" dx="6em" fill="#5fafaf">49</tspan>
+            <tspan x="0" dx="7em" fill="#444444">ee</tspan>
+        </text>
+    </g>
+    <g>
+        <text x="0" y="15" font-size="1em">
+            <tspan x="0" dy="1em" fill="#008787">1e</tspan>
+            <tspan x="0" dx="1em" fill="#d7ffaf">c1</tspan>
+            <tspan x="0" dx="2em" fill="#af0087">7e</tspan>
+            <tspan x="0" dx="3em" fill="#87af87">6c</tspan>
+            <tspan x="0" dx="4em" fill="#5f00ff">39</tspan>
+            <tspan x="0" dx="5em" fill="#5fd7af">4f</tspan>
+            <tspan x="0" dx="6em" fill="#005f5f">17</tspan>
+            <tspan x="0" dx="7em" fill="#00d7d7">2c</tspan>
+        </text>
+    </g>
+    <g>
+        <text x="0" y="30" font-size="1em">
+            <tspan x="0" dy="1em" fill="#ff8787">d2</tspan>
+            <tspan x="0" dx="1em" fill="#ff5f87">cc</tspan>
+            <tspan x="0" dx="2em" fill="#5f5fd7">3e</tspan>
+            <tspan x="0" dx="3em" fill="#87ff87">78</tspan>
+            <tspan x="0" dx="4em" fill="#d7ff5f">bf</tspan>
+            <tspan x="0" dx="5em" fill="#005f00">16</tspan>
+            <tspan x="0" dx="6em" fill="#00ffff">0e</tspan>
+            <tspan x="0" dx="7em" fill="#4e4e4e">ef</tspan>
+        </text>
+    </g>
+    <g>
+        <text x="0" y="45" font-size="1em">
+            <tspan x="0" dy="1em" fill="#eeeeee">ff</tspan>
+            <tspan x="0" dx="1em" fill="#d7afff">b7</tspan>
+            <tspan x="0" dx="2em" fill="#af5faf">85</tspan>
+            <tspan x="0" dx="3em" fill="#ffd7af">df</tspan>
+            <tspan x="0" dx="4em" fill="#d7d787">ba</tspan>
+            <tspan x="0" dx="5em" fill="#87afd7">6e</tspan>
+            <tspan x="0" dx="6em" fill="#d75f00">a6</tspan>
+            <tspan x="0" dx="7em" fill="#afff87">9c</tspan>
+        </text>
+    </g>
+    <g>
+        <text x="0" y="60" font-size="1em">
+            <tspan x="0" dy="1em" fill="#1c1c1c">ea</tspan>
+            <tspan x="0" dx="1em" fill="#875f5f">5f</tspan>
+            <tspan x="0" dx="2em" fill="#87af5f">6b</tspan>
+            <tspan x="0" dx="3em" fill="#87d787">72</tspan>
+            <tspan x="0" dx="4em" fill="#005f5f">17</tspan>
+            <tspan x="0" dx="5em" fill="#000087">12</tspan>
+            <tspan x="0" dx="6em" fill="#585858">f0</tspan>
+            <tspan x="0" dx="7em" fill="#d787d7">b0</tspan>
+        </text>
+    </g>
+    <g>
+        <text x="0" y="75" font-size="1em">
+            <tspan x="0" dy="1em" fill="#c0c0c0">07</tspan>
+            <tspan x="0" dx="1em" fill="#5faf87">48</tspan>
+            <tspan x="0" dx="2em" fill="#5f87d7">44</tspan>
+            <tspan x="0" dx="3em" fill="#d75f87">a8</tspan>
+            <tspan x="0" dx="4em" fill="#87d75f">71</tspan>
+            <tspan x="0" dx="5em" fill="#00d7d7">2c</tspan>
+            <tspan x="0" dx="6em" fill="#870000">58</tspan>
+            <tspan x="0" dx="7em" fill="#87ffd7">7a</tspan>
+        </text>
+    </g>
+    <g>
+        <text x="0" y="90" font-size="1em">
+            <tspan x="0" dy="1em" fill="#ffff00">e2</tspan>
+            <tspan x="0" dx="1em" fill="#d7afd7">b6</tspan>
+            <tspan x="0" dx="2em" fill="#ff5faf">cd</tspan>
+            <tspan x="0" dx="3em" fill="#5f5f5f">3b</tspan>
+            <tspan x="0" dx="4em" fill="#ff87ff">d5</tspan>
+            <tspan x="0" dx="5em" fill="#444444">ee</tspan>
+            <tspan x="0" dx="6em" fill="#ff0000">09</tspan>
+            <tspan x="0" dx="7em" fill="#d7afd7">b6</tspan>
+        </text>
+    </g>
+    <g>
+        <text x="0" y="105" font-size="1em">
+            <tspan x="0" dy="1em" fill="#5faf87">48</tspan>
+            <tspan x="0" dx="1em" fill="#af875f">89</tspan>
+            <tspan x="0" dx="2em" fill="#d78787">ae</tspan>
+            <tspan x="0" dx="3em" fill="#87005f">59</tspan>
+            <tspan x="0" dx="4em" fill="#00afaf">25</tspan>
+            <tspan x="0" dx="5em" fill="#87ff87">78</tspan>
+            <tspan x="0" dx="6em" fill="#ffaf5f">d7</tspan>
+            <tspan x="0" dx="7em" fill="#080808">e8</tspan>
+        </text>
+    </g>
+</svg>

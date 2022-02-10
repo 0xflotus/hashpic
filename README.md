@@ -206,7 +206,11 @@ So we can call the hash above the so called `chessboard hash`.
 
 You can also bypass a hash from another program:
 
-![bypassed from another program](./docs/bypassed_pipe.png)
+```bash
+> printf 'Hashpic rocks!' | sha512sum | awk '{print $1}' | python3 -m hashpic --sha512 -c --bypass 
+```
+
+![bypassed from another program](./docs/bypassed_pipe.svg)
 
 <hr>
 
