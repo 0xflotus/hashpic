@@ -1,4 +1,5 @@
-import json
+import json, sys
+from math import sqrt
 from .data import *
 
 
@@ -13,6 +14,16 @@ def convert_term_to_rgb(color_code=0):
         if data[i]["term"] == str(color_code):
             s_cc = tuple([int(i) for i in data[i]["rgb"][4:-1].split(",")])
     return s_cc
+
+def print_to_console(hash, invert, tile):
+    chunks = chunk_it(chunk_it(hash), int(sqrt(len(hash)/2)))
+    for i in chunks:
+        for j in i:
+            sys.stdout.write(
+                f"\033[38;5;{0xff - int(j, 16) if invert else int(j, 16)}m{j if not tile else '▮'}\u001b[0m"
+            )
+        sys.stdout.write("\n")
+    sys.exit(0)
 
 
 def hash_to_color_codes(hash):

@@ -59,19 +59,9 @@ def sha3_512_mode(input, bypass, debug, console, tile, invert, file, outputfile,
         sys.exit(0)
 
     if console:
-        chunks = chunk_it(chunk_it(hash), 8)
+        print_to_console(hash, invert, tile)
 
-        for i in chunks:
-            for j in i:
-                sys.stdout.write(
-                    f"\033[38;5;{0xff - int(j, 16) if invert else int(j, 16)}m{j if not tile else '▮'}\u001b[0m"
-                )
-            sys.stdout.write("\n")
-        sys.exit(0)
-
-    colors = []
-    for i in chunk_it(hash):
-        colors.append(convert_term_to_rgb(int(i, 16)))
+    colors = hash_to_color_codes(hash)
 
     width = 1024
     height = 1024

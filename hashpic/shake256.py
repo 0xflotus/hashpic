@@ -102,14 +102,7 @@ def shake_256_mode(
         sys.exit(0)
 
     if console:
-        chunks = chunk_it(chunk_it(hash), int(math.sqrt(variable_digest_length)))
-        for i in chunks:
-            for j in i:
-                sys.stdout.write(
-                    f"\033[38;5;{0xff - int(j, 16) if invert else int(j, 16)}m{j if not tile else '▮'}\u001b[0m"
-                )
-            sys.stdout.write("\n")
-        sys.exit(0)
+        print_to_console(hash, invert, tile)
 
     width = 1200
     height = 1200
