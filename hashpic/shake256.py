@@ -66,7 +66,11 @@ def shake_256_mode(
         225: r"^[a-f0-9]{450}$",
     }
 
-    validity_check(hash=hash, regex_str=regex_dict[variable_digest_length], name=f"SHAKE256-{variable_digest_length}")
+    validity_check(
+        hash=hash,
+        regex_str=regex_dict[variable_digest_length],
+        name=f"SHAKE256-{variable_digest_length}",
+    )
 
     if debug:
         debug_log(input=input, hash=hash, bypass=bypass)
