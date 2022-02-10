@@ -86,7 +86,7 @@ The command above should produce the following image:
 <details>
   <summary>The `--slow` flag</summary>
 
-#### *--slow* flag
+#### --slow flag
 
 You can use the `--slow` flag to run a generalized method instead of a hardcoded one. But this have some performance issues.
 
