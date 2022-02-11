@@ -47,7 +47,7 @@ def paint_svg(size, digest_length, colors):
 
     for x in range(0, size, steps):
         for y in range(0, size, steps):
-            for line, idx in zip(store, range(len(store))):
+            for idx, line in enumerate(store):
                 if line[0] <= x < line[1] and line[-2] <= y < line[-1]:
                     SVG_DATA += f"""<rect width="{steps}" height="{steps}" fill="#{colorcode_to_hex(colors[idx][0])}{colorcode_to_hex(colors[idx][1])}{colorcode_to_hex(colors[idx][2])}" x="{x}" y="{y}"/>\n"""
     SVG_DATA += """</svg>\n"""
