@@ -238,5 +238,5 @@ printf 2001:4860:4860:0000:0000:0000:0000:8844 | tr -d ':' | python3 -m hashpic 
 
 ## Disclaimer
 
-The color palette in [`data.py`](./hashpic/data.py) was influenced by the [`string-color`](https://pypi.org/project/string-color/) library. 
+The color palette in [`data.py`](./hashpic/data.py) was influenced by the [`string-color`](https://gitlab.com/shindagger/string-color) library. 
 Thanks for this!
