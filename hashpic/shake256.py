@@ -103,7 +103,13 @@ def shake_256_mode(
     if slow_mode:
         assert width == height, "width and height must be the same."
         assert width % 120 == 0, "size must be a multiple of 120"
-        __paint(pixels, colors, size=width, digest_length=variable_digest_length)
+        if variable_digest_length == 0xFF:
+            colors.append(convert_term_to_rgb(0xFF))
+            __paint(
+                pixels, colors, size=width, digest_length=variable_digest_length + 1
+            )
+        else:
+            __paint(pixels, colors, size=width, digest_length=variable_digest_length)
     else:
         if variable_digest_length == 0xFF:
             colors.append(convert_term_to_rgb(0xFF))
@@ -323,22 +329,23 @@ def _9(pixels, colors, dimension):
                 pixels[x, y] = colors[0]
             elif x < 0x320 and y < 0x190:
                 pixels[x, y] = colors[1]
-            elif x < 0x4b0 and y < 0x190:
+            elif x < 0x4B0 and y < 0x190:
                 pixels[x, y] = colors[2]
             elif x < 0x190 and y < 0x320:
                 pixels[x, y] = colors[3]
             elif x < 0x320 and y < 0x320:
                 pixels[x, y] = colors[4]
-            elif x < 0x4b0 and y < 0x320:
+            elif x < 0x4B0 and y < 0x320:
                 pixels[x, y] = colors[5]
-            elif x < 0x190 and y < 0x4b0:
+            elif x < 0x190 and y < 0x4B0:
                 pixels[x, y] = colors[6]
-            elif x < 0x320 and y < 0x4b0:
+            elif x < 0x320 and y < 0x4B0:
                 pixels[x, y] = colors[7]
-            elif x < 0x4b0 and y < 0x4b0:
+            elif x < 0x4B0 and y < 0x4B0:
                 pixels[x, y] = colors[8]
             else:
                 pixels[x, y] = (0xFF, 0xFF, 0xFF)
+
 
 def _16(pixels, colors, dimension):
     (width, height) = dimension
