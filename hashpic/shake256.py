@@ -22,7 +22,7 @@ def shake_256_mode(
         sys.exit(-1)
 
     variable_digest_length = int(digest_length)
-    if variable_digest_length not in [1, 4,9, 16, 25, 36, 64, 100, 144, 225]:
+    if variable_digest_length not in [1, 4, 9, 16, 25, 36, 64, 100, 144, 225]:
         sys.stderr.write(
             "Sorry, only a length of one of [4, 9, 16, 25, 36, 64, 100, 144, 225] is currently possible\n"
         )
