@@ -123,7 +123,7 @@ def shake_256_mode(
         elif variable_digest_length == 0x19:
             _25(pixels, colors, (width, height))
         elif variable_digest_length == 0x9:
-            __paint(pixels, colors, size=width, digest_length=variable_digest_length)
+            _9(pixels, colors, (width, height))
         elif variable_digest_length == 0x4:
             _4(pixels, colors, (width, height))
         elif variable_digest_length == 0x1:
@@ -314,6 +314,31 @@ def _4(pixels, colors, dimension):
             else:
                 pixels[x, y] = (0xFF, 0xFF, 0xFF)
 
+
+def _9(pixels, colors, dimension):
+    (width, height) = dimension
+    for x in range(width):
+        for y in range(height):
+            if x < 0x190 and y < 0x190:
+                pixels[x, y] = colors[0]
+            elif x < 0x320 and y < 0x190:
+                pixels[x, y] = colors[1]
+            elif x < 0x4b0 and y < 0x190:
+                pixels[x, y] = colors[2]
+            elif x < 0x190 and y < 0x320:
+                pixels[x, y] = colors[3]
+            elif x < 0x320 and y < 0x320:
+                pixels[x, y] = colors[4]
+            elif x < 0x4b0 and y < 0x320:
+                pixels[x, y] = colors[5]
+            elif x < 0x190 and y < 0x4b0:
+                pixels[x, y] = colors[6]
+            elif x < 0x320 and y < 0x4b0:
+                pixels[x, y] = colors[7]
+            elif x < 0x4b0 and y < 0x4b0:
+                pixels[x, y] = colors[8]
+            else:
+                pixels[x, y] = (0xFF, 0xFF, 0xFF)
 
 def _16(pixels, colors, dimension):
     (width, height) = dimension
