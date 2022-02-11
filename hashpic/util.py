@@ -8,12 +8,9 @@ def chunk_it(string, n=2):
 
 
 def convert_term_to_rgb(color_code=0):
-    data = COLOR_DATA
-    s_cc = (0, 0, 0)
-    for i in data:
-        if data[i]["term"] == str(color_code):
-            s_cc = tuple([int(i) for i in data[i]["rgb"][4:-1].split(",")])
-    return s_cc
+    return tuple(
+        [int(i) for i in COLOR_DATA.get(str(color_code))["rgb"][4:-1].split(",")]
+    )
 
 
 def print_to_console(hash, invert, tile):
