@@ -150,7 +150,11 @@ def shake_256_mode(
 
 def __paint(pixels, colors, size, digest_length):
     steps = int(size // (digest_length ** 0.5))
-    store = [[y, y + steps, x, x + steps] for x in range(0, size, steps) for y in range(0, size, steps)]
+    store = [
+        [y, y + steps, x, x + steps]
+        for x in range(0, size, steps)
+        for y in range(0, size, steps)
+    ]
 
     for x in range(size):
         for y in range(size):
