@@ -1,6 +1,6 @@
 import sys, os, re
 from math import sqrt
-from .data import *
+from .data import COLOR_DATA
 
 
 def chunk_it(string, n=2):
@@ -8,9 +8,7 @@ def chunk_it(string, n=2):
 
 
 def convert_term_to_rgb(color_code=0):
-    return tuple(
-        [int(i) for i in COLOR_DATA.get(str(color_code))["rgb"][4:-1].split(",")]
-    )
+    return COLOR_DATA.get(color_code)["rgb"]
 
 
 def print_to_console(hash, invert, tile):
