@@ -22,9 +22,9 @@ def shake_256_mode(
         sys.exit(-1)
 
     variable_digest_length = int(digest_length)
-    if variable_digest_length not in [1, 4, 16, 25, 36, 64, 100, 144, 225]:
+    if variable_digest_length not in [1, 4,9, 16, 25, 36, 64, 100, 144, 225]:
         sys.stderr.write(
-            "Sorry, only a length of one of [4, 16, 25, 36, 64, 100, 144, 225] is currently possible\n"
+            "Sorry, only a length of one of [4, 9, 16, 25, 36, 64, 100, 144, 225] is currently possible\n"
         )
         sys.exit(-1)
 
@@ -57,6 +57,7 @@ def shake_256_mode(
     regex_dict = {
         1: r"^[a-f0-9]{2}$",
         4: r"^[a-f0-9]{8}$",
+        9: r"^[a-f0-9]{18}$",
         16: r"^[a-f0-9]{32}$",
         25: r"^[a-f0-9]{50}$",
         36: r"^[a-f0-9]{72}$",
@@ -113,6 +114,8 @@ def shake_256_mode(
             _36(pixels, colors, (width, height))
         elif variable_digest_length == 0x19:
             _25(pixels, colors, (width, height))
+        elif variable_digest_length == 0x9:
+            __paint(pixels, colors, size=width, digest_length=variable_digest_length)
         elif variable_digest_length == 0x4:
             _4(pixels, colors, (width, height))
         elif variable_digest_length == 0x1:
