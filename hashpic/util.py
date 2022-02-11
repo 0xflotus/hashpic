@@ -40,7 +40,11 @@ def paint_svg(size, digest_length, colors):
     <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="{size}" height="{size}">
     """
     steps = int(size // (int(digest_length) ** 0.5))
-    store = [[y, y + steps, x, x + steps] for x in range(0, size, steps) for y in range(0, size, steps)]
+    store = [
+        [y, y + steps, x, x + steps]
+        for x in range(0, size, steps)
+        for y in range(0, size, steps)
+    ]
 
     for x in range(0, size, steps):
         for y in range(0, size, steps):
