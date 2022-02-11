@@ -180,6 +180,8 @@ Since _v0.4.0_ it is possible to create an image as *SVG*. Creating SVG files is
   python3 -m hashpic --shake256 --length 225 'Hashpic rocks!'
   ```
 
+  ![shake256](./docs/shake256/225.png)
+
   ### Digest Length of 255
 
   This command will take a lot more seconds to complete because it uses currently the slower generic method to create the image. It also adds a `padding byte of 0xff` to the end of the hash to fit it into a `16x16 grid`. Please keep this in mind.
