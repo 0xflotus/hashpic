@@ -54,7 +54,7 @@ python3 -m hashpic 'Hashpic rocks!' --svg
 It is also possible to create an image from a hash of a file. Use the `--file` argument for that.
 
 ```bash
-> python3 -m hashpic --file README.md
+python3 -m hashpic --file README.md
 ```
 
 ## SHA-512 Mode
