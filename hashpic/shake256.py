@@ -90,6 +90,8 @@ def shake_256_mode(
         )
 
     if console:
+        if variable_digest_length == 0xFF:
+            hash += "ff"
         print_to_console(hash, invert, tile)
 
     width = 1200
