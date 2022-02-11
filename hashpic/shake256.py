@@ -22,9 +22,9 @@ def shake_256_mode(
         sys.exit(-1)
 
     variable_digest_length = int(digest_length)
-    if variable_digest_length not in [1, 4, 9, 16, 25, 36, 64, 100, 144, 225]:
+    if variable_digest_length not in [1, 4, 9, 16, 25, 36, 64, 100, 144, 225, 255]:
         sys.stderr.write(
-            "Sorry, only a length of one of [4, 9, 16, 25, 36, 64, 100, 144, 225] is currently possible\n"
+            "Sorry, only a length of one of [4, 9, 16, 25, 36, 64, 100, 144, 225, 255] is currently possible\n"
         )
         sys.exit(-1)
 
@@ -65,8 +65,8 @@ def shake_256_mode(
         100: r"^[a-f0-9]{200}$",
         144: r"^[a-f0-9]{288}$",
         225: r"^[a-f0-9]{450}$",
+        255: r"^[a-f0-9]{510}$",
     }
-
     validity_check(
         hash=hash,
         regex_str=regex_dict[variable_digest_length],
@@ -77,6 +77,9 @@ def shake_256_mode(
         debug_log(input=input, hash=hash, bypass=bypass)
 
     if svg:
+        if variable_digest_length == 0xFF:
+            hash += "ff"
+            variable_digest_length += 1
         svg_mode(
             hash=hash,
             size=1200,
@@ -102,7 +105,12 @@ def shake_256_mode(
         assert width % 120 == 0, "size must be a multiple of 120"
         __paint(pixels, colors, size=width, digest_length=variable_digest_length)
     else:
-        if variable_digest_length == 0xE1:
+        if variable_digest_length == 0xFF:
+            colors.append(convert_term_to_rgb(0xFF))
+            __paint(
+                pixels, colors, size=width, digest_length=variable_digest_length + 1
+            )
+        elif variable_digest_length == 0xE1:
             _225(pixels, colors, (width, height))
         elif variable_digest_length == 0x90:
             _144(pixels, colors, (width, height))

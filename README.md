@@ -4,7 +4,7 @@ Hashpic creates an image from the *MD5* hash of your input.
 
 Since _v0.2.0_ it is also possible to create an image from a *SHA-512* hash.
 
-Since _v0.4.8_ it is also possible to create an image from a *SHAKE-256* hash with variable digest length of _4_, _9_, _16_, _25_, _36_, _64_, _100_, _144_ or _225_.
+Since _v0.4.8_ it is also possible to create an image from a *SHAKE-256* hash with variable digest length of _4_, _9_, _16_, _25_, _36_, _64_, _100_, _144_, _225_ or _255_.
 
 Since _v0.3.5_ it is also possible to create an image from a *SHA3-512* and a *BLAKE2b* hash.
 
@@ -73,7 +73,7 @@ This commands should create the following image:
 
 ## SHAKE256 Mode
 
-You can create an image from a *SHAKE256* hash with variable digest lengths. Valid lengths are _4_, _9_, _16_, _25_, _36_, _64_, _100_, _144_ and _225_. You must specify the length of the digest if you want to create an image from a *SHAKE256* hash.
+You can create an image from a *SHAKE256* hash with variable digest lengths. Valid lengths are _4_, _9_, _16_, _25_, _36_, _64_, _100_, _144_, _225_ and _255_. You must specify the length of the digest if you want to create an image from a *SHAKE256* hash.
 
 ```bash
 python3 -m hashpic --shake256 --length 100 'Hashpic rocks!'
@@ -180,7 +180,15 @@ Since _v0.4.0_ it is possible to create an image as *SVG*. Creating SVG files is
   python3 -m hashpic --shake256 --length 225 'Hashpic rocks!'
   ```
 
-  ![shake256](./docs/shake256/225.png)
+  ### Digest Length of 255
+
+  This command will take a lot more seconds to complete because it uses currently the slower generic method to create the image. It also adds a `padding byte of 0xff` to the end of the hash to fit it into a `16x16 grid`. Please keep this in mind.
+
+  ```bash
+  python3 -m hashpic --shake256 --length 255 'Hashpic rocks!'
+  ```
+
+  ![shake256](./docs/shake256/255.png)
 </details>
 <hr/>
 
