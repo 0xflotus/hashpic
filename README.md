@@ -4,7 +4,7 @@ Hashpic creates an image from the *MD5* hash of your input.
 
 Since _v0.2.0_ it is also possible to create an image from a *SHA-512* hash.
 
-Since _v0.3.0_ it is also possible to create an image from a *SHAKE-256* hash with variable digest length of _4_, _16_, _25_, _36_, _64_, _100_, _144_ or _225_.
+Since _v0.4.8_ it is also possible to create an image from a *SHAKE-256* hash with variable digest length of _4_, _9_, _16_, _25_, _36_, _64_, _100_, _144_ or _225_.
 
 Since _v0.3.5_ it is also possible to create an image from a *SHA3-512* and a *BLAKE2b* hash.
 
@@ -73,7 +73,7 @@ This commands should create the following image:
 
 ## SHAKE256 Mode
 
-You can create an image from a *SHAKE256* hash with variable digest lengths. Valid lengths are _4_, _16_, _25_, _36_, _64_, _100_, _144_ and _225_. You must specify the length of the digest if you want to create an image from a *SHAKE256* hash.
+You can create an image from a *SHAKE256* hash with variable digest lengths. Valid lengths are _4_, _9_, _16_, _25_, _36_, _64_, _100_, _144_ and _225_. You must specify the length of the digest if you want to create an image from a *SHAKE256* hash.
 
 ```bash
 python3 -m hashpic --shake256 --length 100 'Hashpic rocks!'
@@ -117,6 +117,14 @@ Since _v0.4.0_ it is possible to create an image as *SVG*. Creating SVG files is
 
   ![shake256](./docs/shake256/4.png)
 
+  ### Digest Length of 9
+  
+  ```bash
+  python3 -m hashpic --shake256 --length 9 'Hashpic rocks!'
+  ```
+
+  ![shake256](./docs/shake256/9.png)
+
   ### Digest Length of 16
 
   ```bash
@@ -147,6 +155,22 @@ Since _v0.4.0_ it is possible to create an image as *SVG*. Creating SVG files is
   ```
 
   ![shake256](./docs/shake256/64.png)
+
+  ### Digest Length of 100
+
+  ```bash
+  python3 -m hashpic --shake256 --length 100 'Hashpic rocks!'
+  ```
+
+  ![shake256](./docs/shake256/100.png)
+
+  ### Digest Length of 144
+
+  ```bash
+  python3 -m hashpic --shake256 --length 144 'Hashpic rocks!'
+  ```
+
+  ![shake256](./docs/shake256/144.png)
 
   ### Digest Length of 225
 
