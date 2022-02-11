@@ -188,6 +188,12 @@ Since _v0.4.4_ there is a dockerized version available on [`ghcr.io`](https://gi
 > docker run -it -v "$(pwd)":/app --rm ghcr.io/0xflotus/hashpic:0.4.4 deadbeef --bypass --shake256 --length 4
 ```
 
+You can also pipe to docker:
+
+```bash
+> printf 'ff0030ffe589b7a4e1320f12c4c8de73' | docker run -i ghcr.io/0xflotus/hashpic:0.4.6 -c --shake256 --length 16 --bypass
+```
+
 ## Examples
 
 Bypassing a hash directly:
