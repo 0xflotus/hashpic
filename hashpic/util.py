@@ -16,7 +16,8 @@ def print_to_console(hash, invert, tile):
     for i in chunks:
         for j in i:
             sys.stdout.write(
-                f"\033[38;5;{0xff - int(j, 16) if invert else int(j, 16)}m{j if not tile else '▮'}\u001b[0m"
+                f"\033[38;5;{0xff - int(j, 16) if invert else int(j, 16)}"
+                f"m{j if not tile else '▮'}\u001b[0m"
             )
         sys.stdout.write("\n")
     sys.exit(0)
@@ -41,7 +42,9 @@ def paint_svg(size, digest_length, colors):
     ]
 
     rects = [
-        f"""<rect width="{steps}" height="{steps}" fill="#{colorcode_to_hex(colors[idx][0])}{colorcode_to_hex(colors[idx][1])}{colorcode_to_hex(colors[idx][2])}" x="{x}" y="{y}"/>"""
+        f'<rect width="{steps}" height="{steps}" '
+        f'fill="#{colorcode_to_hex(colors[idx][0])}{colorcode_to_hex(colors[idx][1])}{colorcode_to_hex(colors[idx][2])}" '
+        f'x="{x}" y="{y}"/>'
         for x in range(0, size, steps)
         for y in range(0, size, steps)
         for idx, line in enumerate(store)
