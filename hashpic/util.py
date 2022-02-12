@@ -28,37 +28,34 @@ def hash_to_color_codes(hash):
 
 
 def paint_svg(size, digest_length, colors):
-    colorcode_to_hex = lambda color_code: hex(color_code)[2:].zfill(2)
-
-    SVG_DATA_HEADER = f"""<?xml version="1.0" encoding="UTF-8"?>
-    <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="{size}" height="{size}">\n"""
-    steps = int(size // (int(digest_length) ** 0.5))
+    SVG_DATA_HEADER = (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">\n'
+        f'<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="{size}" height="{size}">\n'
+    )
+    steps = int(size // (digest_length ** 0.5))
     store = [
-        [y, y + steps, x, x + steps]
+        (y, y + steps, x, x + steps)
         for x in range(0, size, steps)
         for y in range(0, size, steps)
     ]
 
     rects = [
-        f'<rect width="{steps}" height="{steps}" '
-        f'fill="#{colorcode_to_hex(colors[idx][0])}{colorcode_to_hex(colors[idx][1])}{colorcode_to_hex(colors[idx][2])}" '
+        f'  <rect width="{steps}" height="{steps}" '
+        f'fill="#{"".join(tuple(map(lambda cc: hex(cc)[2:].zfill(2), colors[idx])))}" '
         f'x="{x}" y="{y}"/>'
         for x in range(0, size, steps)
         for y in range(0, size, steps)
         for idx, line in enumerate(store)
         if line[0] <= x < line[1] and line[-2] <= y < line[-1]
     ]
-    SVG_DATA = SVG_DATA_HEADER + "\n".join(rects) + """\n</svg>\n"""
-    return SVG_DATA
+    return SVG_DATA_HEADER + "\n".join(rects) + "\n</svg>\n"
 
 
 def svg_mode(hash, size, digest_length, invert, debug, outputfile):
     color_codes = hash_to_color_codes(hash)
     if invert:
-        color_codes = list(
-            map(lambda cc: (cc[0] ^ 0xFF, cc[1] ^ 0xFF, cc[2] ^ 0xFF), color_codes)
-        )
+        color_codes = [(cc[0] ^ 0xFF, cc[1] ^ 0xFF, cc[2] ^ 0xFF) for cc in color_codes]
     SVG = paint_svg(size=size, digest_length=digest_length, colors=color_codes)
 
     if debug:
