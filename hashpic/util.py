@@ -28,8 +28,7 @@ def hash_to_color_codes(hash):
 
 
 def paint_svg(size, digest_length, colors):
-    def colorcode_to_hex(color_code):
-        return hex(color_code)[2:].zfill(2)
+    colorcode_to_hex = lambda color_code: hex(color_code)[2:].zfill(2)
 
     SVG_DATA_HEADER = f"""<?xml version="1.0" encoding="UTF-8"?>
     <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
