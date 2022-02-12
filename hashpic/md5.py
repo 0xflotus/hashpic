@@ -47,8 +47,7 @@ def md5_mode(input, bypass, debug, console, tile, invert, file, outputfile, svg)
 
     colors = hash_to_color_codes(hash)
 
-    width = 1024
-    height = 1024
+    width, height = 1024, 1024
 
     im = Image.new(mode="RGB", size=(width, height), color="#ffffff")
     pixels = im.load()

@@ -94,9 +94,7 @@ def shake_256_mode(
             hash += "ff"
         print_to_console(hash, invert, tile)
 
-    width = 1200
-    height = 1200
-
+    width, height = 1200, 1200
     im = Image.new(mode="RGB", size=(width, height), color="#ffffff")
     pixels = im.load()
 
@@ -146,7 +144,6 @@ def shake_256_mode(
         im.show()
 
     im.save(os.getcwd() + "/" + outputfile)
-
     sys.exit(0)
 
 
