@@ -13,10 +13,11 @@ def convert_term_to_rgb(color_code=0):
 
 def print_to_console(hash, invert, tile):
     chunks = chunk_it(chunk_it(hash), int(sqrt(len(hash) / 2)))
-    for i in chunks:
-        for j in i:
+    for chunk in chunks:
+        for j in chunk:
+            i = int(j, 16)
             sys.stdout.write(
-                f"\033[38;5;{0xff - int(j, 16) if invert else int(j, 16)}"
+                f"\033[38;5;{0xff - i if invert else i}"
                 f"m{j if not tile else '▮'}\u001b[0m"
             )
         sys.stdout.write("\n")
