@@ -1,6 +1,7 @@
 import sys, os, re
 from math import sqrt
 from .data import COLOR_DATA
+from .config import BLOCKSIZE
 
 
 def chunk_it(string, n=2):
@@ -84,3 +85,16 @@ def validity_check(hash, regex_str, name):
     if not match:
         sys.stderr.write(f"{hash} is not a valid {name} hash\n")
         sys.exit(-1)
+
+
+def file_to_hash(file, hasher, digest_length=None):
+    with open(file, "rb") as tfile:
+        while True:
+            buffer = tfile.read(BLOCKSIZE)
+            hasher.update(buffer)
+            if len(buffer) <= 0:
+                break
+    if digest_length:
+        return hasher.hexdigest(digest_length).lower()
+    else:
+        return hasher.hexdigest().lower()

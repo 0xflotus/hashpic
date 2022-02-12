@@ -6,14 +6,7 @@ from .util import *
 def sha3_512_mode(input, bypass, debug, console, tile, invert, file, outputfile, svg):
 
     if file:
-        BLOCKSIZE = 0x1000
-        hasher = hashlib.sha3_512()
-        with open(file, "rb") as tfile:
-            buffer = tfile.read(BLOCKSIZE)
-            while len(buffer) > 0:
-                hasher.update(buffer)
-                buffer = tfile.read(BLOCKSIZE)
-        hash = hasher.hexdigest().lower()
+        hash = file_to_hash(file, hashlib.sha3_512())
     elif not input:
         hash = (
             hashlib.sha3_512(sys.stdin.read().encode()).hexdigest()
