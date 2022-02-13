@@ -9,7 +9,6 @@ COPY . /app
 WORKDIR /app
 
 RUN python3 -m pip install --upgrade pip
-RUN python3 -m pip install --upgrade argparse
-RUN python3 -m pip install --upgrade Pillow 
+RUN python3 -m pip install -r requirements.txt
 
 ENTRYPOINT ["python", "-m", "hashpic"]
