@@ -260,14 +260,33 @@ def test_convert_term_to_rgb():
     assert convert_term_to_rgb(254) == RGB(228, 228, 228)
     assert convert_term_to_rgb(255) == RGB(238, 238, 238)
 
+
 def test_chunk_it():
     hash = "ff00ff00"
     chunks = chunk_it(hash)
-    expected = ['ff', '00', 'ff', '00']
+    expected = ["ff", "00", "ff", "00"]
     assert chunks == expected, "Should be ['ff', '00', 'ff', '00']"
+
 
 def test_hash_to_color_codes():
     hash = "ff00ff00"
     color_codes = hash_to_color_codes(hash)
-    expected = [RGB(238,238,238), RGB(0,0,0), RGB(238,238,238), RGB(0,0,0)]
+    expected = [RGB(238, 238, 238), RGB(0, 0, 0), RGB(238, 238, 238), RGB(0, 0, 0)]
     assert color_codes == expected
+
+
+def test_paint_svg():
+    hash = "5c1f05a8"
+    size = 1200
+    digest_length = 4
+    colors = hash_to_color_codes(hash)
+    SVG = paint_svg(size, digest_length, colors)
+    expected = """<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="1200" height="1200">
+  <rect width="600" height="600" fill="#8700d7" x="0" y="0"/>
+  <rect width="600" height="600" fill="#0087af" x="600" y="0"/>
+  <rect width="600" height="600" fill="#800080" x="0" y="600"/>
+  <rect width="600" height="600" fill="#d75f87" x="600" y="600"/>
+</svg>\n"""
+    assert SVG == expected
