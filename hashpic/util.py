@@ -41,17 +41,17 @@ def paint_svg(size, digest_length, colors):
     )
     steps = int(size // (digest_length ** 0.5))
     store = [
-        AREA(y, y + steps, x, x + steps)
-        for x in range(0, size, steps)
+        AREA(x, x + steps, y, y + steps)
         for y in range(0, size, steps)
+        for x in range(0, size, steps)
     ]
 
     rects = [
         f'  <rect width="{steps}" height="{steps}" '
         f'fill="#{"".join(tuple(map(lambda cc: hex(cc)[2:].zfill(2), colors[idx])))}" '
         f'x="{x}" y="{y}"/>'
-        for x in range(0, size, steps)
         for y in range(0, size, steps)
+        for x in range(0, size, steps)
         for idx, (min_x, max_x, min_y, max_y) in enumerate(store)
         if min_x <= x < max_x and min_y <= y < max_y
     ]
