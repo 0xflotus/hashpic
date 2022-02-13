@@ -2,6 +2,7 @@ import sys, hashlib, os
 from PIL import Image, ImageOps
 from .util import *
 from .config import BLOCKSIZE
+from tqdm import tqdm
 
 
 def shake_256_mode(
@@ -149,7 +150,7 @@ def __paint(pixels, colors, size, digest_length):
         for y in range(0, size, steps)
     ]
 
-    for x in range(size):
+    for x in tqdm(range(size)):
         for y in range(size):
             for idx, (min_x, max_x, min_y, max_y) in enumerate(store):
                 if min_x <= x < max_x and min_y <= y < max_y:
@@ -158,7 +159,7 @@ def __paint(pixels, colors, size, digest_length):
 
 def _64(pixels, colors, dimension):
     (width, height) = dimension
-    for x in range(width):
+    for x in tqdm(range(width)):
         for y in range(height):
             if x < 0x96 and y < 0x96:
                 pixels[x, y] = colors[0]
@@ -521,7 +522,7 @@ def _36(pixels, colors, dimension):
 
 def _100(pixels, colors, dimension):
     (width, height) = dimension
-    for x in range(width):
+    for x in tqdm(range(width)):
         for y in range(height):
             if x < 0x78 and y < 0x78:
                 pixels[x, y] = colors[0]
@@ -729,7 +730,7 @@ def _100(pixels, colors, dimension):
 
 def _144(pixels, colors, dimension):
     (width, height) = dimension
-    for x in range(width):
+    for x in tqdm(range(width)):
         for y in range(height):
             if x < 0x64 and y < 0x64:
                 pixels[x, y] = colors[0]
@@ -1025,7 +1026,7 @@ def _144(pixels, colors, dimension):
 
 def _225(pixels, colors, dimension):
     (width, height) = dimension
-    for x in range(width):
+    for x in tqdm(range(width)):
         for y in range(height):
             if x < 0x50 and y < 0x50:
                 pixels[x, y] = colors[0]

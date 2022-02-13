@@ -1,6 +1,7 @@
 import sys, hashlib, os
 from PIL import Image, ImageOps
 from .util import *
+from tqdm import tqdm
 
 
 def blake2b_mode(input, bypass, debug, console, tile, invert, file, outputfile, svg):
@@ -44,7 +45,7 @@ def blake2b_mode(input, bypass, debug, console, tile, invert, file, outputfile, 
 
     im = Image.new(mode="RGB", size=(width, height), color="#ffffff")
     pixels = im.load()
-    for x in range(width):
+    for x in tqdm(range(width)):
         for y in range(height):
             if x < 0x80 and y < 0x80:
                 pixels[x, y] = colors[0]
