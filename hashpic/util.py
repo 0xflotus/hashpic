@@ -1,11 +1,7 @@
 import sys, os, re
 from math import sqrt
 from .data import COLOR_DATA
-from collections import namedtuple
-
-BLOCKSIZE = 0x1000
-RGB = namedtuple("RGB", ["r", "g", "b"])
-AREA = namedtuple("area", ["min_x", "max_x", "min_y", "max_y"])
+from .config import BLOCKSIZE, RGB, AREA
 
 
 def chunk_it(string, n=2):
