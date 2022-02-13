@@ -265,3 +265,9 @@ def test_chunk_it():
     chunks = chunk_it(hash)
     expected = ['ff', '00', 'ff', '00']
     assert chunks == expected, "Should be ['ff', '00', 'ff', '00']"
+
+def test_hash_to_color_codes():
+    hash = "ff00ff00"
+    color_codes = hash_to_color_codes(hash)
+    expected = [RGB(238,238,238), RGB(0,0,0), RGB(238,238,238), RGB(0,0,0)]
+    assert color_codes == expected
