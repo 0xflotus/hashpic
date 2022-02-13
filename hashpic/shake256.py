@@ -1,7 +1,6 @@
 import sys, hashlib, os
 from PIL import Image, ImageOps
 from .util import *
-from .config import BLOCKSIZE
 
 
 def shake_256_mode(

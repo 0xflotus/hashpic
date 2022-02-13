@@ -1,7 +1,11 @@
 import sys, os, re
 from math import sqrt
 from .data import COLOR_DATA
-from .config import BLOCKSIZE
+from collections import namedtuple
+
+BLOCKSIZE = 0x1000
+RGB = namedtuple("RGB", ["r", "g", "b"])
+AREA = namedtuple("area", ["min_x", "max_x", "min_y", "max_y"])
 
 
 def chunk_it(string, n=2):
@@ -37,7 +41,7 @@ def paint_svg(size, digest_length, colors):
     )
     steps = int(size // (digest_length ** 0.5))
     store = [
-        (y, y + steps, x, x + steps)
+        AREA(y, y + steps, x, x + steps)
         for x in range(0, size, steps)
         for y in range(0, size, steps)
     ]
@@ -57,7 +61,7 @@ def paint_svg(size, digest_length, colors):
 def svg_mode(hash, size, digest_length, invert, debug, outputfile):
     color_codes = hash_to_color_codes(hash)
     if invert:
-        color_codes = [(r ^ 0xFF, g ^ 0xFF, b ^ 0xFF) for r, g, b in color_codes]
+        color_codes = [RGB(r ^ 0xFF, g ^ 0xFF, b ^ 0xFF) for r, g, b in color_codes]
     SVG = paint_svg(size=size, digest_length=digest_length, colors=color_codes)
 
     if debug:
