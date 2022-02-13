@@ -259,3 +259,9 @@ def test_convert_term_to_rgb():
     assert convert_term_to_rgb(253) == RGB(218, 218, 218)
     assert convert_term_to_rgb(254) == RGB(228, 228, 228)
     assert convert_term_to_rgb(255) == RGB(238, 238, 238)
+
+def test_chunk_it():
+    hash = "ff00ff00"
+    chunks = chunk_it(hash)
+    expected = ['ff', '00', 'ff', '00']
+    assert chunks == expected, "Should be ['ff', '00', 'ff', '00']"
