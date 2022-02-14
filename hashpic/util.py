@@ -44,7 +44,7 @@ def paint_svg(size, digest_length, colors):
 
     rects = [
         f'  <rect width="{steps}" height="{steps}" '
-        f'fill="#{"".join(tuple(map(lambda cc: hex(cc)[2:].zfill(2), colors[idx])))}" '
+        f'fill="#{"".join(map(lambda _: format(_, "02x"), colors[idx]))}" '
         f'x="{x}" y="{y}"/>'
         for y in range(0, size, steps)
         for x in range(0, size, steps)
