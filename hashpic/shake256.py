@@ -49,22 +49,9 @@ def shake_256_mode(
             else input[0].lower()
         )
 
-    regex_dict = {
-        1: r"^[a-f0-9]{2}$",
-        4: r"^[a-f0-9]{8}$",
-        9: r"^[a-f0-9]{18}$",
-        16: r"^[a-f0-9]{32}$",
-        25: r"^[a-f0-9]{50}$",
-        36: r"^[a-f0-9]{72}$",
-        64: r"^[a-f0-9]{128}$",
-        100: r"^[a-f0-9]{200}$",
-        144: r"^[a-f0-9]{288}$",
-        225: r"^[a-f0-9]{450}$",
-        255: r"^[a-f0-9]{510}$",
-    }
     validity_check(
         hash=hash,
-        regex_str=regex_dict[variable_digest_length],
+        regex_str="^[a-f0-9]{%d}$" % (variable_digest_length*2),
         name=f"SHAKE256-{variable_digest_length}",
     )
 
