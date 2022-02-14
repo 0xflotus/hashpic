@@ -51,7 +51,7 @@ def shake_256_mode(
 
     validity_check(
         hash=hash,
-        regex_str="^[a-f0-9]{%d}$" % (variable_digest_length*2),
+        regex_str="^[a-f0-9]{%d}$" % (variable_digest_length * 2),
         name=f"SHAKE256-{variable_digest_length}",
     )
 
