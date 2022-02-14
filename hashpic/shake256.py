@@ -94,7 +94,7 @@ def shake_256_mode(
             __paint(pixels, colors, size=width, digest_length=variable_digest_length)
     else:
         if variable_digest_length == 0xFF:
-            colors.append(convert_term_to_rgb(0xFF))
+            colors += [convert_term_to_rgb(0xFF)]
             __paint(
                 pixels, colors, size=width, digest_length=variable_digest_length + 1
             )
