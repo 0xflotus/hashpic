@@ -86,7 +86,7 @@ def shake_256_mode(
         assert width == height, "width and height must be the same."
         assert width % 120 == 0, "size must be a multiple of 120"
         if variable_digest_length == 0xFF:
-            colors.append(convert_term_to_rgb(0xFF))
+            colors += [convert_term_to_rgb(0xFF)]
             __paint(
                 pixels, colors, size=width, digest_length=variable_digest_length + 1
             )
