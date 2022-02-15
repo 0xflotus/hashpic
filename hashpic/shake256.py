@@ -2,7 +2,6 @@ import sys, hashlib, os
 from PIL import Image, ImageOps, ImageDraw
 from .util import *
 from .config import BLOCKSIZE
-from tqdm import tqdm
 
 
 def shake_256_mode(
@@ -107,18 +106,3 @@ def shake_256_mode(
 
     im.save(os.getcwd() + "/" + outputfile)
     sys.exit(0)
-
-
-def __paint(pixels, colors, size, digest_length):
-    steps = int(size // (digest_length ** 0.5))
-    store = [
-        (y, y + steps, x, x + steps)
-        for x in range(0, size, steps)
-        for y in range(0, size, steps)
-    ]
-
-    for x in tqdm(range(size)):
-        for y in range(size):
-            for idx, (min_x, max_x, min_y, max_y) in enumerate(store):
-                if min_x <= x < max_x and min_y <= y < max_y:
-                    pixels[x, y] = colors[idx]
