@@ -2,6 +2,7 @@ import sys, hashlib, os
 from PIL import Image, ImageOps, ImageDraw
 from .util import *
 
+
 def sha_512_mode(
     input,
     bypass,
