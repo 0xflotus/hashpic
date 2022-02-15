@@ -65,7 +65,7 @@ def shake_256_mode(
         svg_mode(
             hash=hash,
             size=1200,
-            digest_length=int(len(hash)/2),
+            digest_length=int(len(hash) / 2),
             invert=invert,
             debug=debug,
             outputfile=outputfile,
