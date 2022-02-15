@@ -53,6 +53,12 @@ python3 -m hashpic 'Hashpic rocks!' --svg --round
 
 ![rounded](./docs/rounded.svg)
 
+Since _v0.5.2_ it is possible to change the background color of the SVG. The default background color is `#ffffff`.
+
+```bash
+python3 -m hashpic 'Hashpic rocks!' --svg --round --background '#000000'
+```
+
 ## Console Mode
 
 ![console](./docs/console.png)

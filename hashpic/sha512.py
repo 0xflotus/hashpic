@@ -5,7 +5,7 @@ from tqdm import tqdm
 
 
 def sha_512_mode(
-    input, bypass, debug, console, tile, invert, file, outputfile, svg, round
+    input, bypass, debug, console, tile, invert, file, outputfile, svg, round, bg_color,
 ):
 
     if file:
@@ -37,6 +37,7 @@ def sha_512_mode(
             debug=debug,
             outputfile=outputfile,
             round=round,
+            bg_color=bg_color,
         )
 
     if console:

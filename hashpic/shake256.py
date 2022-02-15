@@ -17,6 +17,7 @@ def shake_256_mode(
     outputfile,
     svg,
     round,
+    bg_color,
     slow_mode=False,
 ):
 
@@ -71,6 +72,7 @@ def shake_256_mode(
             debug=debug,
             outputfile=outputfile,
             round=round,
+            bg_color=bg_color,
         )
 
     if console:
