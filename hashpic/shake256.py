@@ -58,14 +58,14 @@ def shake_256_mode(
     if debug:
         debug_log(input=input, hash=hash, bypass=bypass)
 
+    if variable_digest_length == 0xFF:
+        hash += "ff"
+
     if svg:
-        if variable_digest_length == 0xFF:
-            hash += "ff"
-            variable_digest_length += 1
         svg_mode(
             hash=hash,
             size=1200,
-            digest_length=variable_digest_length,
+            digest_length=int(len(hash)/2),
             invert=invert,
             debug=debug,
             outputfile=outputfile,
@@ -74,15 +74,10 @@ def shake_256_mode(
         )
 
     if console:
-        if variable_digest_length == 0xFF:
-            hash += "ff"
         print_to_console(hash, invert, tile)
 
     width, height = 1200, 1200
     im = Image.new(mode="RGB", size=(width, height), color="#ffffff")
-
-    if variable_digest_length == 0xFF:
-        hash += "ff"
 
     colors = hash_to_color_codes(hash)
     draw = ImageDraw.Draw(im)
