@@ -1,4 +1,5 @@
 import sys, os, re
+from PIL import Image, ImageOps, ImageDraw
 from .data import COLOR_DATA
 from .config import BLOCKSIZE, RGB, AREA
 
@@ -108,3 +109,28 @@ def file_to_hash(file, hasher, digest_length=None):
         return hasher.hexdigest(digest_length).lower()
     else:
         return hasher.hexdigest().lower()
+
+def paint_png(hash, size, invert, debug, outputfile):
+    colors = hash_to_color_codes(hash)
+
+    im = Image.new(mode="RGB", size=(size, size), color="#ffffff")
+    draw = ImageDraw.Draw(im)
+    m_size = int((len(hash) // 2) ** 0.5)
+    steps = int(size // m_size)
+    store = [
+        (i, steps * (row + 1), i + steps, steps * row)
+        for row in range(m_size)
+        for i in range(0, size, steps)
+    ]
+
+    for idx, xy in enumerate(store):
+        draw.rectangle(xy, fill=colors[idx])
+
+    if invert:
+        im = ImageOps.invert(im)
+
+    if debug:
+        im.show()
+
+    im.save(os.getcwd() + "/" + outputfile)
+    sys.exit(0)
