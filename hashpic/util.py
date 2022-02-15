@@ -110,6 +110,7 @@ def file_to_hash(file, hasher, digest_length=None):
     else:
         return hasher.hexdigest().lower()
 
+
 def paint_png(hash, size, invert, debug, outputfile):
     colors = hash_to_color_codes(hash)
 
