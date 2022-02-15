@@ -1,5 +1,5 @@
 import sys, hashlib, os
-from PIL import Image, ImageOps
+from PIL import Image, ImageOps, ImageDraw
 from .util import *
 from .config import BLOCKSIZE
 from tqdm import tqdm
@@ -82,46 +82,22 @@ def shake_256_mode(
 
     width, height = 1200, 1200
     im = Image.new(mode="RGB", size=(width, height), color="#ffffff")
-    pixels = im.load()
+
+    if variable_digest_length == 0xFF:
+        hash += 'ff'
 
     colors = hash_to_color_codes(hash)
+    draw = ImageDraw.Draw(im)
+    m_size = int((len(hash) // 2) ** 0.5)
+    steps = int(width // m_size)
+    store = [
+        (i, steps * (x + 1), i + steps, steps * x)
+        for x in range(m_size)
+        for i in range(0, width, steps)
+    ]
 
-    if slow_mode:
-        assert width == height, "width and height must be the same."
-        assert width % 120 == 0, "size must be a multiple of 120"
-        if variable_digest_length == 0xFF:
-            colors += [convert_term_to_rgb(0xFF)]
-            __paint(
-                pixels, colors, size=width, digest_length=variable_digest_length + 1
-            )
-        else:
-            __paint(pixels, colors, size=width, digest_length=variable_digest_length)
-    else:
-        if variable_digest_length == 0xFF:
-            colors += [convert_term_to_rgb(0xFF)]
-            __paint(
-                pixels, colors, size=width, digest_length=variable_digest_length + 1
-            )
-        elif variable_digest_length == 0xE1:
-            _225(pixels, colors, (width, height))
-        elif variable_digest_length == 0x90:
-            _144(pixels, colors, (width, height))
-        elif variable_digest_length == 0x64:
-            _100(pixels, colors, (width, height))
-        elif variable_digest_length == 0x40:
-            _64(pixels, colors, (width, height))
-        elif variable_digest_length == 0x24:
-            _36(pixels, colors, (width, height))
-        elif variable_digest_length == 0x19:
-            _25(pixels, colors, (width, height))
-        elif variable_digest_length == 0x9:
-            _9(pixels, colors, (width, height))
-        elif variable_digest_length == 0x4:
-            _4(pixels, colors, (width, height))
-        elif variable_digest_length == 0x1:
-            _1(pixels, colors, (width, height))
-        else:
-            _16(pixels, colors, (width, height))
+    for idx, elem in enumerate(store):
+        draw.rectangle(elem, fill=colors[idx])
 
     if invert:
         im = ImageOps.invert(im)
