@@ -16,7 +16,8 @@ def shake_256_mode(
     outputfile,
     svg,
     round,
-    bg_color,):
+    bg_color,
+):
 
     if not digest_length:
         sys.stderr.write("Please specify a --length\n")
