@@ -34,8 +34,10 @@ def paint_svg(size, digest_length, colors, rounded_corners=False, bg_color=None)
         '<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">\n'
         f'<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="{size}" height="{size}"'
     )
-    SVG_DATA_HEADER += f' style="background-color: {bg_color}">\n' if bg_color else '>\n'
-    
+    SVG_DATA_HEADER += (
+        f' style="background-color: {bg_color}">\n' if bg_color else ">\n"
+    )
+
     steps = int(size // (digest_length ** 0.5))
     store = [
         AREA(x, x + steps, y, y + steps)

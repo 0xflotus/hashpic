@@ -291,12 +291,13 @@ def test_paint_svg():
 </svg>\n"""
     assert SVG == expected
 
+
 def test_paint_svg_with_bg():
     hash = "5c1f05a8"
     size = 1200
     digest_length = 4
     colors = hash_to_color_codes(hash)
-    SVG = paint_svg(size, digest_length, colors, bg_color='black')
+    SVG = paint_svg(size, digest_length, colors, bg_color="black")
     expected = """<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="1200" height="1200" style="background-color: black">
@@ -307,12 +308,13 @@ def test_paint_svg_with_bg():
 </svg>\n"""
     assert SVG == expected
 
+
 def test_paint_svg_with_round_corners():
     hash = "5c1f05a8"
     size = 1200
     digest_length = 4
     colors = hash_to_color_codes(hash)
-    SVG = paint_svg(size, digest_length, colors, rounded_corners=True, bg_color='black')
+    SVG = paint_svg(size, digest_length, colors, rounded_corners=True, bg_color="black")
     expected = """<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="1200" height="1200" style="background-color: black">

@@ -5,7 +5,17 @@ from tqdm import tqdm
 
 
 def sha3_512_mode(
-    input, bypass, debug, console, tile, invert, file, outputfile, svg, round, bg_color,
+    input,
+    bypass,
+    debug,
+    console,
+    tile,
+    invert,
+    file,
+    outputfile,
+    svg,
+    round,
+    bg_color,
 ):
 
     if file:
