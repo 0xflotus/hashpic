@@ -284,9 +284,9 @@ def test_paint_svg():
     expected = """<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="1200" height="1200">
-  <rect width="600" height="600" fill="#8700d7" x="0" y="0"/>
-  <rect width="600" height="600" fill="#0087af" x="600" y="0"/>
-  <rect width="600" height="600" fill="#800080" x="0" y="600"/>
-  <rect width="600" height="600" fill="#d75f87" x="600" y="600"/>
+  <rect width="600" height="600" fill="#8700d7" x="0" y="0" rx="0"/>
+  <rect width="600" height="600" fill="#0087af" x="600" y="0" rx="0"/>
+  <rect width="600" height="600" fill="#800080" x="0" y="600" rx="0"/>
+  <rect width="600" height="600" fill="#d75f87" x="600" y="600" rx="0"/>
 </svg>\n"""
     assert SVG == expected
