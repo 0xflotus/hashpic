@@ -83,7 +83,7 @@ def shake_256_mode(
     im = Image.new(mode="RGB", size=(width, height), color="#ffffff")
 
     if variable_digest_length == 0xFF:
-        hash += 'ff'
+        hash += "ff"
 
     colors = hash_to_color_codes(hash)
     draw = ImageDraw.Draw(im)
