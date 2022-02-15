@@ -59,11 +59,15 @@ def md5_mode(
     im = Image.new(mode="RGB", size=(width, height), color="#ffffff")
     draw = ImageDraw.Draw(im)
 
-    m_size = int((len(hash) // 2) **.5)
+    m_size = int((len(hash) // 2) ** 0.5)
     steps = int(width // m_size)
-    store = [(i,steps*(x+1), i+steps,steps*x) for x in range(m_size) for i in range(0, width, steps)]
-        
-    for idx, elem in enumerate(store): 
+    store = [
+        (i, steps * (x + 1), i + steps, steps * x)
+        for x in range(m_size)
+        for i in range(0, width, steps)
+    ]
+
+    for idx, elem in enumerate(store):
         draw.rectangle(elem, fill=colors[idx])
 
     if invert:
