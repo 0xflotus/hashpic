@@ -8,7 +8,9 @@ Since _v0.4.8_ it is also possible to create an image from a *SHAKE-256* hash wi
 
 Since _v0.3.5_ it is also possible to create an image from a *SHA3-512* and a *BLAKE2b* hash.
 
-Since _v0.4.0_ it is possible to create an image as *SVG*, which is much faster.
+Since _v0.4.0_ it is possible to create an image as *SVG*.
+
+_v0.6.0_ brought a huge performance boost.
 
 ## Install
 
