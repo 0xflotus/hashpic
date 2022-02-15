@@ -58,7 +58,12 @@ def svg_mode(hash, size, digest_length, invert, debug, outputfile, round):
     color_codes = hash_to_color_codes(hash)
     if invert:
         color_codes = [RGB(r ^ 0xFF, g ^ 0xFF, b ^ 0xFF) for r, g, b in color_codes]
-    SVG = paint_svg(size=size, digest_length=digest_length, colors=color_codes, rounded_corners=round)
+    SVG = paint_svg(
+        size=size,
+        digest_length=digest_length,
+        colors=color_codes,
+        rounded_corners=round,
+    )
 
     if debug:
         sys.stdout.write(SVG)
