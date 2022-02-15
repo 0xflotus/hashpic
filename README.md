@@ -45,6 +45,14 @@ python3 -m hashpic 'Hashpic rocks!' --svg
 
 ![svg](./docs/rocks_on_svg.svg)
 
+Since _v0.5.0_ it is possible to create circles instead of squares. But this is limited to the `SVG Mode`.
+
+```bash
+python3 -m hashpic 'Hashpic rocks!' --svg --round
+```
+
+![rounded](./docs/rounded.svg)
+
 ## Console Mode
 
 ![console](./docs/console.png)
