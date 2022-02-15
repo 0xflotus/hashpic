@@ -22,7 +22,6 @@ def main():
     parser.add_argument("--blake2b", action="store_true")
     parser.add_argument("--length", action="store")
     parser.add_argument("--file", action="store")
-    parser.add_argument("--slow", action="store_true")
     parser.add_argument("--svg", action="store_true")
     parser.add_argument("--round", action="store_true")
     parser.add_argument("--background", action="store")
@@ -88,7 +87,6 @@ def main():
             svg=args.svg,
             round=args.round,
             bg_color=args.background,
-            slow_mode=args.slow,
         )
     else:
         md5_mode(
