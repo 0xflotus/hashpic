@@ -28,7 +28,7 @@ def hash_to_color_codes(hash):
     return [convert_term_to_rgb(int(chunk, 16)) for chunk in chunk_it(hash)]
 
 
-def paint_svg(size, digest_length, colors):
+def paint_svg(size, digest_length, colors, rounded_corners=False):
     SVG_DATA_HEADER = (
         '<?xml version="1.0" encoding="UTF-8"?>\n'
         '<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">\n'
@@ -41,10 +41,11 @@ def paint_svg(size, digest_length, colors):
         for x in range(0, size, steps)
     ]
 
+    rx = steps >> 1 if rounded_corners else 0
     rects = [
         f'  <rect width="{steps}" height="{steps}" '
         f'fill="#{"".join(map(lambda _: format(_, "02x"), colors[idx]))}" '
-        f'x="{x}" y="{y}"/>'
+        f'x="{x}" y="{y}" rx="{rx}"/>'
         for y in range(0, size, steps)
         for x in range(0, size, steps)
         for idx, (min_x, max_x, min_y, max_y) in enumerate(store)
@@ -53,11 +54,11 @@ def paint_svg(size, digest_length, colors):
     return SVG_DATA_HEADER + "\n".join(rects) + "\n</svg>\n"
 
 
-def svg_mode(hash, size, digest_length, invert, debug, outputfile):
+def svg_mode(hash, size, digest_length, invert, debug, outputfile, round):
     color_codes = hash_to_color_codes(hash)
     if invert:
         color_codes = [RGB(r ^ 0xFF, g ^ 0xFF, b ^ 0xFF) for r, g, b in color_codes]
-    SVG = paint_svg(size=size, digest_length=digest_length, colors=color_codes)
+    SVG = paint_svg(size=size, digest_length=digest_length, colors=color_codes, rounded_corners=round)
 
     if debug:
         sys.stdout.write(SVG)

@@ -3,7 +3,7 @@ import os, hashlib, sys
 from .util import *
 
 
-def md5_mode(input, bypass, debug, console, tile, invert, file, outputfile, svg):
+def md5_mode(input, bypass, debug, console, tile, invert, file, outputfile, svg, round):
 
     if file:
         hash = file_to_hash(file, hashlib.md5())
@@ -33,6 +33,7 @@ def md5_mode(input, bypass, debug, console, tile, invert, file, outputfile, svg)
             invert=invert,
             debug=debug,
             outputfile=outputfile,
+            round=round,
         )
 
     if console:

@@ -24,6 +24,7 @@ def main():
     parser.add_argument("--file", action="store")
     parser.add_argument("--slow", action="store_true")
     parser.add_argument("--svg", action="store_true")
+    parser.add_argument("--round", action="store_true")
     parser.add_argument("-o", action="store")
     args = parser.parse_args()
 
@@ -41,6 +42,7 @@ def main():
             file=args.file,
             outputfile=outputfile,
             svg=args.svg,
+            round=args.round,
         )
     elif args.sha3:
         sha3_512_mode(
@@ -53,6 +55,7 @@ def main():
             file=args.file,
             outputfile=outputfile,
             svg=args.svg,
+            round=args.round,
         )
     elif args.blake2b:
         blake2b_mode(
@@ -65,6 +68,7 @@ def main():
             file=args.file,
             outputfile=outputfile,
             svg=args.svg,
+            round=args.round,
         )
     elif args.shake256:
         shake_256_mode(
@@ -78,6 +82,7 @@ def main():
             file=args.file,
             outputfile=outputfile,
             svg=args.svg,
+            round=args.round,
             slow_mode=args.slow,
         )
     else:
@@ -91,6 +96,7 @@ def main():
             file=args.file,
             outputfile=outputfile,
             svg=args.svg,
+            round=args.round,
         )
 
 

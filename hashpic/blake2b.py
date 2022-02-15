@@ -4,7 +4,7 @@ from .util import *
 from tqdm import tqdm
 
 
-def blake2b_mode(input, bypass, debug, console, tile, invert, file, outputfile, svg):
+def blake2b_mode(input, bypass, debug, console, tile, invert, file, outputfile, svg, round):
 
     if file:
         hash = file_to_hash(file, hashlib.blake2b())
@@ -34,6 +34,7 @@ def blake2b_mode(input, bypass, debug, console, tile, invert, file, outputfile, 
             invert=invert,
             debug=debug,
             outputfile=outputfile,
+            round=round,
         )
 
     if console:
