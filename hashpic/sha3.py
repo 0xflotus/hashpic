@@ -1,5 +1,4 @@
-import sys, hashlib, os
-from PIL import Image, ImageOps, ImageDraw
+import sys, hashlib
 from .util import *
 
 
@@ -52,28 +51,4 @@ def sha3_512_mode(
     if console:
         print_to_console(hash, invert, tile)
 
-    colors = hash_to_color_codes(hash)
-
-    width, height = 1024, 1024
-
-    im = Image.new(mode="RGB", size=(width, height), color="#ffffff")
-    draw = ImageDraw.Draw(im)
-    m_size = int((len(hash) // 2) ** 0.5)
-    steps = int(width // m_size)
-    store = [
-        (i, steps * (x + 1), i + steps, steps * x)
-        for x in range(m_size)
-        for i in range(0, width, steps)
-    ]
-
-    for idx, elem in enumerate(store):
-        draw.rectangle(elem, fill=colors[idx])
-
-    if invert:
-        im = ImageOps.invert(im)
-
-    if debug:
-        im.show()
-
-    im.save(os.getcwd() + "/" + outputfile)
-    sys.exit(0)
+    paint_png(hash=hash, size=0x400, invert=invert, debug=debug, outputfile=outputfile)
