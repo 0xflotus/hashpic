@@ -126,6 +126,7 @@ def paint_png(hash, size, invert, debug, outputfile):
 
     for idx, xy in enumerate(store):
         draw.rectangle(xy, fill=colors[idx])
+    del idx, xy
 
     if invert:
         im = ImageOps.invert(im)
