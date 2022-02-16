@@ -212,13 +212,13 @@ python3 -m hashpic 'Hashpic rocks!' --blake2b
 Since _v0.4.4_ there is a dockerized version available on [`ghcr.io`](https://github.com/0xflotus/hashpic/pkgs/container/hashpic). You can pull the image from there and use it e.g.:
 
 ```bash
-docker run -it -v "$(pwd)":/app --rm ghcr.io/0xflotus/hashpic:0.4.4 deadbeef --bypass --shake256 --length 4
+docker run -it -v "$(pwd)":/app --rm ghcr.io/0xflotus/hashpic:0.6.2 deadbeef --bypass --shake256 --length 4
 ```
 
 You can also pipe to docker:
 
 ```bash
-printf 'ff0030ffe589b7a4e1320f12c4c8de73' | docker run -i --rm ghcr.io/0xflotus/hashpic:0.4.6 -c --shake256 --length 16 --bypass
+printf 'ff0030ffe589b7a4e1320f12c4c8de73' | docker run -i --rm ghcr.io/0xflotus/hashpic:0.6.2 -c --shake256 --length 16 --bypass
 ```
 
 ## Examples

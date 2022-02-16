@@ -4,6 +4,7 @@ build/
 *.pyc
 *.png
 *.svg
+README.md
 
 !docs/**/*.svg
 !docs/**/*.png
