@@ -1,10 +1,10 @@
 import argparse
 from hashpic import __version__
-from .md5 import *
-from .sha512 import *
-from .shake256 import *
-from .blake2b import *
-from .sha3 import *
+from hashpic.md5 import *
+from hashpic.sha512 import *
+from hashpic.shake256 import *
+from hashpic.blake2b import *
+from hashpic.sha3 import *
 
 
 def main():

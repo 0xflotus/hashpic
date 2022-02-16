@@ -1,6 +1,6 @@
 import sys, hashlib
-from .util import *
-from .config import BLOCKSIZE
+from hashpic.util import *
+from hashpic.config import BLOCKSIZE
 
 
 def shake_256_mode(

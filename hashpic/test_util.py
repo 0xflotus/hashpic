@@ -1,5 +1,5 @@
-from .util import *
-from .config import *
+from hashpic.util import *
+from hashpic.config import *
 
 
 def test_convert_term_to_rgb():

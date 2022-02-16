@@ -1,7 +1,7 @@
 import sys, os, re
 from PIL import Image, ImageOps, ImageDraw
-from .data import COLOR_DATA
-from .config import BLOCKSIZE, RGB, AREA
+from hashpic.data import COLOR_DATA
+from hashpic.config import BLOCKSIZE, RGB, AREA
 
 
 def chunk_it(string, n=2):

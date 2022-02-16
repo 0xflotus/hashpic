@@ -1,5 +1,5 @@
 import sys, hashlib
-from .util import *
+from hashpic.util import *
 
 
 def sha_512_mode(

@@ -1,4 +1,4 @@
-from .config import RGB
+from hashpic.config import RGB
 
 COLOR_DATA = {
     0: {"term": "0", "hex": "#000000", "rgb": RGB(0, 0, 0)},
