@@ -4,6 +4,7 @@ build/
 *.pyc
 *.png
 *.svg
+.DS_Store
 
 !docs/**/*.svg
 !docs/**/*.png
