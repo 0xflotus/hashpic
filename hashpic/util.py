@@ -13,7 +13,7 @@ def convert_term_to_rgb(color_code=0):
 
 
 def print_to_console(hash, invert, tile):
-    chunks = chunk_it(chunk_it(hash), int((len(hash) >>1) ** 0.5))
+    chunks = chunk_it(chunk_it(hash), int((len(hash) >> 1) ** 0.5))
     for chunk in chunks:
         for j in chunk:
             i = int(j, 16)
