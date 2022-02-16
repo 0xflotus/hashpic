@@ -263,6 +263,13 @@ python3 -m hashpic 7f000001 --shake256 --length 4 --bypass
 printf 2001:4860:4860:0000:0000:0000:0000:8844 | tr -d ':' | python3 -m hashpic --bypass 
 ```
 
+If you have installed [`h3`](https://h3geo.org/) you can transform a geo coordinate to an image. 
+The example below uses the geo coordinates of the `Eiffel Tower in Paris, France`.
+
+```bash
+python3 -c "import h3; print(h3.geo_to_h3(48.8583230030819, 2.294450300083837, 15).zfill(18))" | python3 -m hashpic --bypass --shake256 --length 9
+```
+
 ## Disclaimer
 
 The color palette in [`data.py`](./hashpic/data.py) was influenced by the [`string-color`](https://gitlab.com/shindagger/string-color) library. 
