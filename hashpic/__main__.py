@@ -1,4 +1,5 @@
 import argparse
+from hashpic import __version__
 from .md5 import *
 from .sha512 import *
 from .shake256 import *
@@ -8,8 +9,10 @@ from .sha3 import *
 
 def main():
     parser = argparse.ArgumentParser(
+        prog="hashpic",
         description="Create an image from a MD5, SHA512, SHA3-512, Blake2b or Shake256 hash"
     )
+    parser.add_argument("-v", action="version", version=f'{__version__}', help="Version")
     parser.add_argument("input", nargs="*", action="store", help="Input string to hash")
     parser.add_argument("-d", action="store_true", help="debug mode")
     parser.add_argument("-i", action="store_true", help="invert the image")
