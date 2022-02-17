@@ -270,6 +270,12 @@ The example below uses the geo coordinates of the `Eiffel Tower in Paris, France
 python3 -c "import h3; print(h3.geo_to_h3(48.8583230030819, 2.294450300083837, 15).zfill(18))" | python3 -m hashpic --bypass --shake256 --length 9
 ```
 
+It is also possible to create an image from an `uuid`.
+
+```bash
+python3 -c "import uuid; print(str(uuid.uuid4()).replace('-', ''))" | python3 -m hashpic --bypass -c
+```
+
 You can also create an image from any 64-bit integer.
 
 ```bash
