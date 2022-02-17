@@ -270,6 +270,28 @@ The example below uses the geo coordinates of the `Eiffel Tower in Paris, France
 python3 -c "import h3; print(h3.geo_to_h3(48.8583230030819, 2.294450300083837, 15).zfill(18))" | python3 -m hashpic --bypass --shake256 --length 9
 ```
 
+You can also create an image from any 64-bit integer.
+
+```bash
+printf 8724325378325383578 | python3 -c "import sys, textwrap; print(''.join([hex(int(bit))[2:].zfill(2) for bit in textwrap.fill(bin(int(sys.stdin.read()))[2:].zfill(64), 1).split('\n')]))" | python3 -m hashpic --bypass --svg --round --sha3
+```
+
+<details>
+  <summary>Click to see more examples.</summary>
+
+```bash
+# compute the bypassed number
+python3 -c "print(2**56-1)" | python3 -c "import sys, textwrap; print(''.join([hex(int(bit))[2:].zfill(2) for bit in textwrap.fill(bin(int(sys.stdin.read()))[2:].zfill(64),1).split('\n')]))" | python3 -m hashpic --bypass --svg --round --sha3
+
+# bypass the binary directly
+printf 0110100111001100001101001110011000111110011100110000111100111011 | python3 -c "import sys, textwrap; print(''.join([hex(int(bit))[2:].zfill(2) for bit in textwrap.fill(bin(int(sys.stdin.read(), 2))[2:].zfill(64),1).split('\n')]))" | python3 -m hashpic --bypass --svg --round --sha3
+
+# map the colors 
+printf 0110100111001100001101001110011000111110011100110000111100111011 | python3 -c "import sys, textwrap; print(''.join(map(lambda x: '00' if x == '01' else 'ff', [hex(int(bit))[2:].zfill(2) for bit in textwrap.fill(bin(int(sys.stdin.read(), 2))[2:].zfill(64),1).split('\n')])))" | python3 -m hashpic --bypass --svg --round --sha3
+```
+
+</details>
+
 ## Disclaimer
 
 The color palette in [`data.py`](./hashpic/data.py) was influenced by the [`string-color`](https://gitlab.com/shindagger/string-color) library. 
