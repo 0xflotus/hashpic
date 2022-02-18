@@ -4,7 +4,9 @@ build/
 *.pyc
 *.png
 *.svg
+.git
 README.md
+LICENSE
 
 !docs/**/*.svg
 !docs/**/*.png
