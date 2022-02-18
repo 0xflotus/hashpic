@@ -136,7 +136,7 @@ def hexagons(dimension, colors, bg_color=None):
                 x += offset
             polygons.append(
                 f'  <polygon style="fill: #{"".join(map(lambda _: format(_, "02x"), colors[j * dimension + i % dimension]))}; '
-                f'stroke: black; stroke-width: 3px;" points="{hexpoints(x, y, radius)}"></polygon>'
+                f'" points="{hexpoints(x, y, radius)}"></polygon>'
             )
     SVG = "\n".join(polygons)
     return SVG_HEADER + SVG + "\n</svg>"
