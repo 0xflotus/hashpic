@@ -55,6 +55,15 @@ python3 -m hashpic 'Hashpic rocks!' --svg --round
 
 ![rounded](./docs/rounded.svg)
 
+Since _v0.7.0_ it is possible to create hexagons instead of squares. But this is limited to the `SVG Mode`. 
+If you pass also the `--round` flag when using `--hexagon`, `--round` will be ignored.
+
+```bash
+python3 -m hashpic 'Hashpic rocks!' --svg --hexagon
+```
+
+![rounded](./docs/hexagon_md5.svg)
+
 Since _v0.5.2_ it is possible to add a background color to the SVG.
 
 ```bash

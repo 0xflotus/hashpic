@@ -12,6 +12,7 @@ def blake2b_mode(
     file,
     outputfile,
     svg,
+    hexagon,
     round,
     bg_color,
 ):
@@ -45,6 +46,7 @@ def blake2b_mode(
             debug=debug,
             outputfile=outputfile,
             round=round,
+            hexagon=hexagon,
             bg_color=bg_color,
         )
 

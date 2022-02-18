@@ -1,4 +1,6 @@
 import sys, os, re
+import numpy as np
+from math import sqrt, sin, cos, pi
 from PIL import Image, ImageOps, ImageDraw
 from hashpic.data import COLOR_DATA
 from hashpic.config import BLOCKSIZE, RGB, AREA
@@ -59,17 +61,23 @@ def paint_svg(size, digest_length, colors, rounded_corners=False, bg_color=None)
     return SVG_DATA_HEADER + "\n".join(rects) + "\n</svg>\n"
 
 
-def svg_mode(hash, size, digest_length, invert, debug, outputfile, round, bg_color):
+def svg_mode(
+    hash, size, digest_length, invert, debug, outputfile, round, hexagon, bg_color
+):
     color_codes = hash_to_color_codes(hash)
     if invert:
         color_codes = [RGB(r ^ 0xFF, g ^ 0xFF, b ^ 0xFF) for r, g, b in color_codes]
-    SVG = paint_svg(
-        size=size,
-        digest_length=digest_length,
-        colors=color_codes,
-        rounded_corners=round,
-        bg_color=bg_color,
-    )
+
+    if hexagon:
+        SVG = hexagons(dimension=int(sqrt(digest_length)), colors=color_codes, bg_color=bg_color)
+    else:
+        SVG = paint_svg(
+            size=size,
+            digest_length=digest_length,
+            colors=color_codes,
+            rounded_corners=round,
+            bg_color=bg_color,
+        )
 
     if debug:
         sys.stdout.write(SVG)
@@ -80,6 +88,58 @@ def svg_mode(hash, size, digest_length, invert, debug, outputfile, round, bg_col
     f.write(SVG)
     f.close()
     sys.exit(0)
+
+
+def hexagons(dimension, colors, bg_color=None):
+    def hexpoints(x, y, radius):
+        points = []
+        for theta in np.arange(0, pi * 2, pi / 3):
+            point_x = x + radius * sin(theta)
+            point_y = y + radius * cos(theta)
+            points.append(str(point_x) + "," + str(point_y))
+        return " ".join(points)
+
+    SIZES = {
+        1: 390,
+        2: 190,
+        3: 133,
+        4: 90,
+        5: 70,
+        6: 66,
+        8: 50,
+        10: 40,
+        12: 33,
+        15: 26,
+        16: 30,
+    }
+
+    SVG_HEADER = (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">\n'
+        '<svg version="1.1"'
+        ' width="900" height="800"'
+        ' xmlns="http://www.w3.org/2000/svg"'
+    )
+    SVG_HEADER += (
+        f' style="background-color: {bg_color}">\n' if bg_color else ">\n"
+    )
+
+    polygons = []
+    radius = SIZES[dimension]
+    for i in range(0, dimension):
+        for j in range(0, dimension):
+            offset = (sqrt(3) * radius) / 2
+            x = (radius + 10) + offset * i * 2
+            y = (radius + 10) + offset * j * sqrt(3)
+
+            if j % 2 != 0:
+                x += offset
+            polygons.append(
+                f'  <polygon style="fill: #{"".join(map(lambda _: format(_, "02x"), colors[j * dimension + i % dimension]))}; '
+                f'stroke: black; stroke-width: 3px;" points="{hexpoints(x, y, radius)}"></polygon>'
+            )
+    SVG = "\n".join(polygons)
+    return SVG_HEADER + SVG + "\n</svg>"
 
 
 def debug_log(input, hash, bypass):
