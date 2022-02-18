@@ -68,7 +68,9 @@ def svg_mode(
         color_codes = [RGB(r ^ 0xFF, g ^ 0xFF, b ^ 0xFF) for r, g, b in color_codes]
 
     if hexagon:
-        SVG = hexagons(dimension=int(sqrt(digest_length)), colors=color_codes, bg_color=bg_color)
+        SVG = hexagons(
+            dimension=int(sqrt(digest_length)), colors=color_codes, bg_color=bg_color
+        )
     else:
         SVG = paint_svg(
             size=size,
@@ -91,7 +93,12 @@ def svg_mode(
 
 def hexagons(dimension, colors, bg_color=None):
     def hexpoints(x, y, radius):
-        return " ".join([str(x + radius * sin(theta)) + "," + str(y + radius * cos(theta)) for theta in frange(0, pi * 2, pi / 3)])
+        return " ".join(
+            [
+                str(x + radius * sin(theta)) + "," + str(y + radius * cos(theta))
+                for theta in frange(0, pi * 2, pi / 3)
+            ]
+        )
 
     SIZES = {
         1: 390,
@@ -114,9 +121,7 @@ def hexagons(dimension, colors, bg_color=None):
         ' width="900" height="800"'
         ' xmlns="http://www.w3.org/2000/svg"'
     )
-    SVG_HEADER += (
-        f' style="background-color: {bg_color}">\n' if bg_color else ">\n"
-    )
+    SVG_HEADER += f' style="background-color: {bg_color}">\n' if bg_color else ">\n"
 
     polygons = []
     radius = SIZES[dimension]
@@ -191,9 +196,12 @@ def paint_png(hash, size, invert, debug, outputfile):
     im.save(os.getcwd() + "/" + outputfile)
     sys.exit(0)
 
-'''
+
+"""
 Helper function to use floats in range function
-'''
+"""
+
+
 def frange(start, stop=None, step=None):
     start = float(start)
     if stop == None:
