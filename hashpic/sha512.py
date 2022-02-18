@@ -13,6 +13,7 @@ def sha_512_mode(
     outputfile,
     svg,
     hexagon,
+    stroke,
     round,
     bg_color,
 ):
@@ -47,6 +48,7 @@ def sha_512_mode(
             outputfile=outputfile,
             round=round,
             hexagon=hexagon,
+            with_stroke=stroke,
             bg_color=bg_color,
         )
 

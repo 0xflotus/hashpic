@@ -61,7 +61,16 @@ def paint_svg(size, digest_length, colors, rounded_corners=False, bg_color=None)
 
 
 def svg_mode(
-    hash, size, digest_length, invert, debug, outputfile, round, hexagon, bg_color
+    hash,
+    size,
+    digest_length,
+    invert,
+    debug,
+    outputfile,
+    round,
+    hexagon,
+    with_stroke,
+    bg_color,
 ):
     color_codes = hash_to_color_codes(hash)
     if invert:
@@ -69,7 +78,10 @@ def svg_mode(
 
     if hexagon:
         SVG = hexagons(
-            dimension=int(sqrt(digest_length)), colors=color_codes, bg_color=bg_color
+            dimension=int(sqrt(digest_length)),
+            colors=color_codes,
+            bg_color=bg_color,
+            with_stroke=with_stroke,
         )
     else:
         SVG = paint_svg(
@@ -91,11 +103,11 @@ def svg_mode(
     sys.exit(0)
 
 
-def hexagons(dimension, colors, bg_color=None):
+def hexagons(dimension, colors, bg_color=None, with_stroke=False):
     def hexpoints(x, y, radius):
         return " ".join(
             [
-                f'{x + radius * sin(theta)},{y + radius * cos(theta)}'
+                f"{x + radius * sin(theta)},{y + radius * cos(theta)}"
                 for theta in frange(0, pi * 2, pi / 3)
             ]
         )
@@ -123,6 +135,7 @@ def hexagons(dimension, colors, bg_color=None):
     )
     SVG_HEADER += f' style="background-color: {bg_color}">\n' if bg_color else ">\n"
 
+    stroke = "stroke: black; stroke-width: 3px;" if with_stroke else ""
     polygons = []
     radius = SIZES[dimension]
     for i in range(0, dimension):
@@ -135,7 +148,7 @@ def hexagons(dimension, colors, bg_color=None):
                 x += offset
             polygons.append(
                 f'  <polygon style="fill: #{"".join(map(lambda _: format(_, "02x"), colors[j * dimension + i % dimension]))}; '
-                f'" points="{hexpoints(x, y, radius)}"></polygon>'
+                f'{stroke}" points="{hexpoints(x, y, radius)}"></polygon>'
             )
     SVG = "\n".join(polygons)
     return SVG_HEADER + SVG + "\n</svg>"

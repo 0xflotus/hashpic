@@ -29,6 +29,7 @@ def main():
     parser.add_argument("--file", action="store")
     parser.add_argument("--svg", action="store_true")
     parser.add_argument("--hexagon", action="store_true")
+    parser.add_argument("--stroke", action="store_true")
     parser.add_argument("--round", action="store_true")
     parser.add_argument("--background", action="store")
     parser.add_argument("-o", action="store")
@@ -49,6 +50,7 @@ def main():
             outputfile=outputfile,
             svg=args.svg,
             hexagon=args.hexagon,
+            stroke=args.stroke,
             round=args.round,
             bg_color=args.background,
         )
@@ -64,6 +66,7 @@ def main():
             outputfile=outputfile,
             svg=args.svg,
             hexagon=args.hexagon,
+            stroke=args.stroke,
             round=args.round,
             bg_color=args.background,
         )
@@ -79,6 +82,7 @@ def main():
             outputfile=outputfile,
             svg=args.svg,
             hexagon=args.hexagon,
+            stroke=args.stroke,
             round=args.round,
             bg_color=args.background,
         )
@@ -95,6 +99,7 @@ def main():
             outputfile=outputfile,
             svg=args.svg,
             hexagon=args.hexagon,
+            stroke=args.stroke,
             round=args.round,
             bg_color=args.background,
         )
@@ -110,6 +115,7 @@ def main():
             outputfile=outputfile,
             svg=args.svg,
             hexagon=args.hexagon,
+            stroke=args.stroke,
             round=args.round,
             bg_color=args.background,
         )

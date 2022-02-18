@@ -15,6 +15,7 @@ def shake_256_mode(
     outputfile,
     svg,
     hexagon,
+    stroke,
     round,
     bg_color,
 ):
@@ -71,6 +72,7 @@ def shake_256_mode(
             outputfile=outputfile,
             round=round,
             hexagon=hexagon,
+            with_stroke=stroke,
             bg_color=bg_color,
         )
 
