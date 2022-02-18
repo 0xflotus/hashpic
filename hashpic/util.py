@@ -68,7 +68,7 @@ def svg_mode(
         color_codes = [RGB(r ^ 0xFF, g ^ 0xFF, b ^ 0xFF) for r, g, b in color_codes]
 
     if hexagon:
-        SVG = hexagons(dimension=int(math.sqrt(digest_length)), colors=color_codes)
+        SVG = hexagons(dimension=int(math.sqrt(digest_length)), colors=color_codes, bg_color=bg_color)
     else:
         SVG = paint_svg(
             size=size,
@@ -89,7 +89,7 @@ def svg_mode(
     sys.exit(0)
 
 
-def hexagons(dimension, colors):
+def hexagons(dimension, colors, bg_color=None):
     def hexpoints(x, y, radius):
         points = []
         for theta in np.arange(0, math.pi * 2, math.pi / 3):
@@ -117,7 +117,10 @@ def hexagons(dimension, colors):
         '<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">\n'
         '<svg version="1.1"'
         ' width="900" height="800"'
-        ' xmlns="http://www.w3.org/2000/svg">'
+        ' xmlns="http://www.w3.org/2000/svg"'
+    )
+    SVG_HEADER += (
+        f' style="background-color: {bg_color}">\n' if bg_color else ">\n"
     )
 
     polygons = []
@@ -131,10 +134,11 @@ def hexagons(dimension, colors):
             if j % 2 != 0:
                 x += offset
             polygons.append(
-                f'<polygon style="fill: white; stroke: black; stroke-width: 4px;" points="{hexpoints(x,y,radius)}"></polygon>'
+                f'  <polygon style="fill: #{"".join(map(lambda _: format(_, "02x"), colors[j * dimension + i % dimension]))}; '
+                f'stroke: black; stroke-width: 3px;" points="{hexpoints(x,y,radius)}"></polygon>'
             )
     SVG = "\n".join(polygons)
-    return SVG_HEADER + SVG + "</svg>"
+    return SVG_HEADER + SVG + "\n</svg>"
 
 
 def debug_log(input, hash, bypass):
