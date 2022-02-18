@@ -7,6 +7,3 @@ build/
 .git
 README.md
 LICENSE
-
-!docs/**/*.svg
-!docs/**/*.png

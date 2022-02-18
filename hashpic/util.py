@@ -1,5 +1,4 @@
 import sys, os, re
-import numpy as np
 from math import sqrt, sin, cos, pi
 from PIL import Image, ImageOps, ImageDraw
 from hashpic.data import COLOR_DATA
@@ -93,7 +92,7 @@ def svg_mode(
 def hexagons(dimension, colors, bg_color=None):
     def hexpoints(x, y, radius):
         points = []
-        for theta in np.arange(0, pi * 2, pi / 3):
+        for theta in frange(0, pi * 2, pi / 3):
             point_x = x + radius * sin(theta)
             point_y = y + radius * cos(theta)
             points.append(str(point_x) + "," + str(point_y))
@@ -196,3 +195,24 @@ def paint_png(hash, size, invert, debug, outputfile):
 
     im.save(os.getcwd() + "/" + outputfile)
     sys.exit(0)
+
+'''
+Helper function to use floats in range function
+'''
+def frange(start, stop=None, step=None):
+    start = float(start)
+    if stop == None:
+        stop = start + 0.0
+        start = 0.0
+    if step == None:
+        step = 1.0
+
+    count = 0
+    while True:
+        temp = float(start + count * step)
+        if step > 0 and temp >= stop:
+            break
+        elif step < 0 and temp <= stop:
+            break
+        yield temp
+        count += 1
