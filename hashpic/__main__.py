@@ -28,6 +28,7 @@ def main():
     parser.add_argument("--length", action="store")
     parser.add_argument("--file", action="store")
     parser.add_argument("--svg", action="store_true")
+    parser.add_argument("--hexagon", action="store_true")
     parser.add_argument("--round", action="store_true")
     parser.add_argument("--background", action="store")
     parser.add_argument("-o", action="store")
@@ -90,6 +91,7 @@ def main():
             file=args.file,
             outputfile=outputfile,
             svg=args.svg,
+            hexagon=args.hexagon,
             round=args.round,
             bg_color=args.background,
         )
