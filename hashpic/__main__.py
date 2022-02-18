@@ -48,6 +48,7 @@ def main():
             file=args.file,
             outputfile=outputfile,
             svg=args.svg,
+            hexagon=args.hexagon,
             round=args.round,
             bg_color=args.background,
         )
@@ -62,6 +63,7 @@ def main():
             file=args.file,
             outputfile=outputfile,
             svg=args.svg,
+            hexagon=args.hexagon,
             round=args.round,
             bg_color=args.background,
         )
@@ -76,6 +78,7 @@ def main():
             file=args.file,
             outputfile=outputfile,
             svg=args.svg,
+            hexagon=args.hexagon,
             round=args.round,
             bg_color=args.background,
         )
@@ -106,6 +109,7 @@ def main():
             file=args.file,
             outputfile=outputfile,
             svg=args.svg,
+            hexagon=args.hexagon,
             round=args.round,
             bg_color=args.background,
         )
