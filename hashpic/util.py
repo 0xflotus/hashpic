@@ -4,6 +4,7 @@ import numpy as np
 from hashpic.data import COLOR_DATA
 from hashpic.config import BLOCKSIZE, RGB, AREA
 
+
 def chunk_it(string, n=2):
     return [string[i : i + n] for i in range(0, len(string), n)]
 
@@ -59,7 +60,9 @@ def paint_svg(size, digest_length, colors, rounded_corners=False, bg_color=None)
     return SVG_DATA_HEADER + "\n".join(rects) + "\n</svg>\n"
 
 
-def svg_mode(hash, size, digest_length, invert, debug, outputfile, round, hexagon, bg_color):
+def svg_mode(
+    hash, size, digest_length, invert, debug, outputfile, round, hexagon, bg_color
+):
     color_codes = hash_to_color_codes(hash)
     if invert:
         color_codes = [RGB(r ^ 0xFF, g ^ 0xFF, b ^ 0xFF) for r, g, b in color_codes]
@@ -85,8 +88,8 @@ def svg_mode(hash, size, digest_length, invert, debug, outputfile, round, hexago
     f.close()
     sys.exit(0)
 
-def hexagons(dimension, colors):
 
+def hexagons(dimension, colors):
     def hexpoints(x, y, radius):
         points = []
         for theta in np.arange(0, math.pi * 2, math.pi / 3):
@@ -122,8 +125,8 @@ def hexagons(dimension, colors):
     for i in range(0, dimension):
         for j in range(0, dimension):
             offset = (math.sqrt(3) * radius) / 2
-            x = (radius+10) + offset * i * 2
-            y = (radius+10) + offset * j * math.sqrt(3)
+            x = (radius + 10) + offset * i * 2
+            y = (radius + 10) + offset * j * math.sqrt(3)
 
             if j % 2 != 0:
                 x += offset
@@ -132,7 +135,6 @@ def hexagons(dimension, colors):
             )
     SVG = "\n".join(polygons)
     return SVG_HEADER + SVG + "</svg>"
-
 
 
 def debug_log(input, hash, bypass):
