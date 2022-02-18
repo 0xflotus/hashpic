@@ -1,6 +1,7 @@
-import sys, os, re, math
-from PIL import Image, ImageOps, ImageDraw
+import sys, os, re
 import numpy as np
+from math import sqrt, sin, cos, pi
+from PIL import Image, ImageOps, ImageDraw
 from hashpic.data import COLOR_DATA
 from hashpic.config import BLOCKSIZE, RGB, AREA
 
@@ -68,7 +69,7 @@ def svg_mode(
         color_codes = [RGB(r ^ 0xFF, g ^ 0xFF, b ^ 0xFF) for r, g, b in color_codes]
 
     if hexagon:
-        SVG = hexagons(dimension=int(math.sqrt(digest_length)), colors=color_codes, bg_color=bg_color)
+        SVG = hexagons(dimension=int(sqrt(digest_length)), colors=color_codes, bg_color=bg_color)
     else:
         SVG = paint_svg(
             size=size,
@@ -92,9 +93,9 @@ def svg_mode(
 def hexagons(dimension, colors, bg_color=None):
     def hexpoints(x, y, radius):
         points = []
-        for theta in np.arange(0, math.pi * 2, math.pi / 3):
-            point_x = x + radius * math.sin(theta)
-            point_y = y + radius * math.cos(theta)
+        for theta in np.arange(0, pi * 2, pi / 3):
+            point_x = x + radius * sin(theta)
+            point_y = y + radius * cos(theta)
             points.append(str(point_x) + "," + str(point_y))
         return " ".join(points)
 
@@ -127,15 +128,15 @@ def hexagons(dimension, colors, bg_color=None):
     radius = SIZES[dimension]
     for i in range(0, dimension):
         for j in range(0, dimension):
-            offset = (math.sqrt(3) * radius) / 2
+            offset = (sqrt(3) * radius) / 2
             x = (radius + 10) + offset * i * 2
-            y = (radius + 10) + offset * j * math.sqrt(3)
+            y = (radius + 10) + offset * j * sqrt(3)
 
             if j % 2 != 0:
                 x += offset
             polygons.append(
                 f'  <polygon style="fill: #{"".join(map(lambda _: format(_, "02x"), colors[j * dimension + i % dimension]))}; '
-                f'stroke: black; stroke-width: 3px;" points="{hexpoints(x,y,radius)}"></polygon>'
+                f'stroke: black; stroke-width: 3px;" points="{hexpoints(x, y, radius)}"></polygon>'
             )
     SVG = "\n".join(polygons)
     return SVG_HEADER + SVG + "\n</svg>"
