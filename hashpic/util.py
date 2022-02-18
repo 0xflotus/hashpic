@@ -91,12 +91,7 @@ def svg_mode(
 
 def hexagons(dimension, colors, bg_color=None):
     def hexpoints(x, y, radius):
-        points = []
-        for theta in frange(0, pi * 2, pi / 3):
-            point_x = x + radius * sin(theta)
-            point_y = y + radius * cos(theta)
-            points.append(str(point_x) + "," + str(point_y))
-        return " ".join(points)
+        return " ".join([str(x + radius * sin(theta)) + "," + str(y + radius * cos(theta)) for theta in frange(0, pi * 2, pi / 3)])
 
     SIZES = {
         1: 390,
