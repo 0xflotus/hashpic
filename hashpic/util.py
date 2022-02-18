@@ -95,7 +95,7 @@ def hexagons(dimension, colors, bg_color=None):
     def hexpoints(x, y, radius):
         return " ".join(
             [
-                str(x + radius * sin(theta)) + "," + str(y + radius * cos(theta))
+                f'{x + radius * sin(theta)},{y + radius * cos(theta)}'
                 for theta in frange(0, pi * 2, pi / 3)
             ]
         )
