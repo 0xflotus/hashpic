@@ -18,23 +18,18 @@ def md6_mode(
     bg_color,
 ):
 
+    md6 = MD6(size=0x200)
     if file:
         raise NotImplementedError('Not implemented for MD6')
     elif not input:
-        md6 = MD6(size=0x200)
-        md6_hash = md6(sys.stdin.read().encode())
-        print(str(md6_hash))
         hash = (
-            str(md6_hash)
+            str(md6(sys.stdin.read().encode()))
             if not bypass
             else sys.stdin.read().rstrip("\n").lower()
         )
     else:
-        md6 = MD6(size=0x200)
-        md6_hash = md6(input[0])
-        print(str(md6_hash))
         hash = (
-            str(md6_hash)
+            str(md6(input[0]))
             if not bypass
             else input[0].lower()
         )
