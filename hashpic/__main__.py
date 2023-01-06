@@ -5,7 +5,7 @@ from hashpic.sha512 import *
 from hashpic.shake256 import *
 from hashpic.blake2b import *
 from hashpic.sha3 import *
-
+from hashpic.md6 import *
 
 def main():
     parser = argparse.ArgumentParser(
@@ -25,6 +25,7 @@ def main():
     parser.add_argument("--shake256", action="store_true")
     parser.add_argument("--sha3", action="store_true")
     parser.add_argument("--blake2b", action="store_true")
+    parser.add_argument("--md6", action="store_true")
     parser.add_argument("--length", action="store")
     parser.add_argument("--file", action="store")
     parser.add_argument("--svg", action="store_true")
@@ -95,6 +96,22 @@ def main():
             tile=args.tile,
             invert=args.i,
             digest_length=args.length,
+            file=args.file,
+            outputfile=outputfile,
+            svg=args.svg,
+            hexagon=args.hexagon,
+            stroke=args.stroke,
+            round=args.round,
+            bg_color=args.background,
+        )
+    elif args.md6:
+        md6_mode(
+            input=args.input,
+            bypass=args.bypass,
+            debug=args.d,
+            console=args.c,
+            tile=args.tile,
+            invert=args.i,
             file=args.file,
             outputfile=outputfile,
             svg=args.svg,
