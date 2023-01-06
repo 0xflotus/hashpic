@@ -2,6 +2,7 @@ import sys
 from hashpic.util import *
 from MD6 import MD6
 
+
 def md6_mode(
     input,
     bypass,
@@ -20,7 +21,7 @@ def md6_mode(
 
     md6 = MD6(size=0x200)
     if file:
-        raise NotImplementedError('Not implemented for MD6')
+        raise NotImplementedError("Not implemented for MD6")
     elif not input:
         hash = (
             str(md6(sys.stdin.read().encode()))
@@ -28,11 +29,7 @@ def md6_mode(
             else sys.stdin.read().rstrip("\n").lower()
         )
     else:
-        hash = (
-            str(md6(input[0]))
-            if not bypass
-            else input[0].lower()
-        )
+        hash = str(md6(input[0])) if not bypass else input[0].lower()
 
     validity_check(hash=hash, regex_str=r"^[a-f0-9]{128}$", name="MD6")
 
@@ -57,4 +54,3 @@ def md6_mode(
         print_to_console(hash, invert, tile)
 
     paint_png(hash=hash, size=0x400, invert=invert, debug=debug, outputfile=outputfile)
-    

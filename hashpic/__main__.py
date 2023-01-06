@@ -7,6 +7,7 @@ from hashpic.blake2b import *
 from hashpic.sha3 import *
 from hashpic.md6 import *
 
+
 def main():
     parser = argparse.ArgumentParser(
         prog="hashpic",
