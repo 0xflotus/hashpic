@@ -4,3 +4,4 @@ In the future maybe some other [hashes](https://en.wikipedia.org/wiki/List_of_ha
 
 - [Skein](https://pythonhosted.org/pyskein/skein.html#examples-of-simple-hashing)
 - [Hashlib Additional](https://pypi.org/project/hashlib-additional/)
+- [xxHash](https://xxhash.com/)
