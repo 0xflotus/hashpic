@@ -17,7 +17,6 @@ def sha_512_mode(
     round,
     bg_color,
 ):
-
     if file:
         hash = file_to_hash(file, hashlib.sha512())
     elif not input:

@@ -19,7 +19,6 @@ def shake_256_mode(
     round,
     bg_color,
 ):
-
     if not digest_length:
         sys.stderr.write("Please specify a --length\n")
         sys.exit(-1)

@@ -18,7 +18,6 @@ def md6_mode(
     round,
     bg_color,
 ):
-
     md6 = MD6(size=0x200)
     if file:
         raise NotImplementedError("Not implemented for MD6")

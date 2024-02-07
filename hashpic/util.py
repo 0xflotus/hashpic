@@ -40,7 +40,7 @@ def paint_svg(size, digest_length, colors, rounded_corners=False, bg_color=None)
         f' style="background-color: {bg_color}">\n' if bg_color else ">\n"
     )
 
-    steps = int(size // (digest_length ** 0.5))
+    steps = int(size // (digest_length**0.5))
     store = [
         AREA(x, x + steps, y, y + steps)
         for y in range(0, size, steps)
