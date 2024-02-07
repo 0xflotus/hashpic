@@ -191,7 +191,7 @@ def paint_png(hash, size, invert, debug, outputfile):
     m_size = int((len(hash) >> 1) ** 0.5)
     steps = int(size // m_size)
     store = [
-        (i, steps * (row + 1), i + steps, steps * row)
+        (i, steps * row, i + steps, steps * (row + 1))
         for row in range(m_size)
         for i in range(0, size, steps)
     ]
