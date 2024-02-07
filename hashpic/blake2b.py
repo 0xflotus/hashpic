@@ -17,7 +17,6 @@ def blake2b_mode(
     round,
     bg_color,
 ):
-
     if file:
         hash = file_to_hash(file, hashlib.blake2b())
     elif not input:
