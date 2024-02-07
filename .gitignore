@@ -8,3 +8,8 @@ build/
 
 !docs/**/*.svg
 !docs/**/*.png
+
+#venv
+pyvenv.cfg
+lib/
+bin/
