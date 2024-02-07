@@ -12,6 +12,16 @@ Since _v0.4.0_ it is possible to create an image as *SVG*.
 
 _v0.6.0_ brought a huge performance boost.
 
+## Requirements
+
+Make sure you have installed the [dependencies for Pillow](https://pillow.readthedocs.io/en/latest/installation.html#building-from-source)
+
+On MacOS:
+
+```sh
+brew install libjpeg libtiff little-cms2 openjpeg webp
+```
+
 ## Install
 
 `pip3 install hashpic`
