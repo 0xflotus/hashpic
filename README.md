@@ -317,6 +317,10 @@ printf 0110100111001100001101001110011000111110011100110000111100111011 | python
 
 </details>
 
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=0xflotus/hashpic&type=Timeline)](https://star-history.com/#0xflotus/hashpic&Timeline)
+
 ## Disclaimer
 
 The color palette in [`data.py`](./hashpic/data.py) was influenced by the [`string-color`](https://gitlab.com/shindagger/string-color) library. 
