@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hashpic"
+version = "0.7.3"
+description = "Create an image from MD5, SHA-512, SHA3-512, BLAKE2b, SHAKE-256 or MD6"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { file = "LICENSE" }
+authors = [{ name = "0xflotus", email = "0xflotus+pypi@gmail.com" }]
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+]
+dependencies = [
+    "Pillow>=13.0.0",
+    "pymd6>=0.1.1",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=9.2.0"]
+
+[project.urls]
+Homepage = "https://github.com/0xflotus/hashpic"
+Repository = "https://github.com/0xflotus/hashpic"
+
+[project.scripts]
+hashpic = "hashpic.__main__:main"
+
+[tool.setuptools.packages.find]
+include = ["hashpic*"]
+
+[tool.pytest.ini_options]
+testpaths = ["hashpic"]
+addopts = "-ra"

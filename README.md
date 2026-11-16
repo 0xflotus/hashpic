@@ -1,6 +1,7 @@
 # Hashpic
 
-Hashpic creates an image from the *MD5* hash of your input.
+Hashpic creates an image from the hash of your input. It supports *MD5*,
+*SHA-512*, *SHA3-512*, *BLAKE2b*, *SHAKE-256* and experimental *MD6*.
 
 Since _v0.2.0_ it is also possible to create an image from a *SHA-512* hash.
 
@@ -25,6 +26,14 @@ brew install libjpeg libtiff little-cms2 openjpeg webp
 ## Install
 
 `pip3 install hashpic`
+
+To install the latest code from a checkout, including the test dependencies:
+
+```sh
+python3 -m pip install '.[test]'
+```
+
+Hashpic requires Python 3.11 or later.
 
 ## Usage
 
@@ -225,6 +234,14 @@ python3 -m hashpic 'Hashpic rocks!' --blake2b
 ```
 
 ![sha3](./docs/rocks_on_blake2b.png)
+
+## MD6 Mode
+
+MD6 support is experimental and does not support file input.
+
+```bash
+python3 -m hashpic 'Hashpic rocks!' --md6
+```
 
 ## Using with Docker
 
