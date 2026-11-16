@@ -1,5 +1,7 @@
-from hashpic.util import *
-from hashpic.config import *
+import pytest
+
+from hashpic.config import RGB
+from hashpic.util import chunk_it, convert_term_to_rgb, hash_to_color_codes, paint_svg
 
 
 def test_convert_term_to_rgb():
@@ -268,11 +270,27 @@ def test_chunk_it():
     assert chunks == expected, "Should be ['ff', '00', 'ff', '00']"
 
 
+def test_chunk_it_keeps_final_partial_chunk():
+    assert chunk_it("abc") == ["ab", "c"]
+
+
 def test_hash_to_color_codes():
     hash = "ff00ff00"
     color_codes = hash_to_color_codes(hash)
     expected = [RGB(238, 238, 238), RGB(0, 0, 0), RGB(238, 238, 238), RGB(0, 0, 0)]
     assert color_codes == expected
+
+
+@pytest.mark.parametrize(
+    ("hash_value", "expected_colors"),
+    [
+        ("00", [RGB(0, 0, 0)]),
+        ("0f", [RGB(255, 255, 255)]),
+        ("ff", [RGB(238, 238, 238)]),
+    ],
+)
+def test_hash_to_color_codes_maps_boundary_values(hash_value, expected_colors):
+    assert hash_to_color_codes(hash_value) == expected_colors
 
 
 def test_paint_svg():
