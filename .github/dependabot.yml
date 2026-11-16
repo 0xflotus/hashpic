@@ -12,3 +12,7 @@ updates:
       interval: "daily"
     reviewers:
       - "0xflotus"
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily"
