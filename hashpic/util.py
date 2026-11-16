@@ -2,7 +2,7 @@ import sys, os, re
 from math import sqrt, sin, cos, pi
 from PIL import Image, ImageOps, ImageDraw
 from hashpic.data import COLOR_DATA
-from hashpic.config import BLOCKSIZE, RGB, AREA
+from hashpic.config import BLOCKSIZE, RGB
 
 
 def chunk_it(string, n=2):
@@ -41,21 +41,13 @@ def paint_svg(size, digest_length, colors, rounded_corners=False, bg_color=None)
     )
 
     steps = int(size // (digest_length**0.5))
-    store = [
-        AREA(x, x + steps, y, y + steps)
-        for y in range(0, size, steps)
-        for x in range(0, size, steps)
-    ]
-
     rx = steps >> 1 if rounded_corners else 0
+    dimension = len(range(0, size, steps))
     rects = [
         f'  <rect width="{steps}" height="{steps}" '
-        f'fill="#{"".join(map(lambda _: format(_, "02x"), colors[idx]))}" '
-        f'x="{x}" y="{y}" rx="{rx}"/>'
-        for y in range(0, size, steps)
-        for x in range(0, size, steps)
-        for idx, (min_x, max_x, min_y, max_y) in enumerate(store)
-        if min_x <= x < max_x and min_y <= y < max_y
+        f'fill="#{"".join(f"{channel:02x}" for channel in color)}" '
+        f'x="{idx % dimension * steps}" y="{idx // dimension * steps}" rx="{rx}"/>'
+        for idx, color in enumerate(colors[: dimension * dimension])
     ]
     return SVG_DATA_HEADER + "\n".join(rects) + "\n</svg>\n"
 
@@ -208,11 +200,6 @@ def paint_png(hash, size, invert, debug, outputfile):
 
     im.save(os.getcwd() + "/" + outputfile)
     sys.exit(0)
-
-
-"""
-Helper function to use floats in range function
-"""
 
 
 def frange(start, stop=None, step=None):

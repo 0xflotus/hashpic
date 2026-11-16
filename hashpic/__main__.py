@@ -1,11 +1,15 @@
 import argparse
+import sys
+
 from hashpic import __version__
-from hashpic.md5 import *
-from hashpic.sha512 import *
-from hashpic.shake256 import *
-from hashpic.blake2b import *
-from hashpic.sha3 import *
-from hashpic.md6 import *
+from hashpic.modes import (
+    blake2b_mode,
+    md5_mode,
+    md6_mode,
+    sha3_512_mode,
+    sha_512_mode,
+    shake_256_mode,
+)
 
 
 def main():
@@ -40,110 +44,42 @@ def main():
     outputfile = args.o or "output"
     outputfile += ".svg" if args.svg else ".png"
 
-    if args.sha512:
-        sha_512_mode(
-            input=args.input,
-            bypass=args.bypass,
-            debug=args.d,
-            console=args.c,
-            tile=args.tile,
-            invert=args.i,
-            file=args.file,
-            outputfile=outputfile,
-            svg=args.svg,
-            hexagon=args.hexagon,
-            stroke=args.stroke,
-            round=args.round,
-            bg_color=args.background,
-        )
-    elif args.sha3:
-        sha3_512_mode(
-            input=args.input,
-            bypass=args.bypass,
-            debug=args.d,
-            console=args.c,
-            tile=args.tile,
-            invert=args.i,
-            file=args.file,
-            outputfile=outputfile,
-            svg=args.svg,
-            hexagon=args.hexagon,
-            stroke=args.stroke,
-            round=args.round,
-            bg_color=args.background,
-        )
-    elif args.blake2b:
-        blake2b_mode(
-            input=args.input,
-            bypass=args.bypass,
-            debug=args.d,
-            console=args.c,
-            tile=args.tile,
-            invert=args.i,
-            file=args.file,
-            outputfile=outputfile,
-            svg=args.svg,
-            hexagon=args.hexagon,
-            stroke=args.stroke,
-            round=args.round,
-            bg_color=args.background,
-        )
-    elif args.shake256:
-        shake_256_mode(
-            input=args.input,
-            bypass=args.bypass,
-            debug=args.d,
-            console=args.c,
-            tile=args.tile,
-            invert=args.i,
-            digest_length=args.length,
-            file=args.file,
-            outputfile=outputfile,
-            svg=args.svg,
-            hexagon=args.hexagon,
-            stroke=args.stroke,
-            round=args.round,
-            bg_color=args.background,
-        )
-    elif args.md6:
-        md6_mode(
-            input=args.input,
-            bypass=args.bypass,
-            debug=args.d,
-            console=args.c,
-            tile=args.tile,
-            invert=args.i,
-            file=args.file,
-            outputfile=outputfile,
-            svg=args.svg,
-            hexagon=args.hexagon,
-            stroke=args.stroke,
-            round=args.round,
-            bg_color=args.background,
-        )
-    else:
-        md5_mode(
-            input=args.input,
-            bypass=args.bypass,
-            debug=args.d,
-            console=args.c,
-            tile=args.tile,
-            invert=args.i,
-            file=args.file,
-            outputfile=outputfile,
-            svg=args.svg,
-            hexagon=args.hexagon,
-            stroke=args.stroke,
-            round=args.round,
-            bg_color=args.background,
-        )
+    mode = next(
+        (
+            selected_mode
+            for enabled, selected_mode in (
+                (args.sha512, sha_512_mode),
+                (args.sha3, sha3_512_mode),
+                (args.blake2b, blake2b_mode),
+                (args.shake256, shake_256_mode),
+                (args.md6, md6_mode),
+            )
+            if enabled
+        ),
+        md5_mode,
+    )
+    mode_args = {
+        "input": args.input,
+        "bypass": args.bypass,
+        "debug": args.d,
+        "console": args.c,
+        "tile": args.tile,
+        "invert": args.i,
+        "file": args.file,
+        "outputfile": outputfile,
+        "svg": args.svg,
+        "hexagon": args.hexagon,
+        "stroke": args.stroke,
+        "round": args.round,
+        "bg_color": args.background,
+    }
+    if mode is shake_256_mode:
+        mode_args["digest_length"] = args.length
+    mode(**mode_args)
 
 
 if __name__ == "__main__":
     try:
         main()
     except KeyboardInterrupt:
-        try:
-            sys.exit(0)
-        except SystemExit:
-            os._exit(0)
+        sys.exit(0)
