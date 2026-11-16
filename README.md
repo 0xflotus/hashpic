@@ -25,12 +25,12 @@ brew install libjpeg libtiff little-cms2 openjpeg webp
 
 ## Install
 
-`pip3 install hashpic`
+`uv tool install hashpic`
 
 To install the latest code from a checkout, including the test dependencies:
 
 ```sh
-python3 -m pip install '.[test]'
+uv sync --extra test
 ```
 
 Hashpic requires Python 3.11 or later.
@@ -38,7 +38,7 @@ Hashpic requires Python 3.11 or later.
 ## Usage
 
 ```bash
-python3 -m hashpic 'Hashpic rocks!'
+uv run python -m hashpic 'Hashpic rocks!'
 ```
 
 This should create a file `output.png` in your current directory. 
@@ -51,9 +51,9 @@ The input `Hashpic rocks!` should create the following image:
 All this commands should produce the same image as above.
 
 ```bash
-printf 'Hashpic rocks!' | md5 | python3 -m hashpic --bypass
+printf 'Hashpic rocks!' | md5 | uv run python -m hashpic --bypass
 
-printf 'Hashpic rocks!' | python3 -m hashpic
+printf 'Hashpic rocks!' | uv run python -m hashpic
 ```
 
 ## SVG Mode 🎉🎉🎉
@@ -61,7 +61,7 @@ printf 'Hashpic rocks!' | python3 -m hashpic
 Since _v0.4.0_ it is possible to create an image as *SVG*. The following command will create a file `output.svg` in your current directory. 
 
 ```bash
-python3 -m hashpic 'Hashpic rocks!' --svg
+uv run python -m hashpic 'Hashpic rocks!' --svg
 ```
 
 ![svg](./docs/rocks_on_svg.svg)
@@ -69,7 +69,7 @@ python3 -m hashpic 'Hashpic rocks!' --svg
 Since _v0.5.0_ it is possible to create circles instead of squares. But this is limited to the `SVG Mode`.
 
 ```bash
-python3 -m hashpic 'Hashpic rocks!' --svg --round
+uv run python -m hashpic 'Hashpic rocks!' --svg --round
 ```
 
 ![rounded](./docs/rounded.svg)
@@ -78,7 +78,7 @@ Since _v0.7.0_ it is possible to create hexagons instead of squares. But this is
 If you pass also the `--round` flag when using `--hexagon`, `--round` will be ignored.
 
 ```bash
-python3 -m hashpic 'Hashpic rocks!' --svg --hexagon
+uv run python -m hashpic 'Hashpic rocks!' --svg --hexagon
 ```
 
 ![rounded](./docs/hexagon_md5.svg)
@@ -86,7 +86,7 @@ python3 -m hashpic 'Hashpic rocks!' --svg --hexagon
 Since _v0.5.2_ it is possible to add a background color to the SVG.
 
 ```bash
-python3 -m hashpic 'Hashpic rocks!' --svg --round --background '#000000'
+uv run python -m hashpic 'Hashpic rocks!' --svg --round --background '#000000'
 ```
 
 ## Console Mode
@@ -98,7 +98,7 @@ python3 -m hashpic 'Hashpic rocks!' --svg --round --background '#000000'
 It is also possible to create an image from a hash of a file. Use the `--file` argument for that.
 
 ```bash
-python3 -m hashpic --file README.md
+uv run python -m hashpic --file README.md
 ```
 
 ## SHA-512 Mode
@@ -106,9 +106,9 @@ python3 -m hashpic --file README.md
 It is also possible to create an image from a *SHA-512* hash. All arguments for *MD5 Mode* are also available for *SHA512 Mode*.
 
 ```bash
-python3 -m hashpic --sha512 'Hashpic rocks!'
+uv run python -m hashpic --sha512 'Hashpic rocks!'
 
-printf 'Hashpic rocks!' | python3 -m hashpic --sha512
+printf 'Hashpic rocks!' | uv run python -m hashpic --sha512
 ```
 
 This commands should create the following image:
@@ -120,7 +120,7 @@ This commands should create the following image:
 You can create an image from a *SHAKE256* hash with variable digest lengths. Valid lengths are _4_, _9_, _16_, _25_, _36_, _64_, _100_, _144_, _225_ and _255_. You must specify the length of the digest if you want to create an image from a *SHAKE256* hash.
 
 ```bash
-python3 -m hashpic --shake256 --length 100 'Hashpic rocks!'
+uv run python -m hashpic --shake256 --length 100 'Hashpic rocks!'
 ```
 
 The command above should produce the following image:
@@ -135,7 +135,7 @@ The command above should produce the following image:
   ### Digest Length of 4
   
   ```bash
-  python3 -m hashpic --shake256 --length 4 'Hashpic rocks!'
+  uv run python -m hashpic --shake256 --length 4 'Hashpic rocks!'
   ```
 
   ![shake256](./docs/shake256/4.png)
@@ -143,7 +143,7 @@ The command above should produce the following image:
   ### Digest Length of 9
   
   ```bash
-  python3 -m hashpic --shake256 --length 9 'Hashpic rocks!'
+  uv run python -m hashpic --shake256 --length 9 'Hashpic rocks!'
   ```
 
   ![shake256](./docs/shake256/9.png)
@@ -151,14 +151,14 @@ The command above should produce the following image:
   ### Digest Length of 16
 
   ```bash
-  python3 -m hashpic --shake256 --length 16 'Hashpic rocks!'
+  uv run python -m hashpic --shake256 --length 16 'Hashpic rocks!'
   ```
   ![shake256](./docs/shake256/16.png)
 
   ### Digest Length of 25
 
   ```bash
-  python3 -m hashpic --shake256 --length 25 'Hashpic rocks!'
+  uv run python -m hashpic --shake256 --length 25 'Hashpic rocks!'
   ```
 
   ![shake256](./docs/shake256/25.png)
@@ -166,7 +166,7 @@ The command above should produce the following image:
   ### Digest Length of 36
 
   ```bash
-  python3 -m hashpic --shake256 --length 36 'Hashpic rocks!'
+  uv run python -m hashpic --shake256 --length 36 'Hashpic rocks!'
   ```
 
   ![shake256](./docs/shake256/36.png)
@@ -174,7 +174,7 @@ The command above should produce the following image:
   ### Digest Length of 64
 
   ```bash
-  python3 -m hashpic --shake256 --length 64 'Hashpic rocks!'
+  uv run python -m hashpic --shake256 --length 64 'Hashpic rocks!'
   ```
 
   ![shake256](./docs/shake256/64.png)
@@ -182,7 +182,7 @@ The command above should produce the following image:
   ### Digest Length of 100
 
   ```bash
-  python3 -m hashpic --shake256 --length 100 'Hashpic rocks!'
+  uv run python -m hashpic --shake256 --length 100 'Hashpic rocks!'
   ```
 
   ![shake256](./docs/shake256/100.png)
@@ -190,7 +190,7 @@ The command above should produce the following image:
   ### Digest Length of 144
 
   ```bash
-  python3 -m hashpic --shake256 --length 144 'Hashpic rocks!'
+  uv run python -m hashpic --shake256 --length 144 'Hashpic rocks!'
   ```
 
   ![shake256](./docs/shake256/144.png)
@@ -198,7 +198,7 @@ The command above should produce the following image:
   ### Digest Length of 225
 
   ```bash
-  python3 -m hashpic --shake256 --length 225 'Hashpic rocks!'
+  uv run python -m hashpic --shake256 --length 225 'Hashpic rocks!'
   ```
 
   ![shake256](./docs/shake256/225.png)
@@ -208,7 +208,7 @@ The command above should produce the following image:
   It adds a `padding byte of 0xff` to the end of the hash to fit it into a `16x16 grid`. Please keep this in mind.
 
   ```bash
-  python3 -m hashpic --shake256 --length 255 'Hashpic rocks!'
+  uv run python -m hashpic --shake256 --length 255 'Hashpic rocks!'
   ```
 
   ![shake256](./docs/shake256/255.png)
@@ -220,7 +220,7 @@ The command above should produce the following image:
 It is possible to create an image from a *SHA3* hash. 
 
 ```bash
-python3 -m hashpic 'Hashpic rocks!' --sha3
+uv run python -m hashpic 'Hashpic rocks!' --sha3
 ```
 
 ![sha3](./docs/rocks_on_sha3.png)
@@ -230,7 +230,7 @@ python3 -m hashpic 'Hashpic rocks!' --sha3
 It is possible to create an image from a *BLAKE2b* hash. 
 
 ```bash
-python3 -m hashpic 'Hashpic rocks!' --blake2b
+uv run python -m hashpic 'Hashpic rocks!' --blake2b
 ```
 
 ![sha3](./docs/rocks_on_blake2b.png)
@@ -240,7 +240,7 @@ python3 -m hashpic 'Hashpic rocks!' --blake2b
 MD6 support is experimental and does not support file input.
 
 ```bash
-python3 -m hashpic 'Hashpic rocks!' --md6
+uv run python -m hashpic 'Hashpic rocks!' --md6
 ```
 
 ## Using with Docker
@@ -262,7 +262,7 @@ printf 'ff0030ffe589b7a4e1320f12c4c8de73' | docker run -i --rm ghcr.io/0xflotus/
 Bypassing a hash directly:
 
 ```bash
-python3 -m hashpic ff00ff00ff00ff0000ff00ff00ff00ffff00ff00ff00ff0000ff00ff00ff00ffff00ff00ff00ff0000ff00ff00ff00ffff00ff00ff00ff0000ff00ff00ff00ff --bypass --sha512
+uv run python -m hashpic ff00ff00ff00ff0000ff00ff00ff00ffff00ff00ff00ff0000ff00ff00ff00ffff00ff00ff00ff0000ff00ff00ff00ffff00ff00ff00ff0000ff00ff00ff00ff --bypass --sha512
 ```
 
 This command will produce the following image:
@@ -276,7 +276,7 @@ So we can call the hash above the so called `chessboard hash`.
 You can also bypass a hash from another program:
 
 ```bash
-printf 'Hashpic rocks!' | sha512sum | awk '{print $1}' | python3 -m hashpic --sha512 -c --bypass 
+printf 'Hashpic rocks!' | sha512sum | awk '{print $1}' | uv run python -m hashpic --sha512 -c --bypass
 ```
 
 ![bypassed from another program](./docs/bypassed_pipe.svg)
@@ -286,36 +286,36 @@ printf 'Hashpic rocks!' | sha512sum | awk '{print $1}' | python3 -m hashpic --sh
 With all this in mind you can also use hashpic to create an image not only from a hash but e.g. from the current time in hex:
 
 ```bash
-python3 -c "import time; print(hex(int(time.time()))[2:])" | python3 -m hashpic --shake256 --length 4 --bypass
+python3 -c "import time; print(hex(int(time.time()))[2:])" | uv run python -m hashpic --shake256 --length 4 --bypass
 ```
 
 Or e.g. an IP address in hexadecimal form:
 
 ```bash
 # localhost hex(127.0.0.1) == 7f000001
-python3 -m hashpic 7f000001 --shake256 --length 4 --bypass
+uv run python -m hashpic 7f000001 --shake256 --length 4 --bypass
 
 # e.g. an IPv6 address of Googles DNS server
-printf 2001:4860:4860:0000:0000:0000:0000:8844 | tr -d ':' | python3 -m hashpic --bypass 
+printf 2001:4860:4860:0000:0000:0000:0000:8844 | tr -d ':' | uv run python -m hashpic --bypass
 ```
 
 If you have installed [`h3`](https://h3geo.org/) you can transform a geo coordinate to an image. 
 The example below uses the geo coordinates of the `Eiffel Tower in Paris, France`.
 
 ```bash
-python3 -c "import h3; print(h3.geo_to_h3(48.8583230030819, 2.294450300083837, 15).zfill(18))" | python3 -m hashpic --bypass --shake256 --length 9
+python3 -c "import h3; print(h3.geo_to_h3(48.8583230030819, 2.294450300083837, 15).zfill(18))" | uv run python -m hashpic --bypass --shake256 --length 9
 ```
 
 It is also possible to create an image from an `uuid`.
 
 ```bash
-python3 -c "import uuid; print(str(uuid.uuid4()).replace('-', ''))" | python3 -m hashpic --bypass -c
+python3 -c "import uuid; print(str(uuid.uuid4()).replace('-', ''))" | uv run python -m hashpic --bypass -c
 ```
 
 You can also create an image from any 64-bit integer.
 
 ```bash
-printf 8724325378325383578 | python3 -c "import sys, textwrap; print(''.join([hex(int(bit))[2:].zfill(2) for bit in textwrap.fill(bin(int(sys.stdin.read()))[2:].zfill(64), 1).split('\n')]))" | python3 -m hashpic --bypass --svg --round --sha3
+printf 8724325378325383578 | python3 -c "import sys, textwrap; print(''.join([hex(int(bit))[2:].zfill(2) for bit in textwrap.fill(bin(int(sys.stdin.read()))[2:].zfill(64), 1).split('\n')]))" | uv run python -m hashpic --bypass --svg --round --sha3
 ```
 
 <details>
@@ -323,13 +323,13 @@ printf 8724325378325383578 | python3 -c "import sys, textwrap; print(''.join([he
 
 ```bash
 # compute the bypassed number
-python3 -c "print(2**56-1)" | python3 -c "import sys, textwrap; print(''.join([hex(int(bit))[2:].zfill(2) for bit in textwrap.fill(bin(int(sys.stdin.read()))[2:].zfill(64),1).split('\n')]))" | python3 -m hashpic --bypass --svg --round --sha3
+python3 -c "print(2**56-1)" | python3 -c "import sys, textwrap; print(''.join([hex(int(bit))[2:].zfill(2) for bit in textwrap.fill(bin(int(sys.stdin.read()))[2:].zfill(64),1).split('\n')]))" | uv run python -m hashpic --bypass --svg --round --sha3
 
 # bypass the binary directly
-printf 0110100111001100001101001110011000111110011100110000111100111011 | python3 -c "import sys, textwrap; print(''.join([hex(int(bit))[2:].zfill(2) for bit in textwrap.fill(bin(int(sys.stdin.read(), 2))[2:].zfill(64),1).split('\n')]))" | python3 -m hashpic --bypass --svg --round --sha3
+printf 0110100111001100001101001110011000111110011100110000111100111011 | python3 -c "import sys, textwrap; print(''.join([hex(int(bit))[2:].zfill(2) for bit in textwrap.fill(bin(int(sys.stdin.read(), 2))[2:].zfill(64),1).split('\n')]))" | uv run python -m hashpic --bypass --svg --round --sha3
 
 # map the colors 
-printf 0110100111001100001101001110011000111110011100110000111100111011 | python3 -c "import sys, textwrap; print(''.join(map(lambda x: '00' if x == '01' else 'ff', [hex(int(bit))[2:].zfill(2) for bit in textwrap.fill(bin(int(sys.stdin.read(), 2))[2:].zfill(64),1).split('\n')])))" | python3 -m hashpic --bypass --svg --round --sha3
+printf 0110100111001100001101001110011000111110011100110000111100111011 | python3 -c "import sys, textwrap; print(''.join(map(lambda x: '00' if x == '01' else 'ff', [hex(int(bit))[2:].zfill(2) for bit in textwrap.fill(bin(int(sys.stdin.read(), 2))[2:].zfill(64),1).split('\n')])))" | uv run python -m hashpic --bypass --svg --round --sha3
 ```
 
 </details>
