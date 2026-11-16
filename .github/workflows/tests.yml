@@ -20,4 +20,4 @@ jobs:
         with:
           version: "0.13.8"
       - run: uv sync --locked --extra test
-      - run: uv run pytest
+      - run: uv run pytest -v
