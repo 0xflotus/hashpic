@@ -1,6 +1,12 @@
 version: 2
 updates:
-  - package-ecosystem: "pip"
+  - package-ecosystem: pip
+    directory: "/"
+    schedule:
+      interval: "daily"
+    reviewers:
+      - "0xflotus"
+  - package-ecosystem: docker
     directory: "/"
     schedule:
       interval: "daily"
