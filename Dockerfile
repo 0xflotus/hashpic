@@ -1,5 +1,5 @@
 FROM python:3.15-alpine@sha256:0f9552bb28711333da16915ec146f5e6bb44a7fdac9ced15dc17c2e0206346dd
-COPY --from=ghcr.io/astral-sh/uv:0.13.8 /uv /uvx /bin/
+COPY --from=ghcr.io/astral-sh/uv:0.13.8@sha256:5cc1805e2426484abca4ad46ea783bab281fdb225fd82d8ce6d66a81254bac85 /uv /uvx /bin/
 LABEL maintainer="0xflotus"
 
 RUN apk add --virtual build-deps --no-cache gcc musl-dev zlib-dev jpeg-dev
